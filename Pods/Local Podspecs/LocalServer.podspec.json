@@ -1,0 +1,35 @@
+{
+  "name": "LocalServer",
+  "version": "1.3.1",
+  "summary": "Micro Feature",
+  "description": "LocalServer is resposible for ...",
+  "homepage": "https://github.com/dineybomfim/LocalServer.git",
+  "documentation_url": "https://github.com/dineybomfim/LocalServer/documentation",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": "Diney Bomfim",
+  "source": {
+    "git": "https://github.com/dineybomfim/LocalServer.git",
+    "tag": "1.3.1",
+    "submodules": true
+  },
+  "swift_version": "4.2",
+  "requires_arc": true,
+  "platforms": {
+    "ios": "10.0",
+    "osx": "10.11",
+    "tvos": "10.0",
+    "watchos": "2.0"
+  },
+  "public_header_files": "LocalServer/**/*.h",
+  "source_files": "LocalServer/**/*.{h,m,swift}",
+  "exclude_files": "LocalServer/**/Info.plist",
+  "ios": {
+    "frameworks": [
+      "Foundation",
+      "WebKit"
+    ]
+  }
+}

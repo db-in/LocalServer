@@ -1,0 +1,11 @@
+disabled_rules:
+  - colon
+  
+line_length:
+  - 100
+
+file_length:
+  - 500
+
+included:
+  - LocalServer

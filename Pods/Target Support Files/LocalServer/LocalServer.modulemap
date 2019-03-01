@@ -1,0 +1,6 @@
+framework module LocalServer {
+  umbrella header "LocalServer-umbrella.h"
+
+  export *
+  module * { export * }
+}
