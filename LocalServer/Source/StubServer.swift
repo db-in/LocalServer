@@ -33,10 +33,7 @@ fileprivate extension String {
 	fileprivate func urlParameters() -> [String : String] {
 		
 		let clean = replacingOccurrences(of: "+", with: " ")
-		guard let string = clean.removingPercentEncoding else {
-			return [:]
-		}
-		
+		guard let string = clean.removingPercentEncoding else { return [:] }
 		var parameters = [String: String]()
 		
 		for keyValueString in string.components(separatedBy: "&") {

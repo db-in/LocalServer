@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Type -
+// MARK: - Extension - String
 
 extension String {
 
@@ -19,4 +19,11 @@ extension String {
 		let characters = (0...length).compactMap { _ in largeData.randomElement() }
 		return String(characters)
 	}
+}
+
+// MARK: = Extension - URL
+
+extension URL {
+	static let google = URL(string: "https://google.com")!
+	static let httpbinPOST = URL(string: "https://httpbin.org/post")!
 }

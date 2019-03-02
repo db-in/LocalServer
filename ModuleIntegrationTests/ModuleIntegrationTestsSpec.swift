@@ -11,22 +11,26 @@ import LocalServer
 
 // MARK: - Definitions -
 
+extension URL {
+	static let httpbin200 = URL(string: "https://httpbin.org/status/200")!
+}
+
 // MARK: - Type -
 
 class ModuleIntegrationTestsSpec : XCTestCase {
 
 // MARK: - Properties
-
+	
 // MARK: - Protected Methods
 
 // MARK: - Exposed Methods
 
-	func test_LocalServer_WithStubServerToAnyEndpoint_ShouldReturn999() {
+	func testLocalServer_WithStubServerToAnyEndpoint_ShouldReturn999() {
 		
 		TestLocalServer.startLocalServer()
 		let expect = expectation(description: "\(#function)")
 		
-		URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://google.com")!)) { data, response, error in
+		URLSession.shared.dataTask(with: URLRequest(url: .httpbin200)) { data, response, error in
 			guard let httpResponse = response as? HTTPURLResponse else { return }
 			XCTAssertEqual(httpResponse.statusCode, 999)
 			expect.fulfill()
@@ -35,12 +39,12 @@ class ModuleIntegrationTestsSpec : XCTestCase {
 		wait(for: [expect], timeout: 5.0)
 	}
 	
-	func test_LocalServer_WithNormalInternetConnection_ShouldReturnAnythingBut999() {
+	func testLocalServer_WithNormalInternetConnection_ShouldReturnAnythingBut999() {
 		
 		TestLocalServer.stopLocalServer()
 		let expect = expectation(description: "\(#function)")
 		
-		URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://google.com")!)) { data, response, error in
+		URLSession.shared.dataTask(with: URLRequest(url: .httpbin200)) { data, response, error in
 			guard let httpResponse = response as? HTTPURLResponse else { return }
 			XCTAssertNotEqual(httpResponse.statusCode, 999)
 			expect.fulfill()

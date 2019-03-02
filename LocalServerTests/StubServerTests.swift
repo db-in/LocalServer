@@ -23,33 +23,91 @@ class StubServerTests : XCTestCase {
 
 // MARK: - Exposed Methods
 
-	func testStubServer_WithMethodGET_ShouldCreateStubsAccordingly() {
+	func testStubServer_WithDefaultResponse_ShouldReturnDefaultForAnyUnmappedRoute() {
+		
+		let server = StubServer()
+		
+		StubServer.instance = server
+		
+		let expect = expectation(description: "\(#function)")
+		
+		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
+			guard let httpResponse = response as? HTTPURLResponse else { return }
+			XCTAssertEqual(httpResponse.statusCode, server.defaultResponse.statusCode)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
 	}
 	
-	func testStubServer_WithMethodPOST_ShouldCreateStubsAccordingly() {
+	func testStubServer_WithMethodGETAndMatchingCall_ShouldCreateStubsAccordingly() {
+		
+		let server = StubServer()
+		
+		server.route([.GET], url: "httpbin") { (request, parameters) -> StubResponse in
+			return StubResponse().withStatusCode(999)
+		}
+		
+		StubServer.instance = server
+		
+		let expect = expectation(description: "\(#function)")
+		let getRequest = URLRequest(url: .httpbinPOST)
+		
+		URLSession.shared.dataTask(with: getRequest) { data, response, error in
+			guard let httpResponse = response as? HTTPURLResponse else { return }
+			XCTAssertEqual(httpResponse.statusCode, 999)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
 	}
 	
-	func testStubServer_WithMethodDELETE_ShouldCreateStubsAccordingly() {
+	func testStubServer_WithMethodPOSTAndNotMatchingCall_ShouldReturnDefaultResponse() {
+		
+		let server = StubServer()
+		
+		server.route([.GET], url: "httpbin") { (request, parameters) -> StubResponse in
+			return StubResponse().withStatusCode(999)
+		}
+		
+		StubServer.instance = server
+		
+		let expect = expectation(description: "\(#function)")
+		var postRequest = URLRequest(url: .httpbinPOST)
+		postRequest.httpMethod = HTTPMethod.POST.rawValue
+		
+		URLSession.shared.dataTask(with: postRequest) { data, response, error in
+			guard let httpResponse = response as? HTTPURLResponse else { return }
+			XCTAssertEqual(httpResponse.statusCode, server.defaultResponse.statusCode)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
 	}
 	
-	func testStubServer_WithMethodHEAD_ShouldCreateStubsAccordingly() {
-	}
-	
-	func testStubServer_WithMethodPUT_ShouldCreateStubsAccordingly() {
-	}
-	
-	func testStubServer_WithMethodPATCH_ShouldCreateStubsAccordingly() {
-	}
-	
-	func testStubServer_WithMethodTRACE_ShouldCreateStubsAccordingly() {
-	}
-	
-	func testStubServer_WithMethodOPTIONS_ShouldCreateStubsAccordingly() {
-	}
-	
-	func testStubServer_WithMethodCONNECT_ShouldCreateStubsAccordingly() {
+	func testStubServer_WithAllMethodsAndMatchingCalls_ShouldStubAccordingly() {
+		
+		let server = StubServer()
+		
+		server.route(HTTPMethod.allCases, url: "httpbin") { (request, parameters) -> StubResponse in
+			return StubResponse().withStatusCode(999)
+		}
+		
+		StubServer.instance = server
+		
+		let expect = expectation(description: "\(#function)")
+		var request = URLRequest(url: .httpbinPOST)
+		request.httpMethod = HTTPMethod.PUT.rawValue
+		
+		URLSession.shared.dataTask(with: request) { data, response, error in
+			guard let httpResponse = response as? HTTPURLResponse else { return }
+			XCTAssertEqual(httpResponse.statusCode, 999)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
 	}
 
 // MARK: - Overridden Methods
-
+	
 }

@@ -29,11 +29,9 @@ class StubURLHTTPProtocol : URLProtocol {
 // MARK: - Overridden Methods
 
 	override class func canInit(with request: URLRequest) -> Bool {
-		if let scheme = request.url?.scheme {
-			return ["http", "https"].index(of: scheme) != nil
-		} else {
-			return false
-		}
+		
+		guard let scheme = request.url?.scheme else { return false }
+		return ["http", "https"].contains(scheme)
 	}
 	
 	override class func canonicalRequest(for request: URLRequest) -> URLRequest {
@@ -48,7 +46,8 @@ class StubURLHTTPProtocol : URLProtocol {
 		
 		if let stubResponse = StubServer.instance?.responseForURLRequest(request) {
 			delay(stubResponse.delay) {
-				if self.stopped { return }
+				
+				guard !self.stopped else { return }
 				
 				let response = HTTPURLResponse(url: self.request.url!,
 											   statusCode: stubResponse.statusCode,
