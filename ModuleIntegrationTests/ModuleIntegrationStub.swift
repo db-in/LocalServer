@@ -20,7 +20,7 @@ public class TestLocalServer {
 	static public func startLocalServer() {
 		let server = StubServer()
 		
-		server.set([.GET], url: ".*") { (request, parameters) -> StubResponse in
+		server.route([.GET], url: ".*") { (request, parameters) -> StubResponse in
 			return StubResponse().withStatusCode(999)
 		}
 		

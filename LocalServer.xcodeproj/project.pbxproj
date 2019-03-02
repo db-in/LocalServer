@@ -49,6 +49,7 @@
 		6063346421CF981C00ECC81F /* UITestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346321CF981B00ECC81F /* UITestState.swift */; };
 		6063346921D131E400ECC81F /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346821D131E400ECC81F /* DataExtension.swift */; };
 		60ABEA0221F44115004B19C6 /* StubWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ABEA0121F44115004B19C6 /* StubWKWebView.swift */; };
+		60D398BB222A7094001BA01B /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D398BA222A7094001BA01B /* StubURLSession.swift */; };
 		60D49CAB2229ABD20038B657 /* StubResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D49CAA2229ABD20038B657 /* StubResponseTests.swift */; };
 		60D49CAD2229B0FA0038B657 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D49CAC2229B0FA0038B657 /* TestExtensions.swift */; };
 		60D49CAF2229B3180038B657 /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D49CAE2229B3180038B657 /* mock.json */; };
@@ -111,6 +112,7 @@
 		6063346321CF981B00ECC81F /* UITestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
 		6063346821D131E400ECC81F /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		60ABEA0121F44115004B19C6 /* StubWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
+		60D398BA222A7094001BA01B /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		60D49CAA2229ABD20038B657 /* StubResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponseTests.swift; sourceTree = "<group>"; };
 		60D49CAC2229B0FA0038B657 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		60D49CAE2229B3180038B657 /* mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				60424F6621AD75FD00F025ED /* StubResponse.swift */,
 				60424F6421AD75FD00F025ED /* StubServer.swift */,
 				60424F6521AD75FD00F025ED /* StubURLHTTPProtocol.swift */,
+				60D398BA222A7094001BA01B /* StubURLSession.swift */,
 				60ABEA0121F44115004B19C6 /* StubWKWebView.swift */,
 				60424F7C21ADDB5700F025ED /* UITestResponse.swift */,
 				60424F7821ADAE6200F025ED /* UITestServer.swift */,
@@ -462,6 +465,7 @@
 			files = (
 				60424F7321AD877E00F025ED /* Exchangeable.swift in Sources */,
 				60424F6921AD75FD00F025ED /* StubResponse.swift in Sources */,
+				60D398BB222A7094001BA01B /* StubURLSession.swift in Sources */,
 				60424F6721AD75FD00F025ED /* StubServer.swift in Sources */,
 				6063346421CF981C00ECC81F /* UITestState.swift in Sources */,
 				60424F7921ADAE6200F025ED /* UITestServer.swift in Sources */,

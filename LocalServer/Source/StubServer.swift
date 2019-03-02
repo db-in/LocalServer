@@ -30,13 +30,12 @@ public protocol LocalServerDelegate {
 
 fileprivate extension String {
 	
-	fileprivate func decodedURLString() -> String? {
-		return replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? self
-	}
-	
-	fileprivate func urlParameters() -> [String: String] {
+	fileprivate func urlParameters() -> [String : String] {
 		
-		guard let string = decodedURLString() else { return [:] }
+		let clean = replacingOccurrences(of: "+", with: " ")
+		guard let string = clean.removingPercentEncoding else {
+			return [:]
+		}
 		
 		var parameters = [String: String]()
 		
@@ -56,9 +55,11 @@ public class StubServer : LocalServerDelegate {
 	
 // MARK: - Properties
 	
+	fileprivate var routes = [HTTPMethod : Router]()
+	
 	public static var instance: LocalServerDelegate? {
 		didSet {
-			URLSession.exchangeOnce()
+			exchangeOnce()
 		}
 	}
 	
@@ -69,8 +70,6 @@ public class StubServer : LocalServerDelegate {
 	public init() { }
 	
 // MARK: - Protected Methods
-	
-	fileprivate var routes = [HTTPMethod : Router]()
 	
 	fileprivate func addRoute(_ method: HTTPMethod, url: String, handler: @escaping RouteHandler) {
 		
@@ -84,8 +83,8 @@ public class StubServer : LocalServerDelegate {
 	
 	public func responseForURLRequest(_ urlRequest: URLRequest) -> StubResponse {
 		
-		if let urlRequestMethod = urlRequest.httpMethod,
-			let method = HTTPMethod(rawValue: urlRequestMethod),
+		if let rawMethod = urlRequest.httpMethod,
+			let method = HTTPMethod(rawValue: rawMethod),
 			let router = routes[method],
 			let response = router.route(urlRequest) {
 			return response
@@ -94,7 +93,7 @@ public class StubServer : LocalServerDelegate {
 		}
 	}
 	
-	public func set(_ methods: [HTTPMethod], url: String, handler: @escaping RouteHandler) {
+	public func route(_ methods: [HTTPMethod], url: String, handler: @escaping RouteHandler) {
 		methods.forEach {
 			addRoute($0, url: url, handler: handler)
 		}
@@ -138,13 +137,5 @@ fileprivate class Router {
 	
 	fileprivate func addRoute(_ pattern: String, handler: @escaping RouteHandler) {
 		routes.append(Route(pattern: pattern, handler: handler))
-	}
-	
-	fileprivate func removeRoute(_ pattern: String) {
-		routes = routes.filter { $0.pattern != pattern }
-	}
-	
-	fileprivate func removeAllRoutes() {
-		routes.removeAll(keepingCapacity: false)
 	}
 }

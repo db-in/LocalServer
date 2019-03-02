@@ -47,7 +47,7 @@ public struct UITestServer {
 		}
 		
 		UITestState.responses.forEach { url, response in
-			server.set(HTTPMethod.allCases, url: url) { _,_  in response.currentStateResponse() }
+			server.route(HTTPMethod.allCases, url: url) { _,_  in response.currentStateResponse() }
 		}
 		
 		StubServer.instance = server

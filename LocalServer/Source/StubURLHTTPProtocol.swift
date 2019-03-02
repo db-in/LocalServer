@@ -10,19 +10,21 @@ import Foundation
 
 // MARK: - Definitions -
 
-private func delay(_ delay: Double, closure:@escaping ()->()) {
-	DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
-}
-
 // MARK: - Type -
 
-fileprivate class StubURLHTTPProtocol : URLProtocol {
+class StubURLHTTPProtocol : URLProtocol {
 	
 // MARK: - Properties
 
 	var stopped: Bool = false
 
 // MARK: - Protected Methods
+	
+	private func delay(_ delay: Double, closure: @escaping () -> Void) {
+		let interval = Int64(delay * Double(NSEC_PER_SEC))
+		let time = DispatchTime.now() + Double(interval) / Double(NSEC_PER_SEC)
+		DispatchQueue.main.asyncAfter(deadline: time, execute: closure)
+	}
 	
 // MARK: - Overridden Methods
 
@@ -71,38 +73,5 @@ fileprivate class StubURLHTTPProtocol : URLProtocol {
 	
 	override func stopLoading() {
 		stopped = true
-	}
-}
-
-// MARK: - Extension - URLSession
-
-extension URLSession : Exchangeable {
-	
-	private static var exchanged = false
-	
-	@objc private class var _shared: URLSession {
-		let config = URLSessionConfiguration.default
-		
-		if StubServer.instance != nil {
-			config.protocolClasses = [StubURLHTTPProtocol.self]
-			return URLSession(configuration: config)
-		}
-		
-		return URLSession._shared
-	}
-	
-	static func exchange() {
-		exchangeClass(#selector(getter: shared), #selector(getter: _shared))
-		
-#if os(iOS)
-		iOSPlatformExchange()
-#endif
-	}
-	
-	static func exchangeOnce() {
-		if !exchanged {
-			exchange()
-			exchanged = true
-		}
 	}
 }
