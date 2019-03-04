@@ -1,19 +1,21 @@
-# LocalServer
+# Test
 
-![SonarQube](https://img.shields.io/badge/sonarqube-A-brightgreen.svg)
-![Version](https://img.shields.io/badge/swift-4.2-red.svg)
-![Platform](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg)
-![CocoaPods Compatible](https://img.shields.io/badge/pod-1.0.7-blue.svg)
+[![Build Status](https://travis-ci.org/db-in/Test.svg?branch=master)](https://travis-ci.org/db-in/Test)
+[![codecov](https://codecov.io/gh/db-in/Test/branch/master/graph/badge.svg)](https://codecov.io/gh/db-in/Test)
+[![codebeat badge](https://codebeat.co/badges/5563135f-7e49-4e66-aa44-b4f6fbb9b331)](https://codebeat.co/projects/github-com-db-in-Test-master)
+![Version](https://img.shields.io/badge/swift-4.1-red.svg)
+[![Platform](https://img.shields.io/cocoapods/p/Test.svg?style=flat)](https://db-in.github.io/Test)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Test.svg)](https://img.shields.io/cocoapods/v/Test.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Description
-**LocalServer** is a framework...
+**Test** is a framework...
 
 **Features**
 
-- [x] Localizes;
-- [x] Localizes;
-- [x] Localizes;
+- [x] Automatically creates Markov Chain based on a given sequence of transactions;
+- [x] Allows manual matrix manipulation for mutating members;
+- [x] Pretty printed matrix for debugging;
 
 ## Installation
 
@@ -22,7 +24,15 @@
 Add to your **Podfile** file
 
 ```
-pod 'LocalServer'
+pod 'Test'
+```
+
+### Using [Carthage](https://github.com/Carthage/Carthage)
+
+Add to your **Cartfile** or **Cartfile.private** file
+
+```
+github "db-in/Test"
 ```
 
 ### Using [Swift Package Manager](https://swift.org/package-manager)
@@ -33,12 +43,12 @@ Add to your **Package.swift** file
 let package = Package(
     name: "myproject",
     dependencies: [
-        .package(url: "https://github.com/dineybomfim/LocalServer.git"),
+        .package(url: "https://github.com/dineybomfim/LocalServer"),
     ],
     targets: [
         .target(
             name: "myproject",
-            dependencies: ["LocalServer"]),
+            dependencies: ["Test"]),
     ]
 )
 ```
@@ -55,7 +65,7 @@ The features are:
 Start by importing the package in the file you want to use it.
 
 ```swift
-import LocalServer
+import Test
 ```
 
 #### Feature-1

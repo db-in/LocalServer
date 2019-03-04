@@ -10,6 +10,24 @@ import Foundation
 
 // MARK: - Definitions -
 
+fileprivate extension String {
+	
+	fileprivate func urlParameters() -> [String : String] {
+		
+		let clean = replacingOccurrences(of: "+", with: " ")
+		guard let string = clean.removingPercentEncoding else { return [:] }
+		var parameters = [String: String]()
+		
+		string.components(separatedBy: "&").forEach {
+			let pair = $0.components(separatedBy: "=")
+			let value = pair.count == 2 ? pair[1] : ""
+			parameters[pair[0]] = value
+		}
+		
+		return parameters
+	}
+}
+
 public enum HTTPMethod : String, CaseIterable {
 	case GET
 	case POST
@@ -26,24 +44,6 @@ public typealias RouteHandler = (_: URLRequest, _: [String: String]) -> StubResp
 
 public protocol LocalServerDelegate {
 	func responseForURLRequest(_ urlRequest: URLRequest) -> StubResponse
-}
-
-fileprivate extension String {
-	
-	fileprivate func urlParameters() -> [String : String] {
-		
-		let clean = replacingOccurrences(of: "+", with: " ")
-		guard let string = clean.removingPercentEncoding else { return [:] }
-		var parameters = [String: String]()
-		
-		for keyValueString in string.components(separatedBy: "&") {
-			let pair = keyValueString.components(separatedBy: "=")
-			let value = pair.count == 2 ? pair[1] : ""
-			parameters[pair[0]] = value
-		}
-		
-		return parameters
-	}
 }
 
 // MARK: - Type -
