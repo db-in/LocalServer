@@ -36,12 +36,13 @@ public struct UITestServer {
 		
 		guard let data = Data(base64Encoded: environmentString),
 			let jsonData = data.inflate(),
-			let json = try? JSONSerialization.jsonObject(with: jsonData) as? [[String : Any]],
-			json?.isEmpty == false else {
+			let json = try? JSONSerialization.jsonObject(with: jsonData),
+			let array = json as? [[String : Any]],
+			!array.isEmpty else {
 				return
 		}
 		
-		json?.forEach { json in
+		array.forEach { json in
 			let response = UITestResponse(infoJSON: json)
 			UITestState.setResponse(response)
 		}

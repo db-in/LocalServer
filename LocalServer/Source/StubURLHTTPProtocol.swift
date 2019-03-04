@@ -38,35 +38,32 @@ class StubURLHTTPProtocol : URLProtocol {
 		return request
 	}
 	
-	override class func requestIsCacheEquivalent(_ a: URLRequest, to b: URLRequest) -> Bool {
-		return false
-	}
-	
 	override func startLoading() {
 		
-		if let stubResponse = StubServer.instance?.responseForURLRequest(request) {
-			delay(stubResponse.delay) {
-				
-				guard !self.stopped else { return }
-				
-				let response = HTTPURLResponse(url: self.request.url!,
-											   statusCode: stubResponse.statusCode,
-											   httpVersion: "HTTP/1.1",
-											   headerFields: stubResponse.headers)!
-				
-				self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-				
-				if let body = stubResponse.body {
-					self.client?.urlProtocol(self, didLoad: body)
-				}
-				
-				self.client?.urlProtocolDidFinishLoading(self)
-			}
-		} else {
+		guard let stubResponse = StubServer.instance?.responseForURLRequest(request) else {
 			let error = NSError(domain: "",
 								code: 0,
 								userInfo: [NSLocalizedDescriptionKey: "Missing response"])
 			client?.urlProtocol(self, didFailWithError: error)
+			return
+		}
+		
+		delay(stubResponse.delay) {
+			
+			guard !self.stopped else { return }
+			
+			let response = HTTPURLResponse(url: self.request.url!,
+										   statusCode: stubResponse.statusCode,
+										   httpVersion: "HTTP/1.1",
+										   headerFields: stubResponse.headers)!
+			
+			self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+			
+			if let body = stubResponse.body {
+				self.client?.urlProtocol(self, didLoad: body)
+			}
+			
+			self.client?.urlProtocolDidFinishLoading(self)
 		}
 	}
 	

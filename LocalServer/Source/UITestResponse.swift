@@ -29,24 +29,43 @@ public final class UITestResponse : StubResponse {
 			body = string.data(using: .utf8)
 		}
 		
-		statusCode = infoJSON["statusCode"] as? Int ?? 200
-		delay = infoJSON["delay"] as? Double ?? 0.0
-		headers = infoJSON["headers"] as? [String : String] ?? ["Content-Type" : "application/json"]
+		if let newStatusCode = infoJSON["statusCode"] as? Int {
+			statusCode = newStatusCode
+		}
+		
+		if let newDelay = infoJSON["delay"] as? Double {
+			delay = newDelay
+		}
+		
+		if let newHeaders = infoJSON["headers"] as? [String : String] {
+			headers = newHeaders
+		} else {
+			headers = ["Content-Type" : "application/json"]
+		}
+		
 		state = infoJSON["state"] as? String
 		stateTo = infoJSON["stateTo"] as? String
 		pattern = infoJSON["pattern"] as? String
 	}
+
+// MARK: - Protected Methods
+	
+	private func bodyContent(with data: Data) -> Any {
+		guard let content = try? JSONSerialization.jsonObject(with: data) else {
+			return String(data: data, encoding: .utf8) ?? ""
+		}
+		
+		return content
+	}
 	
 // MARK: - Exposed Methods
 	
-	public func send(to: String) {
+	public func send(to endPoint: String) {
 		
 		var infoJSON = [String : Any]()
 		
 		if let validBody = body {
-			let jsonBody = try? JSONSerialization.jsonObject(with: validBody)
-			let stringBody = String(data: validBody, encoding: .utf8) as Any
-			infoJSON = ["body": jsonBody ?? stringBody]
+			infoJSON["body"] = bodyContent(with: validBody)
 		}
 		
 		infoJSON["statusCode"] = statusCode
@@ -54,7 +73,7 @@ public final class UITestResponse : StubResponse {
 		infoJSON["headers"] = headers
 		infoJSON["state"] = state
 		infoJSON["stateTo"] = stateTo
-		infoJSON["pattern"] = to
+		infoJSON["pattern"] = endPoint
 		
 		UITestServer.environment.append(infoJSON)
 	}

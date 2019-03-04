@@ -86,11 +86,9 @@
 		602C57C821F35CD800A3E963 /* mock.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = mock.html; sourceTree = "<group>"; };
 		6037207D21F3773C00BDAC72 /* WKWebViewResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewResponseTests.swift; sourceTree = "<group>"; };
 		60424F2421AD74C100F025ED /* LocalServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocalServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60424F2B21AD74C100F025ED /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		60424F2C21AD74C100F025ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60424F2D21AD74C100F025ED /* LocalServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalServer.h; sourceTree = "<group>"; };
 		60424F2F21AD74C100F025ED /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
-		60424F3021AD74C100F025ED /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
 		60424F3121AD74C100F025ED /* LocalServer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LocalServer.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		60424F3221AD74C100F025ED /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		60424F3321AD74C100F025ED /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -112,6 +110,11 @@
 		6063346321CF981B00ECC81F /* UITestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
 		6063346821D131E400ECC81F /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		60ABEA0121F44115004B19C6 /* StubWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
+		60C76EA6222D9A7C002C8111 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		60C76EA7222D9A7C002C8111 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		60C76EA8222D9A7D002C8111 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = SOURCE_ROOT; };
+		60C76EA9222D9A7D002C8111 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
+		60C76EAA222D9A7D002C8111 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = SOURCE_ROOT; };
 		60D398BA222A7094001BA01B /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		60D49CAA2229ABD20038B657 /* StubResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponseTests.swift; sourceTree = "<group>"; };
 		60D49CAC2229B0FA0038B657 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
@@ -183,8 +186,11 @@
 		60424F2A21AD74C100F025ED /* LocalServer */ = {
 			isa = PBXGroup;
 			children = (
-				60424F2B21AD74C100F025ED /* .gitignore */,
-				60424F3021AD74C100F025ED /* .swiftlint.yml */,
+				60C76EAA222D9A7D002C8111 /* .codebeatignore */,
+				60C76EA7222D9A7C002C8111 /* .gitignore */,
+				60C76EA6222D9A7C002C8111 /* .swiftlint.yml */,
+				60C76EA9222D9A7D002C8111 /* .travis.yml */,
+				60C76EA8222D9A7D002C8111 /* codecov.yml */,
 				60424F2C21AD74C100F025ED /* Info.plist */,
 				60424F3221AD74C100F025ED /* LICENSE */,
 				60424F2D21AD74C100F025ED /* LocalServer.h */,

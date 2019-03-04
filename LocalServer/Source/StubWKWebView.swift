@@ -21,18 +21,18 @@ func iOSPlatformExchange() {
 @available(iOS 8.0, *)
 extension WKWebView : Exchangeable {
 	
-	@objc func _load(_ request: URLRequest) -> WKNavigation? {
+	@objc func stubLoad(_ request: URLRequest) -> WKNavigation? {
 		
 		if let body = StubServer.instance?.responseForURLRequest(request).body,
 			let bodyString = String(data: body, encoding: .utf8) {
 			return loadHTMLString(bodyString, baseURL: request.url)
 		}
 		
-		return _load(request)
+		return stubLoad(request)
 	}
 	
 	static func exchange() {
-		exchangeInstance(#selector(load(_:)), #selector(_load(_:)))
+		exchangeInstance(#selector(load(_:)), #selector(stubLoad))
 	}
 }
 #endif
