@@ -1,15 +1,15 @@
-# Test
+# LocalServer
 
-[![Build Status](https://travis-ci.org/db-in/Test.svg?branch=master)](https://travis-ci.org/db-in/Test)
-[![codecov](https://codecov.io/gh/db-in/Test/branch/master/graph/badge.svg)](https://codecov.io/gh/db-in/Test)
-[![codebeat badge](https://codebeat.co/badges/5563135f-7e49-4e66-aa44-b4f6fbb9b331)](https://codebeat.co/projects/github-com-db-in-Test-master)
+[![Build Status](https://travis-ci.org/db-in/LocalServer.svg?branch=master)](https://travis-ci.org/db-in/LocalServer)
+[![codecov](https://codecov.io/gh/db-in/LocalServer/branch/master/graph/badge.svg)](https://codecov.io/gh/db-in/LocalServer)
+[![codebeat badge](https://codebeat.co/badges/5563135f-7e49-4e66-aa44-b4f6fbb9b331)](https://codebeat.co/projects/github-com-db-in-LocalServer-master)
 ![Version](https://img.shields.io/badge/swift-4.1-red.svg)
-[![Platform](https://img.shields.io/cocoapods/p/Test.svg?style=flat)](https://db-in.github.io/Test)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Test.svg)](https://img.shields.io/cocoapods/v/Test.svg)
+[![Platform](https://img.shields.io/cocoapods/p/LocalServer.svg?style=flat)](https://db-in.github.io/LocalServer)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/LocalServer.svg)](https://img.shields.io/cocoapods/v/LocalServer.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Description
-**Test** is a framework...
+**LocalServer** is a framework...
 
 **Features**
 
@@ -24,7 +24,7 @@
 Add to your **Podfile** file
 
 ```
-pod 'Test'
+pod 'LocalServer'
 ```
 
 ### Using [Carthage](https://github.com/Carthage/Carthage)
@@ -32,7 +32,7 @@ pod 'Test'
 Add to your **Cartfile** or **Cartfile.private** file
 
 ```
-github "db-in/Test"
+github "db-in/LocalServer"
 ```
 
 ### Using [Swift Package Manager](https://swift.org/package-manager)
@@ -48,7 +48,7 @@ let package = Package(
     targets: [
         .target(
             name: "myproject",
-            dependencies: ["Test"]),
+            dependencies: ["LocalServer"]),
     ]
 )
 ```
@@ -65,7 +65,7 @@ The features are:
 Start by importing the package in the file you want to use it.
 
 ```swift
-import Test
+import LocalServer
 ```
 
 #### Feature-1
