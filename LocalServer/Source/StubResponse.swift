@@ -62,7 +62,8 @@ open class StubResponse {
 	
 // MARK: - Exposed Methods
 
-	/// Returns the same response object with a new delay.
+	/// Returns the same response object with a new delay. The delay can be used to simulate
+	/// a slow network response.
 	///
 	/// - Parameter time: A Double representing the delay in seconds.
 	/// - Returns: The same response with a new delay.

@@ -26,15 +26,19 @@ public struct UITestServer {
 		return ProcessInfo().environment[environmentKey] ?? environmentInfo
 	}
 	
-	static var environment = [[String : Any]]()
+	static var responses = [[String : Any]]()
 	
 	/// The key used by the `UITestServer` inside the `ProcessInfo().environment`.
 	public static let environmentKey = "LocalServer.ProcessInfo.Environment"
 	
 	/// The compressed string for `ProcessInfo().environment`.
 	public static var environmentInfo: String {
-		guard let jsonData = try? JSONSerialization.data(withJSONObject: environment),
-			let data = jsonData.deflate() else { return "" }
+		
+		guard let jsonData = try? JSONSerialization.data(withJSONObject: responses),
+			let data = jsonData.deflate() else {
+				return ""
+		}
+		
 		return data.base64EncodedString()
 	}
 
@@ -77,7 +81,7 @@ public struct UITestServer {
 	
 	/// Resets all the current responses and state chain inside this server.
 	public static func resetAll() {
-		UITestServer.environment = []
+		UITestServer.responses = []
 		UITestState.responses = [:]
 	}
 }

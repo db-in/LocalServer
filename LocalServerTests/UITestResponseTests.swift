@@ -31,7 +31,7 @@ class UITestResponseTests : XCTestCase {
 			.withBody("{\"keyA\":\"valueA\"}".data(using: .utf8))
 			.send(to: ".*")
 		
-		let environments = UITestServer.environment.flatMap { $0.values }
+		let environments = UITestServer.responses.flatMap { $0.values }
 		
 		XCTAssertTrue(environments.contains(where: { $0 as? Int == 203 }))
 		XCTAssertTrue(environments.contains(where: { $0 as? [String : String] == ["headerA":"valueA"] }))
@@ -216,7 +216,7 @@ class UITestResponseTests : XCTestCase {
 	
 	func testUITestResponse_WithNoEnvironmentInfo_ShouldFailtToStart() {
 		UITestServer.stop()
-		UITestServer.environment = []
+		UITestServer.responses = []
 		UITestServer.start()
 		XCTAssertNil(StubServer.instance)
 	}
@@ -245,19 +245,19 @@ class UITestResponseTests : XCTestCase {
 		UITestResponse().withStatusCode(201).send(to: ".*")
 		UITestServer.start()
 		UITestServer.resetAll()
-		XCTAssertTrue(UITestServer.environment.isEmpty)
+		XCTAssertTrue(UITestServer.responses.isEmpty)
 		UITestServer.stop()
 		
 		UITestResponse().withStatusCode(201).send(to: ".*")
 		UITestServer.resetAll()
 		UITestServer.start()
-		XCTAssertTrue(UITestServer.environment.isEmpty)
+		XCTAssertTrue(UITestServer.responses.isEmpty)
 		UITestServer.stop()
 		
 		UITestServer.resetAll()
 		UITestResponse().withStatusCode(201).send(to: ".*")
 		UITestServer.start()
-		XCTAssertFalse(UITestServer.environment.isEmpty)
+		XCTAssertFalse(UITestServer.responses.isEmpty)
 		UITestServer.stop()
 	}
 	

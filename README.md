@@ -128,3 +128,7 @@ UITestServer.start()
 - As a dynamic Swift framework, LocalServer will only be loaded in runtime at the moment it's first called. So if your production code never makes use of any LocalServer API, it will not even be loaded. `#if DEBUG` can be used, but as per UITest Standards, you can also consider the usage of something like `XCUIApplication().launchArguments` + `if ProcessInfo().arguments.contains("-UITests") { ... }`
 - [UI Testing Quick Guide/](https://useyourloaf.com/blog/ui-testing-quick-guide)
 - [Getting Started With Xcode UI Testing In Swift](https://www.swiftbysundell.com/posts/getting-started-with-xcode-ui-testing-in-swift)
+
+> Can I simulate a slow network response?
+
+- Yes, you can use the `delay` property in any response object to simulate that.

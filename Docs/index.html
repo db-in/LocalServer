@@ -34,16 +34,7 @@
                 <a href="Classes/StubResponse.html">StubResponse</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/StubResponse.html">StubResponse</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/StubServer.html">StubServer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/StubServer.html">StubServer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/UITestResponse.html">UITestResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/UITestResponse.html">UITestResponse</a>
@@ -56,17 +47,11 @@
               <li class="nav-group-task">
                 <a href="Enums/HTTPMethod.html">HTTPMethod</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Enums/HTTPMethod.html">HTTPMethod</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Protocols/LocalServerDelegate.html">LocalServerDelegate</a>
-              </li>
               <li class="nav-group-task">
                 <a href="Protocols/LocalServerDelegate.html">LocalServerDelegate</a>
               </li>
@@ -78,17 +63,11 @@
               <li class="nav-group-task">
                 <a href="Structs/UITestServer.html">UITestServer</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Structs/UITestServer.html">UITestServer</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/RouteHandler">RouteHandler</a>
-              </li>
               <li class="nav-group-task">
                 <a href="Typealiases.html#/s:11LocalServer12RouteHandlera">RouteHandler</a>
               </li>
@@ -160,7 +139,7 @@
 
 <p>The Stub Server is the base for the Local Server. It can intercept any network call made with the URLSession.</p>
 
-<p><img src="Docs/StubServer.png" alt="Stub Server"></p>
+<p><img src="./Resources/StubServer.png" alt="Stub Server"></p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">LocalServer</span>
 
 <span class="kd">func</span> <span class="nf">startMyLocalServer</span><span class="p">()</span> <span class="p">{</span>
@@ -178,14 +157,14 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>Once the <code><a href="Classes/StubServer.html#/instance">StubServer.instance</a></code> is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to <code>nil</code>, which is the default value.</p>
+<p>Once the <code><a href="Classes/StubServer.html#/s:11LocalServer04StubB0C8instanceAA0aB8Delegate_pSgvpZ">StubServer.instance</a></code> is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to <code>nil</code>, which is the default value.</p>
 <h4 id='uitest-server' class='heading'>UITest Server</h4>
 
 <p>As per Apple design, the UITest target runs on a separated application, which means it can&rsquo;t have access to the code in the main application or perform any programaticaly action. The UITest Server used the <code>ProcessInfo</code> bridge to send data from the UITest target to the main application on every launch.</p>
 
 <p>As per Testing best practices, every UITest case should restart the main Application.</p>
 
-<p><img src="Docs/UITestServer.png" alt="UITest Server"></p>
+<p><img src="./Resources/UITestServer.png" alt="UITest Server"></p>
 
 <p>Project Structure</p>
 <pre class="highlight swift"><code><span class="c1">// UITest Target</span>

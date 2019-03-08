@@ -88,7 +88,7 @@ public final class UITestResponse : StubResponse {
 		infoJSON["stateTo"] = stateTo
 		infoJSON["pattern"] = endPoint
 		
-		UITestServer.environment.append(infoJSON)
+		UITestServer.responses.append(infoJSON)
 	}
 	
 	/// Defines the initial state for this response. It means this response will not take

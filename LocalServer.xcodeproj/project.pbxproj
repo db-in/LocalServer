@@ -463,7 +463,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "jazzy --podspec \"${PROJECT_NAME}.podspec\" --github_url \"https://github.com/db-in/LocalServer\" --clean\n";
+			shellScript = "jazzy -o \"/docs\" --podspec \"${PROJECT_NAME}.podspec\" --github_url \"https://github.com/db-in/LocalServer\" --clean\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

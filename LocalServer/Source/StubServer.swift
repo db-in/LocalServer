@@ -10,35 +10,35 @@ import Foundation
 
 // MARK: - Definitions -
 
-/// The HTTP Methods as per W3C consortium standards
+/// The HTTP Methods as per W3C consortium standards.
 /// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
 public enum HTTPMethod : String, CaseIterable {
 	
-	/// The GET method
+	/// The GET method.
 	case GET
 	
-	/// The POST method
+	/// The POST method.
 	case POST
 	
-	/// The DELETE method
+	/// The DELETE method.
 	case DELETE
 	
-	/// The HEAD method
+	/// The HEAD method.
 	case HEAD
 	
-	/// The PUT method
+	/// The PUT method.
 	case PUT
 	
-	/// The PATCH method
+	/// The PATCH method.
 	case PATCH
 	
-	/// The TRACE method
+	/// The TRACE method.
 	case TRACE
 	
-	/// The CONNECT method
+	/// The CONNECT method.
 	case CONNECT
 	
-	/// The OPTIONS method
+	/// The OPTIONS method.
 	case OPTIONS
 }
 
