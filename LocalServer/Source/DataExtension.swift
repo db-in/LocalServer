@@ -23,8 +23,8 @@ extension Data {
 		guard operation == COMPRESSION_STREAM_ENCODE || sourceSize > 0 else { return nil }
 		
 		let streamBase = UnsafeMutablePointer<compression_stream>.allocate(capacity: 1)
-		defer { streamBase.deallocate() }
 		var stream = streamBase.pointee
+		defer { streamBase.deallocate() }
 		
 		let status = compression_stream_init(&stream, operation, algorithm)
 		guard status != COMPRESSION_STATUS_ERROR else { return nil }
@@ -49,11 +49,9 @@ extension Data {
 				res.append(buffer, count: stream.dst_ptr - buffer)
 				stream.dst_ptr = buffer
 				stream.dst_size = bufferSize
-				
 			case COMPRESSION_STATUS_END:
 				res.append(buffer, count: stream.dst_ptr - buffer)
 				return res
-				
 			default:
 				return nil
 			}

@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
   s.description = <<-DESC
                   LocalServer is resposible for ...
                   DESC
-  s.homepage = "https://github.com/dineybomfim/LocalServer.git"
-  s.documentation_url = "https://github.com/dineybomfim/LocalServer/documentation"
+  s.homepage = "https://github.com/db-in/LocalServer.git"
+  s.documentation_url = "https://github.com/db-in/LocalServer/documentation"
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = 'Diney Bomfim'
-  s.source = { :git => "https://github.com/dineybomfim/LocalServer.git", :tag => s.version, :submodules => true }
+  s.source = { :git => "https://github.com/db-in/LocalServer.git", :tag => s.version, :submodules => true }
   s.swift_version = '4.2'
 
   s.requires_arc = true
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.source_files = 'LocalServer/**/*.{h,m,swift}'
   s.exclude_files = 'LocalServer/**/Info.plist'
 
-  s.ios.frameworks = 'Foundation', 'WebKit'
+  s.frameworks = 'Foundation'
+  s.ios.frameworks = 'WebKit'
 
 end

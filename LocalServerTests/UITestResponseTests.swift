@@ -28,7 +28,7 @@ class UITestResponseTests : XCTestCase {
 			.withDelay(2)
 			.withHeaders(["headerA":"valueA"])
 			.withStatusCode(203)
-			.withBody("{\"keyA\":\"valueA\"}")
+			.withBody("{\"keyA\":\"valueA\"}".data(using: .utf8))
 			.send(to: ".*")
 		
 		let environments = UITestServer.environment.flatMap { $0.values }
@@ -44,7 +44,7 @@ class UITestResponseTests : XCTestCase {
 		UITestResponse()
 			.withHeaders(["headerA":"valueA"])
 			.withStatusCode(203)
-			.withBody("{\"keyA\":\"valueA\"}")
+			.withBody("{\"keyA\":\"valueA\"}".data(using: .utf8))
 			.send(to: ".*")
 		
 		UITestServer.start()
@@ -226,7 +226,7 @@ class UITestResponseTests : XCTestCase {
 		let body = "{\"data\":\"\(String.random(length: 100000))\"}"
 		
 		UITestResponse()
-			.withBody(body)
+			.withBody(body.data(using: .utf8))
 			.send(to: ".*")
 		
 		UITestServer.start()

@@ -10,6 +10,15 @@ import Foundation
 
 // MARK: - Type -
 
+/// The `UITestResponse` is the base response for `UITestServer`. It contains methods to send
+/// the response data to the Local Server.
+/// This type also provides support to the concept of states for simulating Stateful behaviors
+///
+/// - Basics: http://orca.st.usm.edu/~seyfarth/network_pgm/net-6-3-3.html
+/// - Concept: https://en.wikipedia.org/wiki/State_(computer_science)
+///
+/// The response can be tied to a initial state and be connected to a next state, creating a
+/// state chain if needed.
 public final class UITestResponse : StubResponse {
 	
 // MARK: - Properties
@@ -39,8 +48,6 @@ public final class UITestResponse : StubResponse {
 		
 		if let newHeaders = infoJSON["headers"] as? [String : String] {
 			headers = newHeaders
-		} else {
-			headers = ["Content-Type" : "application/json"]
 		}
 		
 		state = infoJSON["state"] as? String
@@ -50,9 +57,10 @@ public final class UITestResponse : StubResponse {
 
 // MARK: - Protected Methods
 	
-	private func bodyContent(with data: Data) -> Any {
+	private func bodyContent(with data: Data) -> Any? {
+		
 		guard let content = try? JSONSerialization.jsonObject(with: data) else {
-			return String(data: data, encoding: .utf8) ?? ""
+			return String(data: data, encoding: .utf8)
 		}
 		
 		return content
@@ -60,6 +68,11 @@ public final class UITestResponse : StubResponse {
 	
 // MARK: - Exposed Methods
 	
+	/// This function must be called after creating and providing all the information to a
+	/// response object. It'll process the information internally in the local server and
+	/// prepare it to be used in the main application.
+	///
+	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
 	public func send(to endPoint: String) {
 		
 		var infoJSON = [String : Any]()
@@ -78,11 +91,26 @@ public final class UITestResponse : StubResponse {
 		UITestServer.environment.append(infoJSON)
 	}
 	
+	/// Defines the initial state for this response. It means this response will not take
+	/// effect unless its initial state is reached by some other response. When no initial state
+	/// is defined it means the response will be at the root of the state chain.
+	///
+	/// The states are grouped by the endPoint pattern defined by `send(to:)`
+	///
+	/// - Parameter startingState: The state in which this response will start taking effect.
+	/// - Returns: The same response object with a new initial state.
 	public func whenStateIs(_ startingState: String) -> Self {
 		state = startingState
 		return self
 	}
 	
+	/// Defines the output state for this response. If no end state is defined the endpoint pattern
+	/// it's attached to will keep the previous state.
+	///
+	/// The states are grouped by the endPoint pattern defined by `send(to:)`
+	///
+	/// - Parameter finishingState: The state in which this response will ends at.
+	/// - Returns: The same response object with a new initial state.
 	public func willSetStateTo(_ finishingState: String) -> Self {
 		stateTo = finishingState
 		return self

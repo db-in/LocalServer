@@ -22,7 +22,7 @@ class StubServerTests : XCTestCase {
 // MARK: - Protected Methods
 
 // MARK: - Exposed Methods
-
+	
 	func testStubServer_WithDefaultResponse_ShouldReturnDefaultForAnyUnmappedRoute() {
 		
 		let server = StubServer()
@@ -36,6 +36,24 @@ class StubServerTests : XCTestCase {
 			XCTAssertEqual(httpResponse.statusCode, server.defaultResponse.statusCode)
 			expect.fulfill()
 			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
+	}
+
+	func testStubServer_WithARequestMadeAndAServerInterruption_ShouldResultInError() {
+		
+		let server = StubServer()
+		
+		StubServer.instance = server
+		
+		let expect = expectation(description: "\(#function)")
+		
+		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
+			XCTAssertNotNil(error)
+			expect.fulfill()
+			}.resume()
+		
+		StubServer.instance = nil
 		
 		wait(for: [expect], timeout: 5.0)
 	}

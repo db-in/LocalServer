@@ -9,13 +9,15 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Description
-**LocalServer** is a framework...
+**LocalServer** is a framework that provides various options to create a Swift Local Server, that can independently run on simulators and devices, supporting Xcode Parallel Testing. It's made in Swift to create Stub Servers, UITest Servers and providing an easy to use Mock capabilities to create Testing doubles (fakes, stubs, spies and mocks). It supports all Apple platform iOS, MacOS, WatchOS and TVOS.
 
 **Features**
 
-- [x] Automatically creates Markov Chain based on a given sequence of transactions;
-- [x] Allows manual matrix manipulation for mutating members;
-- [x] Pretty printed matrix for debugging;
+- [x] Create Stub servers without changing or injecting any of your existing URLSession code;
+- [x] Create Stub versions for WKWebView;
+- [x] Supports Xcode Parallel Testing in simulators and devices;
+- [x] Stub Server for Unit Testing;
+- [x] UITest Stub Server for UI Testing;
 
 ## Installation
 
@@ -43,7 +45,7 @@ Add to your **Package.swift** file
 let package = Package(
     name: "myproject",
     dependencies: [
-        .package(url: "https://github.com/dineybomfim/LocalServer"),
+        .package(url: "https://github.com/db-in/LocalServer"),
     ],
     targets: [
         .target(
@@ -54,28 +56,75 @@ let package = Package(
 ```
 
 ## Programming Guide
-The features are:
+The features provided are:
 
-- Initialization
-- Feature-1
-- Feature-2
-- Feature-3
+- Stub Server
+- UITest Server
 
-#### Initialization
-Start by importing the package in the file you want to use it.
+#### Stub Server
+The Stub Server is the base for the Local Server. It can intercept any network call made with the URLSession.
+
+![Stub Server](./Resources/StubServer.png)
 
 ```swift
 import LocalServer
+
+func startMyLocalServer() {
+    let server = StubServer()
+		
+	server.route([.GET], url: "https://apple.com") { (request, parameters) -> StubResponse in
+		return StubResponse().withStatusCode(204)
+	}
+	
+	server.route([.POST], url: "https://apple.com") { _,_ in
+		return StubResponse().withStatusCode(206)
+	}
+		
+	StubServer.instance = server
+}
 ```
 
-#### Feature-1
-Describe usage of Feature-1
+Once the `StubServer.instance` is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to `nil`, which is the default value.
+
+#### UITest Server
+As per Apple design, the UITest target runs on a separated application, which means it can't have access to the code in the main application or perform any programaticaly action. The UITest Server used the `ProcessInfo` bridge to send data from the UITest target to the main application on every launch.
+
+As per Testing best practices, every UITest case should restart the main Application.
+
+![UITest Server](./Resources/UITestServer.png)
+
+Project Structure
 
 ```swift
-// Some code for Feature-1
+// UITest Target
+ |-- LocalServer
+ |-- JsonFile1.json
+ |-- JsonFile2.json
+ |-- JsonFile2.json
+ 
+// Main Target
+ |-- LocalServer
+```
+
+Required Code
+
+```swift
+// UITest Target
+UITestResponse()
+    .withStatusCode(201)
+    .send(to: "google.com")
+
+// Main Target
+UITestServer.start() 
 ```
 
 ## FAQ
-> Possible Question-1?
+> Can I ship LocalServer to production (App Store)?
 
-- Answer for Question-1
+- Yes, absolutely. The main goal is to provide Mock and Stub capabilities, but nothing stops you to use it in production if required.
+
+> If I'm only using it for Debug purpose, shall I use `#if DEBUG`?
+
+- As a dynamic Swift framework, LocalServer will only be loaded in runtime at the moment it's first called. So if your production code never makes use of any LocalServer API, it will not even be loaded. `#if DEBUG` can be used, but as per UITest Standards, you can also consider the usage of something like `XCUIApplication().launchArguments` + `if ProcessInfo().arguments.contains("-UITests") { ... }`
+- [UI Testing Quick Guide/](https://useyourloaf.com/blog/ui-testing-quick-guide)
+- [Getting Started With Xcode UI Testing In Swift](https://www.swiftbysundell.com/posts/getting-started-with-xcode-ui-testing-in-swift)

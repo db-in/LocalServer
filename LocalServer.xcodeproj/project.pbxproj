@@ -49,6 +49,7 @@
 		6063346421CF981C00ECC81F /* UITestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346321CF981B00ECC81F /* UITestState.swift */; };
 		6063346921D131E400ECC81F /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346821D131E400ECC81F /* DataExtension.swift */; };
 		60ABEA0221F44115004B19C6 /* StubWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ABEA0121F44115004B19C6 /* StubWKWebView.swift */; };
+		60C06B902232354D006B497E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C06B8F2232354D006B497E /* Router.swift */; };
 		60D398BB222A7094001BA01B /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D398BA222A7094001BA01B /* StubURLSession.swift */; };
 		60D49CAB2229ABD20038B657 /* StubResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D49CAA2229ABD20038B657 /* StubResponseTests.swift */; };
 		60D49CAD2229B0FA0038B657 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D49CAC2229B0FA0038B657 /* TestExtensions.swift */; };
@@ -110,6 +111,7 @@
 		6063346321CF981B00ECC81F /* UITestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
 		6063346821D131E400ECC81F /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		60ABEA0121F44115004B19C6 /* StubWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
+		60C06B8F2232354D006B497E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		60C76EA6222D9A7C002C8111 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		60C76EA7222D9A7C002C8111 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		60C76EA8222D9A7D002C8111 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = SOURCE_ROOT; };
@@ -234,6 +236,7 @@
 			children = (
 				6063346821D131E400ECC81F /* DataExtension.swift */,
 				60424F7221AD877E00F025ED /* Exchangeable.swift */,
+				60C06B8F2232354D006B497E /* Router.swift */,
 				60424F6621AD75FD00F025ED /* StubResponse.swift */,
 				60424F6421AD75FD00F025ED /* StubServer.swift */,
 				60424F6521AD75FD00F025ED /* StubURLHTTPProtocol.swift */,
@@ -460,7 +463,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "jazzy --podspec \"${PROJECT_NAME}.podspec\" --github_url \"https://git.emirates.com/scm/ema/localization.git\"";
+			shellScript = "jazzy --podspec \"${PROJECT_NAME}.podspec\" --github_url \"https://github.com/db-in/LocalServer\" --clean\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -469,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C06B902232354D006B497E /* Router.swift in Sources */,
 				60424F7321AD877E00F025ED /* Exchangeable.swift in Sources */,
 				60424F6921AD75FD00F025ED /* StubResponse.swift in Sources */,
 				60D398BB222A7094001BA01B /* StubURLSession.swift in Sources */,

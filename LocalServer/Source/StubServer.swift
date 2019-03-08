@@ -10,60 +10,75 @@ import Foundation
 
 // MARK: - Definitions -
 
-fileprivate extension String {
-	
-	fileprivate func urlParameters() -> [String : String] {
-		
-		let clean = replacingOccurrences(of: "+", with: " ")
-		guard let string = clean.removingPercentEncoding else { return [:] }
-		var parameters = [String: String]()
-		
-		string.components(separatedBy: "&").forEach {
-			let pair = $0.components(separatedBy: "=")
-			let value = pair.count == 2 ? pair[1] : ""
-			parameters[pair[0]] = value
-		}
-		
-		return parameters
-	}
-}
-
+/// The HTTP Methods as per W3C consortium standards
+/// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
 public enum HTTPMethod : String, CaseIterable {
+	
+	/// The GET method
 	case GET
+	
+	/// The POST method
 	case POST
+	
+	/// The DELETE method
 	case DELETE
+	
+	/// The HEAD method
 	case HEAD
+	
+	/// The PUT method
 	case PUT
+	
+	/// The PATCH method
 	case PATCH
+	
+	/// The TRACE method
 	case TRACE
+	
+	/// The CONNECT method
 	case CONNECT
+	
+	/// The OPTIONS method
 	case OPTIONS
 }
 
+/// The closure format containg Request and the query parameters for a given URL
 public typealias RouteHandler = (_: URLRequest, _: [String: String]) -> StubResponse
 
+/// Defines the necessary methods to become a LocalServer responder.
 public protocol LocalServerDelegate {
+	
+	/// This function is called by the LocalServer everytime a new Request is fired by the
+	/// URLSession mechanism.
+	///
+	/// - Parameter urlRequest: The incoming original URLRequest
+	/// - Returns: A StubResponse instance representing the stub response.
 	func responseForURLRequest(_ urlRequest: URLRequest) -> StubResponse
 }
 
 // MARK: - Type -
 
-public class StubServer : LocalServerDelegate {
+/// Defines the main Stub Server object. It can be subclassed to provide various other types
+/// of local server.
+public class StubServer {
 	
 // MARK: - Properties
 	
 	fileprivate var routes = [HTTPMethod : Router]()
 	
+	/// Current instance of any Local Server.
 	public static var instance: LocalServerDelegate? {
 		didSet {
 			exchangeOnce()
 		}
 	}
 	
+	/// The default response for this server in case there is no given match for the response.
 	public var defaultResponse = StubResponse().withStatusCode(404)
 
 // MARK: - Constructors
 	
+	/// The default initializer for an empty StubServer
 	public init() { }
 	
 // MARK: - Protected Methods
@@ -78,18 +93,12 @@ public class StubServer : LocalServerDelegate {
 	
 // MARK: - Exposed Methods
 	
-	public func responseForURLRequest(_ urlRequest: URLRequest) -> StubResponse {
-		
-		if let rawMethod = urlRequest.httpMethod,
-			let method = HTTPMethod(rawValue: rawMethod),
-			let router = routes[method],
-			let response = router.route(urlRequest) {
-			return response
-		} else {
-			return defaultResponse
-		}
-	}
-	
+	/// Defines a route to this server. Multiple routes can be defined this way.
+	///
+	/// - Parameters:
+	///   - methods: The set of HTTP Method that this route will be listening to.
+	///   - url: The url string pattern attached to this route. It accept regex patterns.
+	///   - handler: The route handler for this listener.
 	public func route(_ methods: [HTTPMethod], url: String, handler: @escaping RouteHandler) {
 		methods.forEach {
 			addRoute($0, url: url, handler: handler)
@@ -97,42 +106,22 @@ public class StubServer : LocalServerDelegate {
 	}
 }
 
-fileprivate class Router {
+extension StubServer : LocalServerDelegate {
 	
-	fileprivate struct Route {
+	/// This function is called by the LocalServer everytime a new Request is fired by the
+	/// URLSession mechanism.
+	///
+	/// - Parameter urlRequest: The incoming original URLRequest
+	/// - Returns: A StubResponse instance representing the stub response.
+	public func responseForURLRequest(_ urlRequest: URLRequest) -> StubResponse {
 		
-		var pattern: String
-		var handler: RouteHandler
-		
-		func matchesRoute(_ url: URL) -> Bool {
-			return url.absoluteString.contains(pattern) ||
-				url.absoluteString.range(of: pattern, options: .regularExpression) != nil
-		}
-	}
-	
-// MARK: - Properties
-	
-	fileprivate var routes: [Route] = []
-	
-// MARK: - Protected Methods
-	
-	fileprivate func route(_ urlRequest: URLRequest) -> StubResponse? {
-		
-		let url = urlRequest.url!
-		let queryParams = url.query?.urlParameters() ?? [String: String]()
-		let fragmentParams = url.fragment?.urlParameters() ?? [String: String]()
-		
-		for route in routes {
-			if route.matchesRoute(url) {
-				let allParameters = queryParams.merging(fragmentParams) { (current, _) in current }
-				return route.handler(urlRequest, allParameters)
-			}
+		if let rawMethod = urlRequest.httpMethod,
+			let method = HTTPMethod(rawValue: rawMethod),
+			let router = routes[method],
+			let response = router.route(urlRequest) {
+			return response
 		}
 		
-		return nil
-	}
-	
-	fileprivate func addRoute(_ pattern: String, handler: @escaping RouteHandler) {
-		routes.append(Route(pattern: pattern, handler: handler))
+		return defaultResponse
 	}
 }

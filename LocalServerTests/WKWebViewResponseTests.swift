@@ -27,7 +27,7 @@ class WKWebViewResponseTests : XCTestCase {
 		let html = try! String(contentsOf: url)
 		
 		UITestResponse()
-			.withBody(html)
+			.withBody(html.data(using: .utf8))
 			.send(to: "httpstat")
 		
 		UITestServer.start()
@@ -50,7 +50,7 @@ class WKWebViewResponseTests : XCTestCase {
 		let html = try! String(contentsOf: url)
 		
 		UITestResponse()
-			.withBody(html)
+			.withBody(html.data(using: .utf8))
 			.send(to: "foo")
 		
 		UITestServer.start()

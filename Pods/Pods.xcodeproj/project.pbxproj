@@ -7,24 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0761D878F4A338FBAE7305AAC8917A70 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E578D5A6E237D1513B18072DF5B9B2A /* WebKit.framework */; };
-		115E1507D6D2B79FE719593BEC01C0C0 /* StubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316EFAF337CD8CA5F8A186F1CC19D44 /* StubResponse.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2059D40E5BCE2A4822885A31BB319F84 /* LocalServer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB717FC1D23D89AEC8C46B383F3B11BE /* LocalServer-dummy.m */; };
+		05C17180FE0FEBA698EB224B65740482 /* StubServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B08DFDFEE6455691D03E1763E9CB32A /* StubServer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		14B453CE0F0322BA35F047D06876332C /* StubURLHTTPProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D80CF076161BBCB5C8171FAA19428 /* StubURLHTTPProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		17577AFE0515196BAD72A77939BAC4F1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA97EC55206819D7F1082E0D790805A /* Router.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		28C68BE7E78B4065E41AC69C50900F99 /* LocalServer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C915CDE67436297AEF434658CC15DE84 /* LocalServer-dummy.m */; };
 		2ACE76BA98D0D644BADE29D9CEAD7402 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6815CE5273DA8E60F65EFF612642BA /* Foundation.framework */; };
-		4050C043CC7E8ACB7194A3C520B589C3 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243F0B043C15DB976014084ABA7EA7FF /* StubURLSession.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		4A4B381B82F1BE374A4D81B2671317C7 /* StubWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC214C06723966876F46D6696D09203 /* StubWKWebView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3090263F3CE4CCDB6753B68D28C6FDBF /* StubWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100CD63978B12A13C19CCAE78ED9C5A /* StubWKWebView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3288A2C4E9EFA8FDA54A131146777387 /* UITestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D29E2AFB14AF841143F4034069FECDB /* UITestResponse.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4ACA05917ADE910750F74B843D9DEA12 /* Pods-ModuleIntegrationTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F1F3074F7E7CA79A4FFEA362B2AC966 /* Pods-ModuleIntegrationTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FABB38B04CDCF9B27436FF726864058 /* Pods-ModuleIntegrationTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A866EF4FEAA7F2BAA0622E09B940A /* Pods-ModuleIntegrationTests-dummy.m */; };
-		83D9440356F3EAB23C2F4896298428EB /* UITestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB6021C978A6A65C58F11D95B3F378 /* UITestResponse.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		83F5B35CB9B1056FCE00ED1354F986DE /* Exchangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499795FADD1A578C3F5A63C4DE9326 /* Exchangeable.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		868C2E987B0EA549AACFF845247ABCF8 /* LocalServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E386963CF5971C721E47ABA176405C58 /* LocalServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3113DC8121C102B61B16DD4B51C53E4 /* UITestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7118B3A054AE92E1EE7FED3B2063E7 /* UITestState.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A3742DA4F7557FF7F6C2E09742E13C77 /* LocalServer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15ECA53F3DD73B402BC6F3A9D4303D26 /* LocalServer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8549B96C9BAC1BDFF14F68B90E07D9B /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C151A8B395F9C45F9D6D4DFCA69ED3B /* DataExtension.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		AE10940745A7DA090AEC050B03CB6E82 /* StubServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42680D328AE37F4F02A49A40246E6C /* StubServer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E54FBCB67C0A2515ADE6142B20F4A32D /* StubURLHTTPProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF205D34B62BFCD07B60C77ECBF4FA /* StubURLHTTPProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E69615B5FB7346AA17E7114499053C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6815CE5273DA8E60F65EFF612642BA /* Foundation.framework */; };
-		EAE8B514ECE4A93D14889B124BF95777 /* UITestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66759BF37013A4A41072184CA4E97 /* UITestServer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		77632EC650658DC4E9C3081EAB1CC648 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72C1B0E860BCC51485A90CB72C3B3B6 /* DataExtension.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8FB2651630F56531CD4C88C98238300D /* UITestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F00EECFB88F4670D9F713883E0ECB59 /* UITestState.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9B8D85E91E62A6DFF39D7F18B5C9D5CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6815CE5273DA8E60F65EFF612642BA /* Foundation.framework */; };
+		BC7E700DAEDFCC102D21481EBD1EE2CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E578D5A6E237D1513B18072DF5B9B2A /* WebKit.framework */; };
+		BEA27F691DE9B681D0FC250BD9C7B509 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066FF11A0DBF3136843FDB91429AAD90 /* StubURLSession.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D0D473AE2E5BA49369DA511F132DB619 /* LocalServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 12C15905371F59D6A20036BFC89EFF34 /* LocalServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D702A9B68B5063A3CB3EB38E1BFCE176 /* Exchangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E00D68BE1C90DB6CDB8C0CDFEF36B35 /* Exchangeable.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E145677C5B9D856E0CD8E87D20D5CCBA /* LocalServer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA088A86D3ABC9C53B1B7E36140CA6C4 /* LocalServer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5D1392868FD14B7A7B9B4157C45A750 /* UITestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6756FCD18555D9907806E2E559EF8B7B /* UITestServer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E751518E5802C2910889824726ED559A /* StubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A8886FB34D9A133271D47404DDB96 /* StubResponse.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,63 +33,66 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 892613A69BB47E9E587A9C45D62FC03C;
+			remoteGlobalIDString = 8657A5B7B96326957F091AD955ECF9B2;
 			remoteInfo = LocalServer;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CFFE2DC33DF6F16DF84BF10EE36E661 /* LocalServer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LocalServer-prefix.pch"; sourceTree = "<group>"; };
+		02321906B6AFA16967FC80054ACD4A4E /* LocalServer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = LocalServer.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		066FF11A0DBF3136843FDB91429AAD90 /* StubURLSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		0E741E5EBA923D217F6EFBD2F53B5A24 /* Pods-ModuleIntegrationTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ModuleIntegrationTests-frameworks.sh"; sourceTree = "<group>"; };
-		15B66759BF37013A4A41072184CA4E97 /* UITestServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITestServer.swift; sourceTree = "<group>"; };
-		15ECA53F3DD73B402BC6F3A9D4303D26 /* LocalServer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LocalServer-umbrella.h"; sourceTree = "<group>"; };
-		1E7118B3A054AE92E1EE7FED3B2063E7 /* UITestState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
-		243F0B043C15DB976014084ABA7EA7FF /* StubURLSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
-		2DA5D12DBED0107F4443B03E5DDCE61E /* LocalServer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = LocalServer.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		12C15905371F59D6A20036BFC89EFF34 /* LocalServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LocalServer.h; path = LocalServer/LocalServer.h; sourceTree = "<group>"; };
+		169A8886FB34D9A133271D47404DDB96 /* StubResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubResponse.swift; sourceTree = "<group>"; };
+		205D80CF076161BBCB5C8171FAA19428 /* StubURLHTTPProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubURLHTTPProtocol.swift; sourceTree = "<group>"; };
+		206622A351F0E878958AA84A292CD8E4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		210BE565E2F9831789F61E0108A8B205 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		270B05986A635E307C892637F32BAB7D /* LocalServer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LocalServer-prefix.pch"; sourceTree = "<group>"; };
+		3D29E2AFB14AF841143F4034069FECDB /* UITestResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITestResponse.swift; sourceTree = "<group>"; };
 		3E578D5A6E237D1513B18072DF5B9B2A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		4316EFAF337CD8CA5F8A186F1CC19D44 /* StubResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubResponse.swift; sourceTree = "<group>"; };
-		44F423FEF44DE2E8557B9347364E4D75 /* LocalServer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LocalServer.xcconfig; sourceTree = "<group>"; };
-		46BB6021C978A6A65C58F11D95B3F378 /* UITestResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITestResponse.swift; sourceTree = "<group>"; };
-		5BC214C06723966876F46D6696D09203 /* StubWKWebView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
-		621A4B4B5D33B67269AB8E12605B2F93 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		644789FB9CB926175495078AA1BB0F32 /* LocalServer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LocalServer-Info.plist"; sourceTree = "<group>"; };
-		6F78308EAEE051C36FB2386D728076D5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		4250459D06E7FA95F5B7A55A5DB5000B /* UITestServer.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = UITestServer.png; path = Docs/UITestServer.png; sourceTree = "<group>"; };
+		4E00D68BE1C90DB6CDB8C0CDFEF36B35 /* Exchangeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Exchangeable.swift; sourceTree = "<group>"; };
+		6756FCD18555D9907806E2E559EF8B7B /* UITestServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITestServer.swift; sourceTree = "<group>"; };
+		6B08DFDFEE6455691D03E1763E9CB32A /* StubServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubServer.swift; sourceTree = "<group>"; };
 		7260FDC98108E16ECD3F355545391B55 /* Pods-ModuleIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ModuleIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		73F69B1D19A956AAA037F7681CBC2491 /* LocalServer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LocalServer-Info.plist"; sourceTree = "<group>"; };
 		7F1F3074F7E7CA79A4FFEA362B2AC966 /* Pods-ModuleIntegrationTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ModuleIntegrationTests-umbrella.h"; sourceTree = "<group>"; };
+		82E75170579A75D23610DC117DD65D76 /* LocalServer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LocalServer.xcconfig; sourceTree = "<group>"; };
 		887B90710D20CD0B2FEB9F6E423E2229 /* Pods-ModuleIntegrationTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ModuleIntegrationTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8A42680D328AE37F4F02A49A40246E6C /* StubServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubServer.swift; sourceTree = "<group>"; };
 		8A6815CE5273DA8E60F65EFF612642BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9100CD63978B12A13C19CCAE78ED9C5A /* StubWKWebView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
 		935AEFE1E51B2C15B2AA2726E195392F /* Pods-ModuleIntegrationTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ModuleIntegrationTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		95EF205D34B62BFCD07B60C77ECBF4FA /* StubURLHTTPProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubURLHTTPProtocol.swift; sourceTree = "<group>"; };
 		95FD2BFC5A7BCBA50F26A9C8EAB77558 /* Pods_ModuleIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ModuleIntegrationTests.framework; path = "Pods-ModuleIntegrationTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C151A8B395F9C45F9D6D4DFCA69ED3B /* DataExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		9F00EECFB88F4670D9F713883E0ECB59 /* UITestState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
+		A72C1B0E860BCC51485A90CB72C3B3B6 /* DataExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		AB82D61A2941997F163FA81D22439CFE /* Pods-ModuleIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ModuleIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AF499795FADD1A578C3F5A63C4DE9326 /* Exchangeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Exchangeable.swift; sourceTree = "<group>"; };
 		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B3C1549DA1D64E0D0A0DF6F547511CDF /* Pods-ModuleIntegrationTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ModuleIntegrationTests-Info.plist"; sourceTree = "<group>"; };
-		CB717FC1D23D89AEC8C46B383F3B11BE /* LocalServer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LocalServer-dummy.m"; sourceTree = "<group>"; };
+		C915CDE67436297AEF434658CC15DE84 /* LocalServer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LocalServer-dummy.m"; sourceTree = "<group>"; };
+		CA088A86D3ABC9C53B1B7E36140CA6C4 /* LocalServer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LocalServer-umbrella.h"; sourceTree = "<group>"; };
+		CEA97EC55206819D7F1082E0D790805A /* Router.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DA6697AD9F79D64A085C2E5807358E2D /* LocalServer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LocalServer.modulemap; sourceTree = "<group>"; };
 		E22A866EF4FEAA7F2BAA0622E09B940A /* Pods-ModuleIntegrationTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ModuleIntegrationTests-dummy.m"; sourceTree = "<group>"; };
-		E386963CF5971C721E47ABA176405C58 /* LocalServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LocalServer.h; path = LocalServer/LocalServer.h; sourceTree = "<group>"; };
-		EFD7140F1B7976877CD16ABB12A0F5C3 /* LocalServer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LocalServer.modulemap; sourceTree = "<group>"; };
+		EECD6FEAC2F43181968D54D95743A853 /* StubServer.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = StubServer.png; path = Docs/StubServer.png; sourceTree = "<group>"; };
 		F1F7008E0FC24BC20CE84F9606230757 /* LocalServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LocalServer.framework; path = LocalServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DC8969802F754292ADCE36FC7645DF /* Pods-ModuleIntegrationTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ModuleIntegrationTests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		765E08B99D94AD6D5DC7F2838AF2EAF3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E69615B5FB7346AA17E7114499053C5C /* Foundation.framework in Frameworks */,
-				0761D878F4A338FBAE7305AAC8917A70 /* WebKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		78A2DB84923473A8F4FBBC1EFEB717D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2ACE76BA98D0D644BADE29D9CEAD7402 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F25EB4B9B47F71E444668260C120D701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8D85E91E62A6DFF39D7F18B5C9D5CE /* Foundation.framework in Frameworks */,
+				BC7E700DAEDFCC102D21481EBD1EE2CE /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +102,28 @@
 		1977AE6E35469EF7713652783795893D /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6ED9298C6F92E8CA00D9C5F541041929 /* LocalServer */,
+				6985534F5537C87048B1F1097CAD4FF6 /* LocalServer */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		32799A9F363BE1BD18FA05D50D0EA9E6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A72C1B0E860BCC51485A90CB72C3B3B6 /* DataExtension.swift */,
+				4E00D68BE1C90DB6CDB8C0CDFEF36B35 /* Exchangeable.swift */,
+				CEA97EC55206819D7F1082E0D790805A /* Router.swift */,
+				169A8886FB34D9A133271D47404DDB96 /* StubResponse.swift */,
+				6B08DFDFEE6455691D03E1763E9CB32A /* StubServer.swift */,
+				205D80CF076161BBCB5C8171FAA19428 /* StubURLHTTPProtocol.swift */,
+				066FF11A0DBF3136843FDB91429AAD90 /* StubURLSession.swift */,
+				9100CD63978B12A13C19CCAE78ED9C5A /* StubWKWebView.swift */,
+				3D29E2AFB14AF841143F4034069FECDB /* UITestResponse.swift */,
+				6756FCD18555D9907806E2E559EF8B7B /* UITestServer.swift */,
+				9F00EECFB88F4670D9F713883E0ECB59 /* UITestState.swift */,
+			);
+			name = Source;
+			path = LocalServer/Source;
 			sourceTree = "<group>";
 		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
@@ -111,24 +134,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		56E3451837902FD7A4B9CF9607839DEE /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				9C151A8B395F9C45F9D6D4DFCA69ED3B /* DataExtension.swift */,
-				AF499795FADD1A578C3F5A63C4DE9326 /* Exchangeable.swift */,
-				4316EFAF337CD8CA5F8A186F1CC19D44 /* StubResponse.swift */,
-				8A42680D328AE37F4F02A49A40246E6C /* StubServer.swift */,
-				95EF205D34B62BFCD07B60C77ECBF4FA /* StubURLHTTPProtocol.swift */,
-				243F0B043C15DB976014084ABA7EA7FF /* StubURLSession.swift */,
-				5BC214C06723966876F46D6696D09203 /* StubWKWebView.swift */,
-				46BB6021C978A6A65C58F11D95B3F378 /* UITestResponse.swift */,
-				15B66759BF37013A4A41072184CA4E97 /* UITestServer.swift */,
-				1E7118B3A054AE92E1EE7FED3B2063E7 /* UITestState.swift */,
-			);
-			name = Source;
-			path = LocalServer/Source;
-			sourceTree = "<group>";
-		};
 		5E368CBE05C44095EA6349DCDDCFB0E2 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,13 +142,13 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6ED9298C6F92E8CA00D9C5F541041929 /* LocalServer */ = {
+		6985534F5537C87048B1F1097CAD4FF6 /* LocalServer */ = {
 			isa = PBXGroup;
 			children = (
-				E386963CF5971C721E47ABA176405C58 /* LocalServer.h */,
-				9CE5C277303AB9ADC715CCCEEE4756C4 /* Pod */,
-				56E3451837902FD7A4B9CF9607839DEE /* Source */,
-				9C6A45F1742893BD8D770DAF54962FEA /* Support Files */,
+				12C15905371F59D6A20036BFC89EFF34 /* LocalServer.h */,
+				8345F2ADE01EF7975CDFAE6263888FF8 /* Pod */,
+				32799A9F363BE1BD18FA05D50D0EA9E6 /* Source */,
+				D790677E95599AD7B04524FD56D485B6 /* Support Files */,
 			);
 			name = LocalServer;
 			path = ..;
@@ -160,6 +165,18 @@
 			);
 			sourceTree = "<group>";
 		};
+		8345F2ADE01EF7975CDFAE6263888FF8 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				206622A351F0E878958AA84A292CD8E4 /* LICENSE */,
+				02321906B6AFA16967FC80054ACD4A4E /* LocalServer.podspec */,
+				210BE565E2F9831789F61E0108A8B205 /* README.md */,
+				EECD6FEAC2F43181968D54D95743A853 /* StubServer.png */,
+				4250459D06E7FA95F5B7A55A5DB5000B /* UITestServer.png */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		98A0AE918A51F833A611FBF89E8571D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,28 +186,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9C6A45F1742893BD8D770DAF54962FEA /* Support Files */ = {
+		D790677E95599AD7B04524FD56D485B6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EFD7140F1B7976877CD16ABB12A0F5C3 /* LocalServer.modulemap */,
-				44F423FEF44DE2E8557B9347364E4D75 /* LocalServer.xcconfig */,
-				CB717FC1D23D89AEC8C46B383F3B11BE /* LocalServer-dummy.m */,
-				644789FB9CB926175495078AA1BB0F32 /* LocalServer-Info.plist */,
-				0CFFE2DC33DF6F16DF84BF10EE36E661 /* LocalServer-prefix.pch */,
-				15ECA53F3DD73B402BC6F3A9D4303D26 /* LocalServer-umbrella.h */,
+				DA6697AD9F79D64A085C2E5807358E2D /* LocalServer.modulemap */,
+				82E75170579A75D23610DC117DD65D76 /* LocalServer.xcconfig */,
+				C915CDE67436297AEF434658CC15DE84 /* LocalServer-dummy.m */,
+				73F69B1D19A956AAA037F7681CBC2491 /* LocalServer-Info.plist */,
+				270B05986A635E307C892637F32BAB7D /* LocalServer-prefix.pch */,
+				CA088A86D3ABC9C53B1B7E36140CA6C4 /* LocalServer-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Pods/Target Support Files/LocalServer";
-			sourceTree = "<group>";
-		};
-		9CE5C277303AB9ADC715CCCEEE4756C4 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				6F78308EAEE051C36FB2386D728076D5 /* LICENSE */,
-				2DA5D12DBED0107F4443B03E5DDCE61E /* LocalServer.podspec */,
-				621A4B4B5D33B67269AB8E12605B2F93 /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		F7EEC997E451D79E29C96E0B48F6BFD1 /* iOS */ = {
@@ -222,12 +229,12 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		54201A3C2AD16C8A0E286333ED01873D /* Headers */ = {
+		3B394FF212828DBBADDAABC219B29964 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3742DA4F7557FF7F6C2E09742E13C77 /* LocalServer-umbrella.h in Headers */,
-				868C2E987B0EA549AACFF845247ABCF8 /* LocalServer.h in Headers */,
+				E145677C5B9D856E0CD8E87D20D5CCBA /* LocalServer-umbrella.h in Headers */,
+				D0D473AE2E5BA49369DA511F132DB619 /* LocalServer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,14 +249,14 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		892613A69BB47E9E587A9C45D62FC03C /* LocalServer */ = {
+		8657A5B7B96326957F091AD955ECF9B2 /* LocalServer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C7777ADD2F436D41838C2E74BEEA8F6 /* Build configuration list for PBXNativeTarget "LocalServer" */;
+			buildConfigurationList = 7B9AD94BE074090BB5415EA8CAF30E42 /* Build configuration list for PBXNativeTarget "LocalServer" */;
 			buildPhases = (
-				54201A3C2AD16C8A0E286333ED01873D /* Headers */,
-				A3D086C9393DE1986C884366C51E90DC /* Sources */,
-				765E08B99D94AD6D5DC7F2838AF2EAF3 /* Frameworks */,
-				757465FE0BB51AD620A7492B5EAA2FF9 /* Resources */,
+				3B394FF212828DBBADDAABC219B29964 /* Headers */,
+				4CEAF63327149E34C71A876EB4AA72DA /* Sources */,
+				F25EB4B9B47F71E444668260C120D701 /* Frameworks */,
+				AF130A7549B4B49E4DD680FCDE95BC7A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -300,7 +307,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				892613A69BB47E9E587A9C45D62FC03C /* LocalServer */,
+				8657A5B7B96326957F091AD955ECF9B2 /* LocalServer */,
 				E6A1D9F44046BF6EFA1ED43AA23E30C4 /* Pods-ModuleIntegrationTests */,
 			);
 		};
@@ -314,7 +321,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		757465FE0BB51AD620A7492B5EAA2FF9 /* Resources */ = {
+		AF130A7549B4B49E4DD680FCDE95BC7A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -324,29 +331,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4CEAF63327149E34C71A876EB4AA72DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77632EC650658DC4E9C3081EAB1CC648 /* DataExtension.swift in Sources */,
+				D702A9B68B5063A3CB3EB38E1BFCE176 /* Exchangeable.swift in Sources */,
+				28C68BE7E78B4065E41AC69C50900F99 /* LocalServer-dummy.m in Sources */,
+				17577AFE0515196BAD72A77939BAC4F1 /* Router.swift in Sources */,
+				E751518E5802C2910889824726ED559A /* StubResponse.swift in Sources */,
+				05C17180FE0FEBA698EB224B65740482 /* StubServer.swift in Sources */,
+				14B453CE0F0322BA35F047D06876332C /* StubURLHTTPProtocol.swift in Sources */,
+				BEA27F691DE9B681D0FC250BD9C7B509 /* StubURLSession.swift in Sources */,
+				3090263F3CE4CCDB6753B68D28C6FDBF /* StubWKWebView.swift in Sources */,
+				3288A2C4E9EFA8FDA54A131146777387 /* UITestResponse.swift in Sources */,
+				E5D1392868FD14B7A7B9B4157C45A750 /* UITestServer.swift in Sources */,
+				8FB2651630F56531CD4C88C98238300D /* UITestState.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EF83F8F32795BCEAFFA2BA2C1134840 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4FABB38B04CDCF9B27436FF726864058 /* Pods-ModuleIntegrationTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A3D086C9393DE1986C884366C51E90DC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A8549B96C9BAC1BDFF14F68B90E07D9B /* DataExtension.swift in Sources */,
-				83F5B35CB9B1056FCE00ED1354F986DE /* Exchangeable.swift in Sources */,
-				2059D40E5BCE2A4822885A31BB319F84 /* LocalServer-dummy.m in Sources */,
-				115E1507D6D2B79FE719593BEC01C0C0 /* StubResponse.swift in Sources */,
-				AE10940745A7DA090AEC050B03CB6E82 /* StubServer.swift in Sources */,
-				E54FBCB67C0A2515ADE6142B20F4A32D /* StubURLHTTPProtocol.swift in Sources */,
-				4050C043CC7E8ACB7194A3C520B589C3 /* StubURLSession.swift in Sources */,
-				4A4B381B82F1BE374A4D81B2671317C7 /* StubWKWebView.swift in Sources */,
-				83D9440356F3EAB23C2F4896298428EB /* UITestResponse.swift in Sources */,
-				EAE8B514ECE4A93D14889B124BF95777 /* UITestServer.swift in Sources */,
-				A3113DC8121C102B61B16DD4B51C53E4 /* UITestState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +364,7 @@
 		4DF18CBF52AEB119BCC1D7078F0EA743 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LocalServer;
-			target = 892613A69BB47E9E587A9C45D62FC03C /* LocalServer */;
+			target = 8657A5B7B96326957F091AD955ECF9B2 /* LocalServer */;
 			targetProxy = B530DF6DFF36DCC92C99B6D08BF2E179 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -426,43 +434,6 @@
 			};
 			name = Debug;
 		};
-		239E4E3637D8D06B68912000FB440132 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44F423FEF44DE2E8557B9347364E4D75 /* LocalServer.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/LocalServer/LocalServer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/LocalServer/LocalServer-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/LocalServer/LocalServer.modulemap";
-				PRODUCT_MODULE_NAME = LocalServer;
-				PRODUCT_NAME = LocalServer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		4332FBA95AE4D4D315E8DE6C0E30FAEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB82D61A2941997F163FA81D22439CFE /* Pods-ModuleIntegrationTests.debug.xcconfig */;
@@ -495,42 +466,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7A827B1F9282BBD8081BFF955FA5D3F2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44F423FEF44DE2E8557B9347364E4D75 /* LocalServer.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/LocalServer/LocalServer-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/LocalServer/LocalServer-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/LocalServer/LocalServer.modulemap";
-				PRODUCT_MODULE_NAME = LocalServer;
-				PRODUCT_NAME = LocalServer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -638,6 +573,79 @@
 			};
 			name = Release;
 		};
+		9E972EB709A541DA0F838D874BF23CF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82E75170579A75D23610DC117DD65D76 /* LocalServer.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/LocalServer/LocalServer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LocalServer/LocalServer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/LocalServer/LocalServer.modulemap";
+				PRODUCT_MODULE_NAME = LocalServer;
+				PRODUCT_NAME = LocalServer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C43257EA5111A1DE719707D308EC8C11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82E75170579A75D23610DC117DD65D76 /* LocalServer.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/LocalServer/LocalServer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LocalServer/LocalServer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/LocalServer/LocalServer.modulemap";
+				PRODUCT_MODULE_NAME = LocalServer;
+				PRODUCT_NAME = LocalServer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -650,20 +658,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C7777ADD2F436D41838C2E74BEEA8F6 /* Build configuration list for PBXNativeTarget "LocalServer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7A827B1F9282BBD8081BFF955FA5D3F2 /* Debug */,
-				239E4E3637D8D06B68912000FB440132 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				11D027BD8219E71225D197BACF78F7C1 /* Debug */,
 				8FB57296A2B59949708C2B492C4646D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B9AD94BE074090BB5415EA8CAF30E42 /* Build configuration list for PBXNativeTarget "LocalServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43257EA5111A1DE719707D308EC8C11 /* Debug */,
+				9E972EB709A541DA0F838D874BF23CF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
