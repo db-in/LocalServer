@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
                   LocalServer is resposible for ...
                   DESC
   s.homepage = "https://github.com/db-in/LocalServer.git"
-  s.documentation_url = "https://github.com/db-in/LocalServer/documentation"
+  s.documentation_url = "https://db-in.github.io/LocalServer/"
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = 'Diney Bomfim'
   s.source = { :git => "https://github.com/db-in/LocalServer.git", :tag => s.version, :submodules => true }
