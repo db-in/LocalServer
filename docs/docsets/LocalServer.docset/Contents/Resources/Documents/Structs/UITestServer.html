@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UITestServer Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/UITestServer" class="dashAnchor"></a>
+    <a title="UITestServer Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">LocalServer Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/db-in/LocalServer"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">LocalServer Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        UITestServer Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/StubResponse.html">StubResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StubServer.html">StubServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UITestResponse.html">UITestResponse</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/LocalServerDelegate.html">LocalServerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/UITestServer.html">UITestServer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11LocalServer12RouteHandlera">RouteHandler</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>UITestServer</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UITestServer</span></code></pre>
+
+                </div>
+              </div>
+            <p>This is the base for the UITest Local Server and it works in conjunction with <code><a href="../Classes/UITestResponse.html">UITestResponse</a></code>
+It&rsquo;s able to provide a bridge between UITest and the main application.</p>
+
+<p><code>UITestServer</code> is able to mock Stateful and Stateless behaviors. By default it will be
+Stateless. Each response with a different endPoint pattern defines a new state chain if needed.</p>
+
+<ul>
+<li>Basics: <a href="http://orca.st.usm.edu/%7Eseyfarth/network_pgm/net-6-3-3.html">http://orca.st.usm.edu/~seyfarth/network_pgm/net-6-3-3.html</a></li>
+<li>Concept: <a href="https://en.wikipedia.org/wiki/State_(computer_science)">https://en.wikipedia.org/wiki/State_(computer_science)</a></li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11LocalServer06UITestB0V14environmentKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/environmentKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11LocalServer06UITestB0V14environmentKeySSvpZ">environmentKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The key used by the <code>UITestServer</code> inside the <code>ProcessInfo().environment</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">environmentKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11LocalServer06UITestB0V15environmentInfoSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/environmentInfo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11LocalServer06UITestB0V15environmentInfoSSvpZ">environmentInfo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The compressed string for <code>ProcessInfo().environment</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">environmentInfo</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Exposed%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Exposed Methods" class="dashAnchor"></a>
+                <a href="#/Exposed%20Methods">
+                  <h3 class="section-name">Exposed Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11LocalServer06UITestB0V5start15defaultResponseyAA04StubF0C_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/start(defaultResponse:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11LocalServer06UITestB0V5start15defaultResponseyAA04StubF0C_tFZ">start(defaultResponse:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Starts this server. As the <code>UITestServer</code> work as a one-way bridge between UITest target
+and the main application target, any changes to the responses from the UITest target
+will not take effect until the next application relaunch.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">start</span><span class="p">(</span><span class="n">defaultResponse</span><span class="p">:</span> <span class="kt"><a href="../Classes/StubResponse.html">StubResponse</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes/StubResponse.html">StubResponse</a></span><span class="p">()</span><span class="o">.</span><span class="nf">withStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultResponse</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Defines the default response in cases an endPoint is hit
+and no response is provided. By default it&rsquo;s an empty response with 200 HTTP status.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11LocalServer06UITestB0V4stopyyFZ"></a>
+                    <a name="//apple_ref/swift/Method/stop()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11LocalServer06UITestB0V4stopyyFZ">stop()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops the server temporarily and keeps all its current responses and states.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">stop</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11LocalServer06UITestB0V8resetAllyyFZ"></a>
+                    <a name="//apple_ref/swift/Method/resetAll()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11LocalServer06UITestB0V8resetAllyyFZ">resetAll()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Resets all the current responses and state chain inside this server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">resetAll</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/db-in/LocalServer.git" target="_blank" rel="external">Diney Bomfim</a>. All rights reserved. (Last updated: 2019-03-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
