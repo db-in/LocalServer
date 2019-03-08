@@ -7,7 +7,7 @@
     <meta charset='utf-8'>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
-
+    
   </head>
   <body>
     <a title="LocalServer  Reference"></a>
@@ -34,7 +34,16 @@
                 <a href="Classes/StubResponse.html">StubResponse</a>
               </li>
               <li class="nav-group-task">
+                <a href="Classes/StubResponse.html">StubResponse</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/StubServer.html">StubServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/StubServer.html">StubServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/UITestResponse.html">UITestResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/UITestResponse.html">UITestResponse</a>
@@ -47,11 +56,17 @@
               <li class="nav-group-task">
                 <a href="Enums/HTTPMethod.html">HTTPMethod</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/LocalServerDelegate.html">LocalServerDelegate</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Protocols/LocalServerDelegate.html">LocalServerDelegate</a>
               </li>
@@ -63,11 +78,17 @@
               <li class="nav-group-task">
                 <a href="Structs/UITestServer.html">UITestServer</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/UITestServer.html">UITestServer</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/RouteHandler">RouteHandler</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Typealiases.html#/s:11LocalServer12RouteHandlera">RouteHandler</a>
               </li>
@@ -78,7 +99,7 @@
       <article class="main-content">
         <section>
           <section class="section">
-
+            
             <h1 id='localserver' class='heading'>LocalServer</h1>
 
 <p><a href="https://travis-ci.org/db-in/LocalServer"><img src="https://travis-ci.org/db-in/LocalServer.svg?branch=master" alt="Build Status"></a>
@@ -139,7 +160,7 @@
 
 <p>The Stub Server is the base for the Local Server. It can intercept any network call made with the URLSession.</p>
 
-<p><img src="../Resources/StubServer.png" alt="Stub Server"></p>
+<p><img src="./Resources/StubServer.png" alt="Stub Server"></p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">LocalServer</span>
 
 <span class="kd">func</span> <span class="nf">startMyLocalServer</span><span class="p">()</span> <span class="p">{</span>
@@ -157,14 +178,14 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>Once the <code><a href="Classes/StubServer.html#/s:11LocalServer04StubB0C8instanceAA0aB8Delegate_pSgvpZ">StubServer.instance</a></code> is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to <code>nil</code>, which is the default value.</p>
+<p>Once the <code><a href="Classes/StubServer.html#/instance">StubServer.instance</a></code> is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to <code>nil</code>, which is the default value.</p>
 <h4 id='uitest-server' class='heading'>UITest Server</h4>
 
 <p>As per Apple design, the UITest target runs on a separated application, which means it can&rsquo;t have access to the code in the main application or perform any programaticaly action. The UITest Server used the <code>ProcessInfo</code> bridge to send data from the UITest target to the main application on every launch.</p>
 
 <p>As per Testing best practices, every UITest case should restart the main Application.</p>
 
-<p><img src="../Resources/UITestServer.png" alt="UITest Server"></p>
+<p><img src="./Resources/UITestServer.png" alt="UITest Server"></p>
 
 <p>Project Structure</p>
 <pre class="highlight swift"><code><span class="c1">// UITest Target</span>
@@ -184,7 +205,7 @@
     <span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="s">"google.com"</span><span class="p">)</span>
 
 <span class="c1">// Main Target</span>
-<span class="kt">UITestServer</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="kt">UITestServer</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span> 
 </code></pre>
 <h2 id='faq' class='heading'>FAQ</h2>
 
@@ -206,10 +227,18 @@
 <li><a href="https://www.swiftbysundell.com/posts/getting-started-with-xcode-ui-testing-in-swift">Getting Started With Xcode UI Testing In Swift</a></li>
 </ul>
 
+<blockquote>
+<p>Can I simulate a slow network response?</p>
+</blockquote>
+
+<ul>
+<li>Yes, you can use the <code>delay</code> property in any response object to simulate that.</li>
+</ul>
+
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/db-in/LocalServer.git" target="_blank" rel="external">Diney Bomfim</a>. All rights reserved. (Last updated: 2019-03-08)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/db-in/LocalServer.git" target="_blank" rel="external">Diney Bomfim</a>. All rights reserved. (Last updated: 2019-03-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
