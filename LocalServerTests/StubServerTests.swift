@@ -84,10 +84,6 @@ class StubServerTests : XCTestCase {
 		
 		let server = StubServer()
 		
-		server.route([.GET], url: "httpbin") { (request, parameters) -> StubResponse in
-			return StubResponse().withStatusCode(999)
-		}
-		
 		StubServer.instance = server
 		
 		let expect = expectation(description: "\(#function)")
