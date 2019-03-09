@@ -16,17 +16,16 @@ extension Data {
 // MARK: - Protected Methods
 	
 	private func perform(operation: compression_stream_operation,
-						 algorithm: compression_algorithm,
-						 source: UnsafePointer<UInt8>,
-						 sourceSize: Int) -> Data? {
+						 source: UnsafePointer<UInt8>) -> Data? {
 		
+		let sourceSize = count
 		guard operation == COMPRESSION_STREAM_ENCODE || sourceSize > 0 else { return nil }
 		
 		let streamBase = UnsafeMutablePointer<compression_stream>.allocate(capacity: 1)
 		var stream = streamBase.pointee
 		defer { streamBase.deallocate() }
 		
-		let status = compression_stream_init(&stream, operation, algorithm)
+		let status = compression_stream_init(&stream, operation, COMPRESSION_ZLIB)
 		guard status != COMPRESSION_STATUS_ERROR else { return nil }
 		defer { compression_stream_destroy(&stream) }
 		
@@ -60,19 +59,13 @@ extension Data {
 	
 	func deflate() -> Data? {
 		return withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
-			return perform(operation: COMPRESSION_STREAM_ENCODE,
-						   algorithm: COMPRESSION_ZLIB,
-						   source: sourcePtr,
-						   sourceSize: count)
+			return perform(operation: COMPRESSION_STREAM_ENCODE, source: sourcePtr)
 		}
 	}
 	
 	func inflate() -> Data? {
 		return withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
-			return perform(operation: COMPRESSION_STREAM_DECODE,
-						   algorithm: COMPRESSION_ZLIB,
-						   source: sourcePtr,
-						   sourceSize: count)
+			return perform(operation: COMPRESSION_STREAM_DECODE, source: sourcePtr)
 		}
 	}
 }

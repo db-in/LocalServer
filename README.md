@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/db-in/LocalServer.svg?branch=master)](https://travis-ci.org/db-in/LocalServer)
 [![codecov](https://codecov.io/gh/db-in/LocalServer/branch/master/graph/badge.svg)](https://codecov.io/gh/db-in/LocalServer)
-[![codebeat badge](https://codebeat.co/badges/5563135f-7e49-4e66-aa44-b4f6fbb9b331)](https://codebeat.co/projects/github-com-db-in-LocalServer-master)
+[![codebeat badge](https://codebeat.co/badges/5563135f-7e49-4e66-aa44-b4f6fbb9b331)](https://codebeat.co/projects/github-com-db-in-localserver-master)
 ![Version](https://img.shields.io/badge/swift-4.2-red.svg)
 [![Platform](https://img.shields.io/cocoapods/p/LocalServer.svg?style=flat)](https://db-in.github.io/LocalServer)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/LocalServer.svg)](https://img.shields.io/cocoapods/v/LocalServer.svg)
