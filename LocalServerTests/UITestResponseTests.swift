@@ -241,6 +241,27 @@ class UITestResponseTests : XCTestCase {
 		wait(for: [expect], timeout: 5.0)
 	}
 	
+	func testUITestServer_WithImageData_ShouldParseCorrectly() {
+		
+		let bundle = Bundle(for: type(of: self))
+		
+		UITestResponse(filename: "mock", ofType: "png", bundle: bundle)
+			.send(to: ".*")
+		
+		UITestServer.start()
+		
+		let expect = expectation(description: "\(#function)")
+		
+		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
+			let path = bundle.path(forResource: "mock", ofType: "png")!
+			let imageData = try! Data(contentsOf: URL(fileURLWithPath: path))
+			XCTAssertEqual(data, imageData)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
+	}
+	
 	func testUITestServer_WithResetAll_ShouldClearAllResponses() {
 		UITestResponse().withStatusCode(201).send(to: ".*")
 		UITestServer.start()

@@ -28,15 +28,11 @@ final class UserService {
 	
 	static func single(_ type: UserType) {
 		UITestResponse(filename: "user_\(type.file)", ofType: "json", bundle: .uiTest)
-			.send(to: "randomuser.me/api/")
+			.send(to: "format")
 		
 		UITestResponse(filename: "10", ofType: "jpg", bundle: .uiTest)
 			.withHeaders(["Content-type" : "image"])
-			.send(to: "10.jpg")
-		
-		UITestResponse(filename: "14", ofType: "jpg", bundle: .uiTest)
-			.withHeaders(["Content-type" : "image"])
-			.send(to: "14.jpg")
+			.send(to: "portraits")
 	}
 	
 	static func statefulSequence(_ types: [UserType]) {

@@ -15,17 +15,17 @@ import XCTest
 final class UserDetailSpec : XCTestCase {
 	
 	func testFemaleUserDetail() {
-		Given("I receive a female profile") {
+		given("I receive a female profile") {
 			UserService.single(.female)
 		}
 		
-		When("I tap the user cell") {
+		when("I tap the user cell") {
 			main.on(screen: UserListScreen.self)
 				.addUser()
 				.tapUserCell(0)
 		}
 		
-		Then("I should see the user detail") {
+		then("I should see the user detail") {
 			XCTAssert(main.on(screen: UserDetailedScreen.self).hasName(UserType.female.fullName))
 		}
 	}

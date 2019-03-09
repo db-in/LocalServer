@@ -11,14 +11,14 @@ import LocalServer
 
 // MARK: - Definitions -
 
-fileprivate var appKey: String = "appKey"
+private var appKey: String = "appKey"
 
 // MARK: - Type -
 
 extension XCTestCase {
 	
 	var main: Screen {
-		return objc_getAssociatedObject(self, &appKey) as! Screen
+		return objc_getAssociatedObject(self, &appKey) as? Screen ?? Screen(XCUIApplication())
 	}
 	
 	func resetAndlaunch() {

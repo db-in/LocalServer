@@ -32,10 +32,8 @@ public final class UITestResponse : StubResponse {
 	convenience init(infoJSON: [String : Any]) {
 		self.init()
 		
-		if let json = infoJSON["body"] as? [String : Any] {
-			body = try? JSONSerialization.data(withJSONObject: json)
-		} else if let string = infoJSON["body"] as? String {
-			body = string.data(using: .utf8)
+		if let encodedString = infoJSON["body"] as? String {
+			body = Data(base64Encoded: encodedString)?.inflate()
 		}
 		
 		if let newStatusCode = infoJSON["statusCode"] as? Int {
@@ -54,17 +52,6 @@ public final class UITestResponse : StubResponse {
 		stateTo = infoJSON["stateTo"] as? String
 		pattern = infoJSON["pattern"] as? String
 	}
-
-// MARK: - Protected Methods
-	
-	private func bodyContent(with data: Data) -> Any? {
-		
-		guard let content = try? JSONSerialization.jsonObject(with: data) else {
-			return String(data: data, encoding: .utf8)
-		}
-		
-		return content
-	}
 	
 // MARK: - Exposed Methods
 	
@@ -78,7 +65,7 @@ public final class UITestResponse : StubResponse {
 		var infoJSON = [String : Any]()
 		
 		if let validBody = body {
-			infoJSON["body"] = bodyContent(with: validBody)
+			infoJSON["body"] = validBody.deflate()?.base64EncodedString()
 		}
 		
 		infoJSON["statusCode"] = statusCode

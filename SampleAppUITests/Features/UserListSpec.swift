@@ -27,15 +27,15 @@ extension UserType {
 final class UserListSpec : XCTestCase {
 
 	func testAddOneUser() {
-		Given("I receive a female profile") {
+		given("I receive a female profile") {
 			UserService.single(.female)
 		}
 		
-		When("I tap the add button") {
+		when("I tap the add button") {
 			main.on(screen: UserListScreen.self).addUser()
 		}
 		
-		Then("I should see a new user cell added to the list") {
+		then("I should see a new user cell added to the list") {
 			XCTAssert(main.on(screen: UserListScreen.self).hasCell(at: 0))
 		}
 	}
@@ -43,15 +43,15 @@ final class UserListSpec : XCTestCase {
 	func testAddDifferentUsers() {
 		let userTypes: [UserType] = [.female, .male, .male]
 			
-		Given("I receive a sequence of [female, male, male] profiles") {
+		given("I receive a sequence of [female, male, male] profiles") {
 			UserService.statefulSequence(userTypes)
 		}
 		
-		When("I tap the add button") {
+		when("I tap the add button") {
 			main.on(screen: UserListScreen.self).addUser(count: userTypes.count)
 		}
 		
-		Then("I should see the user cell in the same order") {
+		then("I should see the user cell in the same order") {
 			userTypes.reversed().enumerated().forEach {
 				XCTAssert(main.on(screen: UserListScreen.self).hasCell(at: $0, with: $1.fullName))
 			}
@@ -61,15 +61,15 @@ final class UserListSpec : XCTestCase {
 	func testAddSeveralUser() {
 		let count = (3...8).randomElement()!
 		
-		Given("I receive several male profiles") {
+		given("I receive several male profiles") {
 			UserService.single(.male)
 		}
 		
-		When("I tap the add button \(count) times") {
+		when("I tap the add button \(count) times") {
 			main.on(screen: UserListScreen.self).addUser(count: count)
 		}
 		
-		Then("I should see all the user cell been added to the list") {
+		then("I should see all the user cell been added to the list") {
 			(0..<count).forEach {
 				XCTAssert(main.on(screen: UserListScreen.self).hasCell(at: $0), "The cell \($0) hasn't been added")
 			}
