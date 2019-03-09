@@ -1,0 +1,25 @@
+//
+//  WebPageViewController.swift
+//  SampleApp
+//
+//  Created by DINEY B ALVES on 3/9/19.
+//  Copyright © 2019 Emirates Group. All rights reserved.
+//
+
+import UIKit
+import WebKit
+
+class WebPageViewController: UIViewController {
+
+	@IBOutlet weak var webView: WKWebView!
+	
+	func configureView() {
+		let request = URLRequest(url: URL(string: "https://randomuser.me")!)
+		webView.load(request)
+	}
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		configureView()
+	}
+}

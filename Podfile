@@ -8,6 +8,14 @@ target 'ModuleIntegrationTests' do
 	pod 'LocalServer', :path => './'
 end
 
+target 'SampleApp' do
+	pod 'LocalServer', :path => './'
+end
+
+target 'SampleAppUITests' do
+	pod 'LocalServer', :path => './'
+end
+
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|

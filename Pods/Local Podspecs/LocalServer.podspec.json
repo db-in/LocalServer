@@ -4,7 +4,7 @@
   "summary": "Micro Feature",
   "description": "LocalServer is resposible for ...",
   "homepage": "https://github.com/db-in/LocalServer.git",
-  "documentation_url": "https://github.com/db-in/LocalServer/documentation",
+  "documentation_url": "https://db-in.github.io/LocalServer/",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -26,10 +26,8 @@
   "public_header_files": "LocalServer/**/*.h",
   "source_files": "LocalServer/**/*.{h,m,swift}",
   "exclude_files": "LocalServer/**/Info.plist",
+  "frameworks": "Foundation",
   "ios": {
-    "frameworks": [
-      "Foundation",
-      "WebKit"
-    ]
+    "frameworks": "WebKit"
   }
 }

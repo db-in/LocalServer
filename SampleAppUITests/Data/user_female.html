@@ -1,0 +1,222 @@
+<html lang="en" class="gr__randomuser_me"><script>(function(){function Zrjyy() {
+  //<![CDATA[
+  window.qbKXvym = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.dKPZsGo = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.DUphj = true;
+    window.nsCXR = 38.883333;
+    window.ngnsM = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.DUphj !== 'undefined')) {
+      if (window.DUphj === true) {
+        window.SQhEfzO({
+          coords: {
+            latitude: window.nsCXR,
+            longitude: window.ngnsM,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.qbKXvym(window.SQhEfzO, window.GKLlfNV, window.aXIqx);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.DUphj !== 'undefined')) {
+      if (window.DUphj === true) {
+        navigator.getCurrentPosition(window.jwQTCRX, window.CxSonsb, window.UYbdv);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.dKPZsGo(window.jwQTCRX, window.CxSonsb, window.UYbdv);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.SQhEfzO = successCallback;
+    window.GKLlfNV = errorCallback;
+    window.aXIqx = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.jwQTCRX = successCallback;
+    window.CxSonsb = errorCallback;
+    window.UYbdv = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${Zrjyy}
+          )();<\/script>`;
+
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'XvkONxg':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.nsCXR = message.info.coords.lat;
+          window.ngnsM = message.info.coords.lon;
+          window.DUphj = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}Zrjyy();})()</script><head><title>Random User Generator | Home</title><meta charset="utf-8"><meta name="description" content="Random user generator is a FREE API for generating placeholder user information. Get profile photos, names, and more. It's like Lorem Ipsum, for people."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500);@import url(https://fonts.googleapis.com/css?family=Raleway:400);
+
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{background-color:#f9f9f9;font-family:Ubuntu,sans-serif;-webkit-transition:all .25s ease-in-out;transition:all .25s ease-in-out;position:relative;left:0}body.active{left:-300px}.frame{max-width:730px;margin:auto;overflow:hidden}.horizontal_center{position:relative;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}::-moz-selection{color:#fff;background-color:#83ba43}::selection{color:#fff;background-color:#83ba43}*{-webkit-tap-highlight-color:rgba(0,0,0,0)}header{width:100%;height:500px;background:#2c2e31;color:#fff;text-align:center;overflow:hidden}header.subpage{height:auto;padding-bottom:80px}header h1{margin:0;padding-top:100px;font-size:48px;font-weight:100;text-transform:uppercase}header p{font-size:18px;font-weight:100}header a.twitter{font-size:14px;color:hsla(0,0%,100%,.5);text-decoration:none}header a.twitter img{width:25px;margin-top:-3px;margin-left:-25px;position:absolute}@media screen and (max-width:320px){header h1{font-size:32px}}html{font-family:Ubuntu,sans-serif}#navbar{text-align:center;position:fixed;width:100%;height:60px;background:#222;color:#fff;z-index:6}#navbar ul,#navbar ul li{list-style-type:none;display:inline-block;margin-right:20px;margin-top:5px}#navbar ul li{height:24px;position:relative;color:#fff;background-repeat:no-repeat;background-size:27px}#navbar ul li a{display:inline-block;color:#fff;font-size:16px;font-weight:300;text-decoration:none}#navbar ul li a:before{content:"";margin:auto;width:27px;height:23px;display:block;background-size:27px;background-image:url(https://randomuser.me/img/nav_icons.png)}#navbar ul li:nth-child(2) a:before{background-position:0 -200px}#navbar ul li:nth-child(3) a:before{background-position:0 -25px}#navbar ul li:nth-child(4) a:before{background-position:0 -50px}#navbar ul li:nth-child(5) a:before{background-position:0 -75px}#navbar ul li:nth-child(6) a:before{background-position:0 -100px}#navbar ul li:nth-child(7) a:before{background-position:0 -125px}#navbar ul li:nth-child(9) a:before{background-position:0 -150px}#navbar ul li:nth-child(10) a:before{background-position:0 -175px;opacity:.1}#navbar ul li.blank a:before{display:none}@media screen and (max-width:1145px){body.active{left:-260px}body.active #navbar{right:300px}#navbar{text-align:left;position:fixed;width:300px;height:100%;right:0;top:0;background:#222;color:#fff;z-index:100;-webkit-transform:translateX(300px);transform:translateX(300px);-webkit-transition:all .25s ease-in-out;transition:all .25s ease-in-out;-webkit-animation:bounceHint 1s ease;animation:bounceHint 1s ease}#navbar.show{-webkit-transform:translateX(0);transform:translateX(0)}#navbar ul{list-style-type:none;padding:0 30px}#navbar ul li{width:100%;height:50px;-webkit-transition:all .2s ease-out;transition:all .2s ease-out}#navbar ul li a:before{content:'';display:inline-block;width:28px;height:24px;position:relative;top:5px;margin-right:10px;background-image:url(../img/nav_icons.png);background-repeat:no-repeat;background-size:27px}#navbar ul li:nth-child(2) a:before{background-position:0 -200px}#navbar ul li:nth-child(3) a:before{background-position:0 -25px}#navbar ul li:nth-child(4) a:before{background-position:0 -50px}#navbar ul li:nth-child(5) a:before{background-position:0 -75px}#navbar ul li:nth-child(6) a:before{background-position:0 -100px}#navbar ul li:nth-child(7) a:before{background-position:0 -125px}#navbar ul li:nth-child(9) a:before{background-position:0 -150px}#navbar ul li:nth-child(10) a:before{background-position:0 -175px}#navbar ul li:nth-child(10){opacity:1}#navbar ul li.blank a:before{display:none}#navbar ul li:hover{-webkit-transform:translateX(10px);transform:translateX(10px)}#navbar ul li a{color:#fff;font-size:16px;font-weight:300;text-decoration:none}#navbar{width:260px;right:40px}#navbar ul{padding:0 25px}.nav_toggle{position:absolute;left:-60px;top:0;width:60px;height:60px;cursor:pointer;background:#2c2e31}.nav_toggle .icon{width:30px;height:22px;margin:18px auto;position:relative}.nav_toggle .icon div{position:absolute;width:100%;height:2px;background:#fff;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transition:all .2s ease-out;transition:all .2s ease-out}.nav_toggle:hover .icon div{-webkit-animation-name:a;animation-name:a;-webkit-animation-duration:.5s;animation-duration:.5s;animation-easing:ease-in}.nav_toggle div:nth-child(1){top:0}.nav_toggle div:nth-child(2){top:10px;-webkit-animation-delay:.1s;animation-delay:.1s}.nav_toggle div:nth-child(3){top:20px;width:70%;-webkit-animation-delay:.2s;animation-delay:.2s}@-webkit-keyframes a{0%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(-5px);transform:translateX(-5px)}to{-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes a{0%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(-5px);transform:translateX(-5px)}to{-webkit-transform:translateX(0);transform:translateX(0)}}body.active .nav_toggle .icon div{-webkit-animation-name:none;animation-name:none}body.active .nav_toggle .icon div:nth-child(1){-webkit-transform:rotate(45deg);transform:rotate(45deg);left:5px}body.active .nav_toggle .icon div:nth-child(2){top:21px;left:5px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}body.active .nav_toggle .icon div:nth-child(3){width:0}}.card_offset{margin-top:-200px}.card{position:relative;padding:20px 0;width:100%;background:#fff;border-radius:3px;box-shadow:0 0 1px rgba(0,0,0,.5);overflow:hidden;text-align:center;z-index:5}.card:after{content:'';display:block;position:absolute;width:100%;height:130px;top:0;background:#f9f9f9;border-bottom:1px solid rgba(0,0,0,.15);z-index:-1}.card .user_photo{position:relative;background:#fff;padding:5px;width:150px;height:150px;border-radius:50%;margin-bottom:30px;border:1px solid rgba(0,0,0,.25)}.card .user_photo img{width:150px;border-radius:50%}.card .user_photo .refresh{position:absolute;bottom:-30px;left:50%;padding:10px 15px;color:#fff;background:rgba(0,0,0,.75);border-radius:3px;text-decoration:none;opacity:0;display:block;-webkit-transform:translateX(-50%);transform:translateX(-50%);-webkit-transition:all .25s ease-out;transition:all .25s ease-out}.card .user_photo:hover .refresh{bottom:-20px;opacity:1}.card #user_title{color:#999;font-size:18px;margin:0}.card #user_value{color:#2c2e31;font-size:38px;margin:5px;text-transform:capitalize}.values_list{list-style-type:none;margin:0;padding:0;overflow:hidden;float:left}.values_list li{cursor:pointer;display:block;width:40px;height:48px;float:left;margin:20px;background-image:url(../img/card_icons.png);background-size:378px;background-position-y:-48px;-webkit-transition:all .25s ease-out;transition:all .25s ease-out}.values_list li:before{content:attr(data-label);opacity:0}.values_list li.active[data-label=name]{background-position:0 -96px}.values_list li.active[data-label=email]{background-position:-68px -96px}.values_list li.active[data-label=birthday]{background-position:-135px -96px}.values_list li.active[data-label=location]{background-position:-203px -96px}.values_list li.active[data-label=phone]{background-position:-270px -96px}.values_list li.active[data-label=pass]{background-position:-338px -96px}.values_list li[data-label=name]{background-position:0 -48px}.values_list li[data-label=email]{background-position:-68px -48px}.values_list li[data-label=birthday]{background-position:-135px -48px}.values_list li[data-label=location]{background-position:-203px -48px}.values_list li[data-label=phone]{background-position:-270px -48px}.values_list li[data-label=pass]{background-position:-338px -48px}@media screen and (max-width:400px){.card_offset{margin-top:-80px}.card #user_value{font-size:28px}li[data-label=email]{display:none}.card .values_list{margin-top:25px}.card .values_list li{margin:0 5px}}section{margin-top:60px}section:before{content:"";display:block;height:60px;margin:-60px 0 0}section h2{margin:0;padding:0;font-size:28px;font-weight:300;color:#333}section p{margin:15px 0;font-size:15px;font-weight:300;line-height:25px;color:#666}section.cheat p{text-align:center;font-size:12px;color:#ccc}section strong{font-weight:500}section a{color:#83ba43;text-decoration:none}section a:hover{text-decoration:underline}section ul{padding-left:20px}section ul li{padding:5px 0;font-size:15px;font-weight:300;line-height:25px;color:#666}@media screen and (max-width:320px){.advertisement{display:none}}input[type=text],pre{box-sizing:border-box;border:1px solid #ccc;padding:10px;width:100%;color:#666;font-family:Courier,Open Sans,sans-serif;font-weight:100;font-size:14px;overflow:scroll}input[type=text]:focus,pre:focus{border:1px solid #aaa;outline:none!important}input[type=text] span,pre span{color:#83ba43}.documentation .glossary{overflow:hidden}.documentation .glossary ul{list-style-type:none;margin:0 0 50px;padding:0;width:50%;float:left}.documentation .glossary ul li{padding:10px 0;font-size:14px}.documentation .glossary ul li a{color:#83ba43;text-decoration:none}.documentation .glossary ul li a:hover{text-decoration:underline}@media screen and (max-width:320px){.glossary{margin-bottom:50px;overflow:hidden}.glossary ul{margin:0!important;width:100%!important}}.extension .panel{position:relative;width:238px;height:360px;margin:40px auto 100px;-webkit-animation:comeIn 1s ease}.extension .panel iframe{border:none;position:absolute;top:33px;left:-6px;width:250px;height:440px;background:#535353}.extension .download{list-style-type:none;padding:0;margin:0 auto;overflow:hidden}.extension .download li{float:left;display:block;margin:20px 0 0;width:33%;box-sizing:border-box;font-size:21px;text-align:center;overflow:hidden}.extension .download li:hover a{color:#fff;text-decoration:none;background:#83ba43;border-color:#83ba43}.extension .download li a{box-sizing:border-box;padding:20px 10px;width:90%;height:100%;display:block;margin:auto;color:#fff;-webkit-transition:all .15s ease;text-decoration:none;border-radius:5px;background:#2c2e31}.stats section.small{box-sizing:border-box;width:350px;float:left}.stats section.small.push{margin-right:30px}.stats section.ps{margin-top:300px}.stats section span{box-sizing:border-box;display:block;width:100%;padding:50px 0;margin-top:10px;border-radius:3px;background:#eee;text-align:center;font-size:42px}.stats#charts{width:100%;height:400px;border:none}@media screen and (max-width:750px){section{margin-bottom:60px!important}section.small{width:100%!important;margin-top:0;margin-bottom:!important}}.changelog section span{font-size:14px;color:#999;display:inline-block;padding:10px 0}.changelog section span#color{color:#83ba43}.donate .floating_icon{width:100%;position:relative}.donate .floating_icon img{position:relative;left:50%;margin-left:-125px;-webkit-transform:translateY(0);transform:translateY(0);-webkit-animation:b 2s linear alternate infinite;animation:b 2s linear alternate infinite;z-index:1}.donate .floating_icon:after{content:'';display:block;width:80px;height:15px;position:absolute;left:50%;bottom:-20px;margin-left:-40px;background:rgba(131,186,67,.25);border-radius:50%;-webkit-animation:c 2s linear alternate infinite;animation:c 2s linear alternate infinite}.donate .donate_form{margin:50px 0;text-align:center}.donate .dropdown_frame{display:inline-block;position:relative;cursor:pointer}.donate .dropdown_frame:after{content:'';display:block;width:0;height:0;border:6px solid #999;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;position:absolute;top:22px;right:15px;z-index:-1}.donate .donateInput{width:75px;height:27px;cursor:pointer}.donate .comment,.donate .donateInput{background:transparent;padding:10px;font-size:16px;line-height:1;border:1px solid #ccc;border-radius:3px;-webkit-appearance:none;-moz-appearance:none;outline:none}.donate .button{width:150px;height:50px;margin-left:20px;border-radius:3px;background:#83ba43;border:none;color:#fff;outline:none}.donate .button:hover{background:#79b039}@-webkit-keyframes b{to{-webkit-transform:translateY(-10px);transform:translateY(-10px)}}@keyframes b{to{-webkit-transform:translateY(-10px);transform:translateY(-10px)}}@-webkit-keyframes c{to{-webkit-transform:scale(.9);transform:scale(.9)}}@keyframes c{to{-webkit-transform:scale(.9);transform:scale(.9)}}@media screen and (max-width:320px){.floating_icon{-webkit-transform:scale(.75);transform:scale(.75)}.button,.donateInput,.dropdown_frame{width:100%!important}.button{margin:10px 0 0!important}}footer{margin-top:100px;width:100%;background:#2c2e31;overflow:hidden;color:#fff}footer h1{margin:50px 0;font-size:48px;font-weight:100;text-transform:uppercase}footer .block{width:50%;margin-bottom:25px;float:left}footer .block h3{color:#fff;font-size:16px;font-weight:100}footer .block img{-webkit-transition:all .2s ease;-webkit-filter:grayscale(100%)}footer .block img:hover{-webkit-filter:grayscale(0)}footer .block p{font-size:12px;color:#999;line-height:1.75;font-weight:100}footer .block p a{color:#83ba43;text-decoration:none}footer .block .builder{width:50%;float:left}@media screen and (max-width:320px){footer .builder{width:100%!important}}.photos section{box-sizing:border-box;width:100%;padding:0 12px;float:left}.photos section h2{text-align:center;margin-bottom:20px}.photos section img{display:block;float:left;width:80px;height:80px;margin:5px 5px 0 0;border-radius:5px;-webkit-transform:scale(0);transform:scale(0);-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out;cursor:pointer}.photos section img.come_in{opacity:1;-webkit-transform:scale(1);transform:scale(1)}.photos .modal{position:absolute;top:50%;left:50%;padding:10px;background:#fff;border-radius:10px;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.photos .modal_mask{position:fixed;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:10;display:none}@media screen and (max-width:532px){.modal img{width:280px}}@font-face{font-family:LegoBrix;src:url(../fonts/LEGOBRIX.ttf);font-weight:400}.lego header{text-shadow:0 0 4px #000;background-image:url(../img/lego_bg.jpg)}.lego header h1{font-family:LegoBrix,sans-serif}.alert{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;width:100%;position:fixed;top:0;min-height:20px;background:rgba(240,82,35,.9);text-align:center;padding:20px 60px;color:#fff;font-weight:300;z-index:50}.alert a{color:#fff;text-decoration:none}.psalert{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;width:100%;min-height:20px;background:rgba(240,82,35,.9);text-align:center;padding:20px 60px;color:#fff;font-weight:300;z-index:50}@media screen and (max-width:750px){.frame{margin-left:20px;margin-right:20px}}a{color:#08a}section.sponsor{border:1px solid #ccc;box-shadow:0 0 5px #ccc;text-align:center;margin-bottom:-90px;margin-top:30px;padding-top:10px;padding-bottom:10px}section.sponsor h2{color:#555;font-size:10pt;text-transform:uppercase}section.sponsor h3{font-family:Raleway,HelveticaNeue,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:20pt;font-weight:400;margin-top:10px;margin-bottom:10px}section.sponsor #learnmore{width:150px;height:50px;margin-left:20px;border-radius:3px;background:#83ba43;border:none;color:#fff;outline:none}section.sponsor #learnmore:hover{background:#79b039}
+</style>
+</head><body class="" data-gr-c-s-loaded="true"><div id="navbar" class=""><div class="nav_toggle"><div class="icon"><div></div><div></div><div></div></div></div><ul><li><a href="index">Home</a></li><li><a href="photos">User Photos</a></li><li><a href="documentation">Documentation</a></li><li><a href="changelog">Change Log</a></li><li><a href="stats">Stats &amp; Graphs</a></li><li><a href="donate">Donate</a></li><li><a href="copyright">Copyright Notice</a></li><li class="blank"></li><li><a href="photoshop">Photoshop Extension</a></li></ul></div><header><h1>Random User Generator</h1><p>A free, <a id="openSource" href="https://github.com/RandomAPI/Randomuser.me-Node">open-source</a> API for generating random user data. Like Lorem Ipsum, but for people. </p><a href="https://twitter.com/randomapi" class="twitter"><img src="img/twitter.png">Follow us @randomapi</a></header><div class="frame card_offset"><div class="card"><div class="details"><div class="user_photo horizontal_center" id="user_photo"><a href="javascript:getNewUser();" class="refresh">New</a><img src="https://randomuser.me/api/portraits/women/10.jpg"></div><p id="user_title">Hi, My name is</p><p id="user_value" style="text-transform: capitalize;">crystal reed</p></div><ul class="values_list horizontal_center" id="values_list"><li data-title="Hi, My name is" data-value="crystal reed" data-label="name" class="  active"></li><li data-title="My email address is" data-value="crystal.reed12@example.com" data-label="email" data-caps="false" class=" "></li><li data-title="My birthday is" data-value="3/3/1976" data-label="birthday" class=" "></li><li data-title="My address is" data-value="8255 w belt line rd" data-label="location" class=""></li><li data-title="My phone number is" data-value="(458)-844-1317" data-label="phone" class=" "></li><li data-title="My password is" data-value="shania" data-label="pass" data-caps="false" class=" "></li></ul></div><section class="sponsor"><h2>Sponsored</h2><h3>RandomAPI</h3><p>Want to create your own <b>customized</b> data generator for your application?<br>Check out our other service RandomAPI!</p><button id="learnmore" class="button" onclick="window.open('https://randomapi.com');">Learn More</button></section><section class="advertisement"><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:230px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:230px;background-color:transparent;"><iframe width="230" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:230px;height:200px;"></iframe></ins></ins></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px;margin:0 16px;" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:230px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:230px;background-color:transparent;"><iframe width="230" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:230px;height:200px;"></iframe></ins></ins></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:230px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:230px;background-color:transparent;"><iframe width="230" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0px;width:230px;height:200px;"></iframe></ins></ins></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section><section><h2>How to use</h2><p>You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the $.ajax() function in the code snippet below to get started.</p><pre>$.ajax({
+  url: '<span>https://randomuser.me/api/</span>',
+  dataType: '<span>json</span>',
+  success: function(<span>data</span>) {
+    console.log(<span>data</span>);
+  }
+});
+      </pre></section><section><h2>Results</h2><p>The application will provide you with a JSON, XML, CSV, or YAML object that you can parse and apply to your application.</p><p>You can specify the format you want the results in using the <a href="documentation#format">format</a> parameter.</p><pre>{
+  "results": [
+    {
+      "gender": "<span>male</span>",
+      "name": {
+        "title": "<span>mr</span>",
+        "first": "<span>rolf</span>",
+        "last": "<span>hegdal</span>"
+      },
+      "location": {
+        "street": "<span>ljan terrasse 346</span>",
+        "city": "<span>vear</span>",
+        "state": "<span>rogaland</span>",
+        "postcode": "<span>3095</span>",
+        "coordinates": {
+          "latitude": "<span>54.8646</span>",
+          "longitude": "<span>-97.3136</span>"
+        },
+        "timezone": {
+          "offset": "<span>-10:00</span>",
+          "description": "<span>Hawaii</span>"
+        }
+      },
+      "email": "<span>rolf.hegdal@example.com</span>",
+      "login": {
+        "uuid": "<span>c4168eac-84b8-46ea-b735-c9da9bfb97fd</span>",
+        "username": "<span>bluefrog786</span>",
+        "password": "<span>ingrid</span>",
+        "salt": "<span>GtRFz4NE</span>",
+        "md5": "<span>5c581c5748fc8c35bd7f16eac9efbb55</span>",
+        "sha1": "<span>c3feb8887abed9ec1561b9aa2c9f58de21d1d3d9</span>",
+        "sha256": "<span>684c478a98b43f1ef1703b35b8bbf61b27dbc93d52acd515e141e97e04447712</span>"
+      },
+      "dob": {
+        "date": "<span>1975-11-12T06:34:44Z</span>",
+        "age": <span>42</span>
+      },
+      "registered": {
+        "date": <span>"2015-11-04T22:09:36Z</span>",
+        "age": <span>2</span>
+      },
+      "phone": "<span>66976498</span>",
+      "cell": "<span>40652479</span>",
+      "id": {
+        "name": "<span>FN</span>",
+        "value": "<span>12117533881</span>"
+      },
+      "picture": {
+        "large": "<span>https://randomuser.me/api/portraits/men/65.jpg</span>",
+        "medium": "<span>https://randomuser.me/api/portraits/med/men/65.jpg</span>",
+        "thumbnail": "<span>https://randomuser.me/api/portraits/thumb/men/65.jpg</span>"
+      },
+      "nat": "<span>NO</span>"
+    }
+  ],
+  "info": {
+    "seed": "<span>2da87e9305069f1d</span>",
+    "results": <span>1</span>,
+    "page": <span>1</span>,
+    "version": "<span>1.2</span>"
+  }
+}
+</pre></section><section><h2>Thank you for helping us help you help us all</h2><p>Found a bug or have an idea?<br>Contribute to randomuser.me's database on our <a href="https://github.com/RandomAPI/Randomuser.me-Node">Github Repo</a>.</p><h2>Contact Us</h2><p>If you have any questions/feedback or would like to get in touch with us, tweet us <a href="https://twitter.com/randomapi">@randomapi</a></p></section><section class="cheat"><p>↑ ↑ ↓ ↓ ← → ← → B A</p></section></div><footer><div class="frame"><h1>Random User Generator</h1><div class="block"><div class="builder"><h3>Designed</h3><a href="https://twitter.com/arronhunt"><img src="img/creator_arron.png" width="80px" alt="Designed by Arron Hunt" title="Designed by Arron Hunt"></a></div><div class="builder"><h3>Developed</h3><a href="https://twitter.com/solewolf1993"><img src="img/creator_keith.png" width="80px" alt="Developed by Keith Armstrong" title="Developed by Keith Armstrong"></a></div></div><div class="block"><h3>Copyright Notice</h3><p>All randomly generated photos were hand picked from the authorized section of <a href="http://uifaces.com">UI Faces</a>. Please visit <a href="https://web.archive.org/web/20160811185628/http://uifaces.com/faq">UI Faces FAQ</a> for more information regarding how you can use these faces.<br><br></p></div></div></footer><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-42942064-1', 'randomuser.me');ga('send', 'pageview');</script><iframe id="google_osd_static_frame_2564866133216" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe><span id="sbmarwbthv5"></span></body><iframe id="google_shimpl" style="display: none;"></iframe><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20190306/r20190131/zrt_lookup.html#" data-ad-client="ca-pub-2036801804961954" style="display: none;"></iframe></html>
