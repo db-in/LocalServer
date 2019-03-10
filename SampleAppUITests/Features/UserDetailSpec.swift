@@ -16,7 +16,7 @@ final class UserDetailSpec : XCTestCase {
 	
 	func testFemaleUserDetail() {
 		given("I receive a female profile") {
-			UserService.single(.female)
+			UserService.singleWithDetails(.female)
 		}
 		
 		when("I tap the user cell") {

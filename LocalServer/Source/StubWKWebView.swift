@@ -28,7 +28,7 @@ extension WKWebView : Exchangeable {
 			return loadHTMLString(bodyString, baseURL: request.url)
 		}
 		
-		return stubLoad(request)
+		return loadHTMLString("", baseURL: request.url)
 	}
 	
 	static func exchange() {

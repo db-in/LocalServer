@@ -60,6 +60,8 @@
 		605E4A6922345963003A0864 /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6722345962003A0864 /* 14.jpg */; };
 		605E4A6A22345963003A0864 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6822345963003A0864 /* 10.jpg */; };
 		605E4A6C22346A36003A0864 /* mock.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6B22346A36003A0864 /* mock.png */; };
+		605E4A6E2234EF2C003A0864 /* WebPageSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */; };
+		605E4A702234FA1A003A0864 /* UserMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A6F2234FA1A003A0864 /* UserMock.swift */; };
 		6063346421CF981C00ECC81F /* UITestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346321CF981B00ECC81F /* UITestState.swift */; };
 		6063346921D131E400ECC81F /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346821D131E400ECC81F /* DataExtension.swift */; };
 		60ABEA0221F44115004B19C6 /* StubWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ABEA0121F44115004B19C6 /* StubWKWebView.swift */; };
@@ -157,6 +159,8 @@
 		605E4A6722345962003A0864 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.jpg; sourceTree = "<group>"; };
 		605E4A6822345963003A0864 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		605E4A6B22346A36003A0864 /* mock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mock.png; sourceTree = "<group>"; };
+		605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageSpec.swift; sourceTree = "<group>"; };
+		605E4A6F2234FA1A003A0864 /* UserMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMock.swift; sourceTree = "<group>"; };
 		6063346321CF981B00ECC81F /* UITestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
 		6063346821D131E400ECC81F /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		60ABEA0121F44115004B19C6 /* StubWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 			children = (
 				605E4A5C223427DA003A0864 /* UserListSpec.swift */,
 				605E4A65223449B4003A0864 /* UserDetailSpec.swift */,
+				605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 		605E4A62223431C9003A0864 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				605E4A6F2234FA1A003A0864 /* UserMock.swift */,
 				605E4A63223431D7003A0864 /* UserService.swift */,
 			);
 			path = Services;
@@ -895,12 +901,14 @@
 			files = (
 				605E4A66223449B4003A0864 /* UserDetailSpec.swift in Sources */,
 				605E4A5D223427DA003A0864 /* UserListSpec.swift in Sources */,
+				605E4A702234FA1A003A0864 /* UserMock.swift in Sources */,
 				605E4A64223431D7003A0864 /* UserService.swift in Sources */,
 				605E4A5322340F99003A0864 /* Gherkin.swift in Sources */,
 				605E4A5722341BE3003A0864 /* UserListScreen.swift in Sources */,
 				605E4A5F22342A59003A0864 /* TestBuilder.swift in Sources */,
 				605E4A5922341BF6003A0864 /* UserDetailedScreen.swift in Sources */,
 				605E4A5522341577003A0864 /* Screen.swift in Sources */,
+				605E4A6E2234EF2C003A0864 /* WebPageSpec.swift in Sources */,
 				605E4A5B22341C01003A0864 /* WebPageScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

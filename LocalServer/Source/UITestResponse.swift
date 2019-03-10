@@ -33,7 +33,7 @@ public final class UITestResponse : StubResponse {
 		self.init()
 		
 		if let encodedString = infoJSON["body"] as? String {
-			body = Data(base64Encoded: encodedString)?.inflate()
+			body = Data(base64Encoded: encodedString)
 		}
 		
 		if let newStatusCode = infoJSON["statusCode"] as? Int {
@@ -65,7 +65,7 @@ public final class UITestResponse : StubResponse {
 		var infoJSON = [String : Any]()
 		
 		if let validBody = body {
-			infoJSON["body"] = validBody.deflate()?.base64EncodedString()
+			infoJSON["body"] = validBody.base64EncodedString()
 		}
 		
 		infoJSON["statusCode"] = statusCode

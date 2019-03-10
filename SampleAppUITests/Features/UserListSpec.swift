@@ -10,18 +10,6 @@ import XCTest
 
 // MARK: - Definitions -
 
-extension UserType {
-	
-	var fullName: String {
-		switch self {
-		case .male:
-			return "Mr Brent Robertson"
-		case .female:
-			return "Miss Crystal Reed"
-		}
-	}
-}
-
 // MARK: - Type -
 
 final class UserListSpec : XCTestCase {

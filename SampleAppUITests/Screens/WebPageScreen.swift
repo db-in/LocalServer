@@ -13,15 +13,31 @@ import XCTest
 // MARK: - Type -
 
 class WebPageScreen : Screen {
-
+	
 // MARK: - Properties
-
+	
+	private lazy var webView = app.otherElements["webview.page"].webViews.firstMatch
+	private lazy var greetingsText = app.webViews.staticTexts["Hi, My name is"]
+	
+	
 // MARK: - Constructors
-
-// MARK: - Protected Methods
-
+	
+	required init(_ app: XCUIApplication) {
+		super.init(app)
+	}
+	
 // MARK: - Exposed Methods
-
-// MARK: - Overridden Methods
-
+	
+	@discardableResult
+	func waitForWebView() -> Bool {
+		return exists(webView)
+	}
+	
+	func isGreetingsShown() -> Bool {
+		return exists(greetingsText)
+	}
+	
+	func isTextShown(_ text: String) -> Bool {
+		return exists(webView.staticTexts[text])
+	}
 }

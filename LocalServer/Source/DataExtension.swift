@@ -38,19 +38,19 @@ extension Data {
 		stream.src_ptr  = source
 		stream.src_size = sourceSize
 		
-		var res = Data()
-		let flags: Int32 = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
+		var result = Data()
+		let flags = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
 		
 		while true {
 			switch compression_stream_process(&stream, flags) {
 			case COMPRESSION_STATUS_OK:
 				guard stream.dst_size == 0 else { return nil }
-				res.append(buffer, count: stream.dst_ptr - buffer)
+				result.append(buffer, count: stream.dst_ptr - buffer)
 				stream.dst_ptr = buffer
 				stream.dst_size = bufferSize
 			case COMPRESSION_STATUS_END:
-				res.append(buffer, count: stream.dst_ptr - buffer)
-				return res
+				result.append(buffer, count: stream.dst_ptr - buffer)
+				return result
 			default:
 				return nil
 			}

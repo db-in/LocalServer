@@ -18,28 +18,26 @@ extension XCTestCase {
 
 // MARK: - Exposed Methods
 	
+	private func process(_ text: String, step: VoidClosure) {
+		XCTContext.runActivity(named: text) { _ in step() }
+	}
+	
 	func given(_ text: String, step: VoidClosure) {
 		step()
 		resetAndlaunch()
 		continueAfterFailure = false
-		XCTContext.runActivity(named: "Given " + text) { _ in }
+		process("Given " + text, step: { })
 	}
 	
 	func when(_ text: String, step: VoidClosure) {
-		XCTContext.runActivity(named: "When " + text) { _ in
-			step()
-		}
+		process("When " + text, step: step)
 	}
 	
 	func then(_ text: String, step: VoidClosure) {
-		XCTContext.runActivity(named: "Then " + text) { _ in
-			step()
-		}
+		process("Then " + text, step: step)
 	}
 	
 	func and(_ text: String, step: VoidClosure) {
-		XCTContext.runActivity(named: "And " + text) { _ in
-			step()
-		}
+		process("And " + text, step: step)
 	}
 }

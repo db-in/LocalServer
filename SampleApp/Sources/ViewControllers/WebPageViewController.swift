@@ -14,8 +14,9 @@ class WebPageViewController: UIViewController {
 	@IBOutlet weak var webView: WKWebView!
 	
 	func configureView() {
-		let request = URLRequest(url: URL(string: "https://randomuser.me")!)
+		let request = URLRequest(url: URL(string: "https://randomuser.me/index")!)
 		webView.load(request)
+		webView.accessibilityIdentifier = "webview.page"
 	}
 
 	override func viewDidLoad() {
