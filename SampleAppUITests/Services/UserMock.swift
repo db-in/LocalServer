@@ -33,40 +33,18 @@ extension UserType {
 	var fullName: String {
 		switch self {
 		case .male:
-			return "Mr Brent Robertson"
+			return "Mr \(shortName)"
 		case .female:
-			return "Miss Crystal Reed"
+			return "Miss \(shortName)"
 		}
 	}
 	
 	var email: String {
 		switch self {
 		case .male:
-			return "Mr Brent Robertson"
+			return "brent.robertson36@example.com"
 		case .female:
 			return "crystal.reed12@example.com"
 		}
 	}
-	
-	
-	var birthday: String {
-		switch self {
-		case .male:
-			return ""
-		case .female:
-			return ""//"1948-03-05T07:17:35Z"
-		}
-	}
-	
-	
-	var phone: String {
-		switch self {
-		case .male:
-			return ""
-		case .female:
-			return ""//"(898)-320-5830" //"(458)-844-1317"
-		}
-	}
-	
-	
 }

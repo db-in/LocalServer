@@ -57,8 +57,8 @@
 		605E4A5F22342A59003A0864 /* TestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A5E22342A59003A0864 /* TestBuilder.swift */; };
 		605E4A64223431D7003A0864 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A63223431D7003A0864 /* UserService.swift */; };
 		605E4A66223449B4003A0864 /* UserDetailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A65223449B4003A0864 /* UserDetailSpec.swift */; };
-		605E4A6922345963003A0864 /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6722345962003A0864 /* 14.jpg */; };
-		605E4A6A22345963003A0864 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6822345963003A0864 /* 10.jpg */; };
+		605E4A6922345963003A0864 /* picture_male.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6722345962003A0864 /* picture_male.jpg */; };
+		605E4A6A22345963003A0864 /* picture_female.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6822345963003A0864 /* picture_female.jpg */; };
 		605E4A6C22346A36003A0864 /* mock.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6B22346A36003A0864 /* mock.png */; };
 		605E4A6E2234EF2C003A0864 /* WebPageSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */; };
 		605E4A702234FA1A003A0864 /* UserMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A6F2234FA1A003A0864 /* UserMock.swift */; };
@@ -156,8 +156,8 @@
 		605E4A5E22342A59003A0864 /* TestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBuilder.swift; sourceTree = "<group>"; };
 		605E4A63223431D7003A0864 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		605E4A65223449B4003A0864 /* UserDetailSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailSpec.swift; sourceTree = "<group>"; };
-		605E4A6722345962003A0864 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.jpg; sourceTree = "<group>"; };
-		605E4A6822345963003A0864 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
+		605E4A6722345962003A0864 /* picture_male.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture_male.jpg; sourceTree = "<group>"; };
+		605E4A6822345963003A0864 /* picture_female.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture_female.jpg; sourceTree = "<group>"; };
 		605E4A6B22346A36003A0864 /* mock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mock.png; sourceTree = "<group>"; };
 		605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageSpec.swift; sourceTree = "<group>"; };
 		605E4A6F2234FA1A003A0864 /* UserMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMock.swift; sourceTree = "<group>"; };
@@ -451,8 +451,8 @@
 		60E7DC032233EDAB00B744CB /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				605E4A6822345963003A0864 /* 10.jpg */,
-				605E4A6722345962003A0864 /* 14.jpg */,
+				605E4A6822345963003A0864 /* picture_female.jpg */,
+				605E4A6722345962003A0864 /* picture_male.jpg */,
 				605E4A4D22340D3E003A0864 /* user_female.html */,
 				60E7DC042233EDED00B744CB /* user_female.json */,
 				605E4A4C22340D3E003A0864 /* user_male.html */,
@@ -678,11 +678,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				605E4A6922345963003A0864 /* 14.jpg in Resources */,
+				605E4A6922345963003A0864 /* picture_male.jpg in Resources */,
 				605E4A4E22340D3E003A0864 /* user_male.html in Resources */,
 				60E7DC052233EDED00B744CB /* user_female.json in Resources */,
 				60E7DC072233EE1800B744CB /* user_male.json in Resources */,
-				605E4A6A22345963003A0864 /* 10.jpg in Resources */,
+				605E4A6A22345963003A0864 /* picture_female.jpg in Resources */,
 				605E4A4F22340D3E003A0864 /* user_female.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

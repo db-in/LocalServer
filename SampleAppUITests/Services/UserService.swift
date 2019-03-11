@@ -22,7 +22,8 @@ final class UserService {
 	
 	static func singleWithDetails(_ type: UserType) {
 		single(type)
-		UITestResponse(filename: "10", ofType: "jpg", bundle: .uiTest)
+		
+		UITestResponse(filename: "picture_\(type.file)", ofType: "jpg", bundle: .uiTest)
 			.withHeaders(["Content-type" : "image"])
 			.send(to: "portraits")
 	}
@@ -30,10 +31,7 @@ final class UserService {
 	static func singleWithMoreInfo(_ type: UserType) {
 		singleWithDetails(type)
 		
-		let url = Bundle.uiTest.url(forResource: "user_\(type.file)", withExtension: "html")!
-		let html = try! String(contentsOf: url)
-		
-		UITestResponse(string: html)
+		UITestResponse(filename: "user_\(type.file)", ofType: "html", bundle: .uiTest)
 			.send(to: "index")
 	}
 	
