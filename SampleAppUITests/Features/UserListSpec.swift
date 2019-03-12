@@ -47,7 +47,7 @@ final class UserListSpec : XCTestCase {
 	}
 	
 	func testAddSeveralUser() {
-		let count = (3...8).randomElement()!
+		let count = (3...6).randomElement()!
 		
 		given("I receive several male profiles") {
 			UserService.single(.male)

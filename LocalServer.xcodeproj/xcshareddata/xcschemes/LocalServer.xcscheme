@@ -53,6 +53,18 @@
                ReferencedContainer = "container:LocalServer.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "60E7DBD7223393E000B744CB"
+               BuildableName = "SampleAppUITests.xctest"
+               BlueprintName = "SampleAppUITests"
+               ReferencedContainer = "container:LocalServer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

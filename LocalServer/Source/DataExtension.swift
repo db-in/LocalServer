@@ -12,24 +12,25 @@ import Compression
 // MARK: - Extension - Data Compression
 
 extension Data {
-
+	
 // MARK: - Properties
 	
 	static let flags = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
 	
 // MARK: - Protected Methods
 	
-	private func processStream(_ stream: inout compression_stream,
-							   _ buffer: UnsafeMutablePointer<UInt8>,
-							   _ bufferSize: Int) -> Data? {
+	private func process(stream: inout compression_stream,
+						 _ buffer: UnsafeMutablePointer<UInt8>,
+						 _ size: Int) -> Data? {
+		
 		var result = Data()
 		
 		if compression_stream_process(&stream, Data.flags) == COMPRESSION_STATUS_OK {
 			guard stream.dst_size == 0 else { return nil }
 			result.append(buffer, count: stream.dst_ptr - buffer)
 			stream.dst_ptr = buffer
-			stream.dst_size = bufferSize
-			guard let next = processStream(&stream, buffer, bufferSize) else { return result }
+			stream.dst_size = size
+			guard let next = process(stream: &stream, buffer, size) else { return result }
 			return result + next
 		}
 		
@@ -55,23 +56,19 @@ extension Data {
 		let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
 		defer { buffer.deallocate() }
 		
-		stream.dst_ptr  = buffer
-		stream.dst_size = bufferSize
 		stream.src_ptr  = source
 		stream.src_size = sourceSize
+		stream.dst_ptr  = buffer
+		stream.dst_size = bufferSize
 		
-		return processStream(&stream, buffer, bufferSize)
+		return process(stream: &stream, buffer, bufferSize)
 	}
 	
 	func deflate() -> Data? {
-		return withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
-			return perform(operation: COMPRESSION_STREAM_ENCODE, source: sourcePtr)
-		}
+		return withUnsafeBytes { perform(operation: COMPRESSION_STREAM_ENCODE, source: $0) }
 	}
 	
 	func inflate() -> Data? {
-		return withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
-			return perform(operation: COMPRESSION_STREAM_DECODE, source: sourcePtr)
-		}
+		return withUnsafeBytes { perform(operation: COMPRESSION_STREAM_DECODE, source: $0) }
 	}
 }
