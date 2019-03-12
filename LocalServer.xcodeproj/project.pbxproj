@@ -62,6 +62,7 @@
 		605E4A6C22346A36003A0864 /* mock.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E4A6B22346A36003A0864 /* mock.png */; };
 		605E4A6E2234EF2C003A0864 /* WebPageSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */; };
 		605E4A702234FA1A003A0864 /* UserMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A6F2234FA1A003A0864 /* UserMock.swift */; };
+		605E4A72223750EF003A0864 /* DataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E4A71223750EF003A0864 /* DataExtensionTests.swift */; };
 		6063346421CF981C00ECC81F /* UITestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346321CF981B00ECC81F /* UITestState.swift */; };
 		6063346921D131E400ECC81F /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063346821D131E400ECC81F /* DataExtension.swift */; };
 		60ABEA0221F44115004B19C6 /* StubWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ABEA0121F44115004B19C6 /* StubWKWebView.swift */; };
@@ -161,6 +162,7 @@
 		605E4A6B22346A36003A0864 /* mock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mock.png; sourceTree = "<group>"; };
 		605E4A6D2234EF2C003A0864 /* WebPageSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageSpec.swift; sourceTree = "<group>"; };
 		605E4A6F2234FA1A003A0864 /* UserMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMock.swift; sourceTree = "<group>"; };
+		605E4A71223750EF003A0864 /* DataExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensionTests.swift; sourceTree = "<group>"; };
 		6063346321CF981B00ECC81F /* UITestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestState.swift; sourceTree = "<group>"; };
 		6063346821D131E400ECC81F /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		60ABEA0121F44115004B19C6 /* StubWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKWebView.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 		60424F4021AD74C100F025ED /* LocalServerTests */ = {
 			isa = PBXGroup;
 			children = (
+				605E4A71223750EF003A0864 /* DataExtensionTests.swift */,
 				60424F4321AD74C100F025ED /* Info.plist */,
 				602C57C821F35CD800A3E963 /* mock.html */,
 				60D49CAE2229B3180038B657 /* mock.json */,
@@ -866,6 +869,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60D49CAB2229ABD20038B657 /* StubResponseTests.swift in Sources */,
+				605E4A72223750EF003A0864 /* DataExtensionTests.swift in Sources */,
 				6037207E21F3773C00BDAC72 /* WKWebViewResponseTests.swift in Sources */,
 				60424F7B21ADD77500F025ED /* UITestResponseTests.swift in Sources */,
 				60D49CB12229E7AD0038B657 /* StubServerTests.swift in Sources */,

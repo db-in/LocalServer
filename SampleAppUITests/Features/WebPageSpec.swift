@@ -3,7 +3,7 @@
  *	LocalServer
  *
  *	Created by Diney Bomfim on 3/10/19.
- *	Copyright 2019 Emirates Group. All rights reserved.
+ *	Copyright 2019. All rights reserved.
  */
 
 import XCTest
