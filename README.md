@@ -26,6 +26,9 @@
 <details>
 <summary>Add to your **Podfile** file</summary>
 
+<details>
+<summary>See more</summary>
+
 ```
 pod 'LocalServer'
 ```
@@ -36,6 +39,9 @@ pod 'LocalServer'
 <details>
 <summary>Add to your **Cartfile** or **Cartfile.private** file</summary>
 
+<details>
+<summary>See more</summary>
+
 ```
 github "db-in/LocalServer"
 ```
@@ -45,6 +51,9 @@ github "db-in/LocalServer"
 
 <details>
 <summary>Add to your **Package.swift** file</summary>
+
+<details>
+<summary>See more</summary>
 
 ```swift
 let package = Package(
