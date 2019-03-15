@@ -29,4 +29,22 @@ final class UserDetailSpec : XCTestCase {
 			XCTAssert(main.on(screen: UserDetailedScreen.self).hasName(UserType.female.fullName))
 		}
 	}
+	
+	func testAddSeveralUser() {
+		let count = (3...8).randomElement()!
+		
+		given("I receive several male profiles") {
+			UserService.singleWithDetails(.female)
+		}
+		
+		when("I tap the add button \(count) times") {
+			main.on(screen: UserListScreen.self)
+				.addUser(count: count)
+				.tapUserCell(0)
+		}
+		
+		then("I should see all the user cell been added to the list") {
+			XCTAssert(main.on(screen: UserDetailedScreen.self).hasName(UserType.female.fullName))
+		}
+	}
 }

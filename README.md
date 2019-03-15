@@ -19,6 +19,12 @@
 - [x] Stub Server for Unit Testing
 - [x] UITest Stub Server for UI Testing
 
+|Running App|UITest with Local Server|
+|:---------:|:----------------------:|
+|Random Users are generated|Only the mocked users are generated|
+|![Sample App](./Resources/Sample.gif)|![Sample App](./Resources/SampleUITest.gif)|
+
+
 ## Installation
 
 ### Using [CocoaPods](https://cocoapods.org)
