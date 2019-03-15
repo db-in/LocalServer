@@ -6,7 +6,7 @@
  *	Copyright 2019. All rights reserved.
  */
 
-import UIKit
+import Foundation
 
 // MARK: - Definitions -
 
