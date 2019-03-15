@@ -20,9 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		
 		UITestServer.resetAll()
 		UITestServer.start()
-//		UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier ?? "")
-//		UIApplication.shared.keyWindow?.layer.speed = 100
-//		UIView.setAnimationsEnabled(false)
 	}
 
 	func application(_ application: UIApplication,

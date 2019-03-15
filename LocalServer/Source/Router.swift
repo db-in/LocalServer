@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Definitions -
 
-fileprivate extension URL {
+private extension URL {
 	
 	var queryItemsDictionary: [String: String] {
 		
@@ -23,7 +23,7 @@ fileprivate extension URL {
 	}
 }
 
-fileprivate struct Route {
+private struct Route {
 	
 	var pattern: String
 	var handler: RouteHandler
@@ -42,9 +42,7 @@ class Router {
 // MARK: - Properties
 	
 	private var routes: [Route] = []
-
-// MARK: - Constructors
-
+	
 // MARK: - Protected Methods
 	
 	func route(_ urlRequest: URLRequest) -> StubResponse? {
@@ -58,8 +56,4 @@ class Router {
 	func addRoute(_ pattern: String, handler: @escaping RouteHandler) {
 		routes.append(Route(pattern: pattern, handler: handler))
 	}
-
-// MARK: - Exposed Methods
-
-// MARK: - Overridden Methods
 }

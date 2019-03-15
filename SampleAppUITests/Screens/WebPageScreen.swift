@@ -19,7 +19,6 @@ class WebPageScreen : Screen {
 	private lazy var webView = app.otherElements["webview.page"].webViews.firstMatch
 	private lazy var greetingsText = app.webViews.staticTexts["Hi, My name is"]
 	
-	
 // MARK: - Constructors
 	
 	required init(_ app: XCUIApplication) {
