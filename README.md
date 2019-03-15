@@ -23,37 +23,23 @@
 
 ### Using [CocoaPods](https://cocoapods.org)
 
-<details>
-<summary>Add to your **Podfile** file</summary>
-
-<details>
-<summary>See more</summary>
+Add to your **Podfile** file
 
 ```
 pod 'LocalServer'
 ```
-</details>
 
 ### Using [Carthage](https://github.com/Carthage/Carthage)
 
-<details>
-<summary>Add to your **Cartfile** or **Cartfile.private** file</summary>
-
-<details>
-<summary>See more</summary>
+Add to your **Cartfile** or **Cartfile.private** file
 
 ```
 github "db-in/LocalServer"
 ```
-</details>
 
 ### Using [Swift Package Manager](https://swift.org/package-manager)
 
-<details>
-<summary>Add to your **Package.swift** file</summary>
-
-<details>
-<summary>See more</summary>
+Add to your **Package.swift** file
 
 ```swift
 let package = Package(
@@ -68,7 +54,6 @@ let package = Package(
     ]
 )
 ```
-</details>
 
 ## Programming Guide
 The features provided are:
