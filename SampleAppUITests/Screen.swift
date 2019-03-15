@@ -33,8 +33,8 @@ class Screen {
 	func on<T: Screen>(screen: T.Type) -> T {
 		let nextScreen: T
 		
-		if self is T {
-			nextScreen = self as! T
+		if let sameScreen = self as? T {
+			nextScreen = sameScreen
 		} else {
 			nextScreen = screen.init(app)
 		}

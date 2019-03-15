@@ -13,33 +13,38 @@
 
 **Features**
 
-- [x] Create Stub servers without changing or injecting any of your existing URLSession code;
-- [x] Create Stub versions for WKWebView;
-- [x] Supports Xcode Parallel Testing in simulators and devices;
-- [x] Stub Server for Unit Testing;
-- [x] UITest Stub Server for UI Testing;
+- [x] Create Stub servers without changing or injecting any of your existing URLSession code
+- [x] Create Stub versions for WKWebView
+- [x] Supports Xcode Parallel Testing in simulators and devices
+- [x] Stub Server for Unit Testing
+- [x] UITest Stub Server for UI Testing
 
 ## Installation
 
 ### Using [CocoaPods](https://cocoapods.org)
 
-Add to your **Podfile** file
+<details>
+<summary>Add to your **Podfile** file</summary>
 
 ```
 pod 'LocalServer'
 ```
+</details>
 
 ### Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add to your **Cartfile** or **Cartfile.private** file
+<details>
+<summary>Add to your **Cartfile** or **Cartfile.private** file</summary>
 
 ```
 github "db-in/LocalServer"
 ```
+</details>
 
 ### Using [Swift Package Manager](https://swift.org/package-manager)
 
-Add to your **Package.swift** file
+<details>
+<summary>Add to your **Package.swift** file</summary>
 
 ```swift
 let package = Package(
@@ -54,6 +59,7 @@ let package = Package(
     ]
 )
 ```
+</details>
 
 ## Programming Guide
 The features provided are:
@@ -85,6 +91,16 @@ func startMyLocalServer() {
 ```
 
 Once the `StubServer.instance` is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to `nil`, which is the default value.
+
+These are some of the handful functions for creating `StubResponse`:
+
+```swift
+StubResponse(string: "UTF8 string to become body")
+StubResponse(json: ["param" : "value", "number": 1])
+StubResponse(filename: "file", ofType: "html")
+StubResponse(filename: "file", ofType: "json", bundle: myBundle)
+StubResponse(data: myBodyData)
+```
 
 #### UITest Server
 As per Apple design, the UITest target runs on a separated application, which means it can't have access to the code in the main application or perform any programaticaly action. The UITest Server used the `ProcessInfo` bridge to send data from the UITest target to the main application on every launch.
