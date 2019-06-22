@@ -26,6 +26,30 @@ class StubURLHTTPProtocol : URLProtocol {
 		DispatchQueue.main.asyncAfter(deadline: time, execute: closure)
 	}
 	
+	private func processResponse(_ stubResponse: StubResponse) {
+		
+		guard let url = request.url, !stopped else { return }
+		
+		if let error = stubResponse.error {
+			client?.urlProtocol(self, didFailWithError: error)
+			return
+		}
+		
+		if let response = HTTPURLResponse(url: url,
+										  statusCode: stubResponse.statusCode,
+										  httpVersion: "HTTP/1.1",
+										  headerFields: stubResponse.headers) {
+			
+			client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+			
+			if let body = stubResponse.body {
+				client?.urlProtocol(self, didLoad: body)
+			}
+			
+			client?.urlProtocolDidFinishLoading(self)
+		}
+	}
+	
 // MARK: - Overridden Methods
 
 	override class func canInit(with request: URLRequest) -> Bool {
@@ -49,26 +73,7 @@ class StubURLHTTPProtocol : URLProtocol {
 		}
 		
 		delay(stubResponse.delay) {
-			
-			guard !self.stopped else { return }
-			
-			if let error = stubResponse.error {
-				self.client?.urlProtocol(self, didFailWithError: error)
-				return
-			}
-			
-			let response = HTTPURLResponse(url: self.request.url!,
-										   statusCode: stubResponse.statusCode,
-										   httpVersion: "HTTP/1.1",
-										   headerFields: stubResponse.headers)!
-			
-			self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-			
-			if let body = stubResponse.body {
-				self.client?.urlProtocol(self, didLoad: body)
-			}
-			
-			self.client?.urlProtocolDidFinishLoading(self)
+			self.processResponse(stubResponse)
 		}
 	}
 	
