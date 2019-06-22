@@ -12,11 +12,11 @@ import Foundation
 
 fileprivate extension UITestState {
 
-	static func setResponse(with json: [String : Any]) {
-		setResponse(UITestResponse(json: json))
+	static func makeResponse(with json: [String : Any]) {
+		setResponse(UITestResponse(infoJSON: json))
 	}
 	
-	static func setRoutes(for server: StubServer) {
+	static func makeRoutes(for server: StubServer) {
 		responses.forEach { url, response in
 			server.route(HTTPMethod.allCases, url: url) { _,_ in response.currentStateResponse() }
 		}
@@ -77,8 +77,8 @@ public struct UITestServer {
 				return
 		}
 		
-		responses.forEach(UITestState.setResponse)
-		UITestState.setRoutes(for: server)
+		responses.forEach(UITestState.makeResponse)
+		UITestState.makeRoutes(for: server)
 		StubServer.instance = server
 	}
 	
