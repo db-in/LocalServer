@@ -8,6 +8,21 @@
 
 import Foundation
 
+// MARK: - Definitions -
+
+fileprivate extension UITestState {
+
+	static func setResponse(with json: [String : Any]) {
+		setResponse(UITestResponse(json: json))
+	}
+	
+	static func setRoutes(for server: StubServer) {
+		responses.forEach { url, response in
+			server.route(HTTPMethod.allCases, url: url) { _,_ in response.currentStateResponse() }
+		}
+	}
+}
+
 // MARK: - Type -
 
 /// This is the base for the UITest Local Server and it works in conjunction with `UITestResponse`
@@ -57,20 +72,13 @@ public struct UITestServer {
 		guard let data = Data(base64Encoded: environmentString),
 			let jsonData = data.inflate(),
 			let json = try? JSONSerialization.jsonObject(with: jsonData),
-			let array = json as? [[String : Any]],
-			!array.isEmpty else {
+			let responses = json as? [[String : Any]],
+			!responses.isEmpty else {
 				return
 		}
 		
-		array.forEach { json in
-			let response = UITestResponse(infoJSON: json)
-			UITestState.setResponse(response)
-		}
-		
-		UITestState.responses.forEach { url, response in
-			server.route(HTTPMethod.allCases, url: url) { _,_ in response.currentStateResponse() }
-		}
-		
+		responses.forEach(UITestState.setResponse)
+		UITestState.setRoutes(for: server)
 		StubServer.instance = server
 	}
 	

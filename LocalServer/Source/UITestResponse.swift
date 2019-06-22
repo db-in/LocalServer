@@ -8,6 +8,17 @@
 
 import Foundation
 
+fileprivate extension String {
+	
+	static let body = "body"
+	static let statusCode = "statusCode"
+	static let delay = "delay"
+	static let headers = "headers"
+	static let state = "state"
+	static let stateTo = "stateTo"
+	static let pattern = "pattern"
+}
+
 // MARK: - Type -
 
 /// The `UITestResponse` is the base response for `UITestServer`. It contains methods to send
@@ -32,25 +43,25 @@ public final class UITestResponse : StubResponse {
 	convenience init(infoJSON: [String : Any]) {
 		self.init()
 		
-		if let encodedString = infoJSON["body"] as? String {
+		if let encodedString = infoJSON[.body] as? String {
 			body = Data(base64Encoded: encodedString)
 		}
 		
-		if let newStatusCode = infoJSON["statusCode"] as? Int {
+		if let newStatusCode = infoJSON[.statusCode] as? Int {
 			statusCode = newStatusCode
 		}
 		
-		if let newDelay = infoJSON["delay"] as? Double {
+		if let newDelay = infoJSON[.delay] as? Double {
 			delay = newDelay
 		}
 		
-		if let newHeaders = infoJSON["headers"] as? [String : String] {
+		if let newHeaders = infoJSON[.headers] as? [String : String] {
 			headers = newHeaders
 		}
 		
-		state = infoJSON["state"] as? String
-		stateTo = infoJSON["stateTo"] as? String
-		pattern = infoJSON["pattern"] as? String
+		state = infoJSON[.state] as? String
+		stateTo = infoJSON[.stateTo] as? String
+		pattern = infoJSON[.pattern] as? String
 	}
 	
 // MARK: - Exposed Methods
@@ -99,18 +110,13 @@ public final class UITestResponse : StubResponse {
 	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
 	public override func send(to endPoint: String) {
 		
-		var infoJSON = [String : Any]()
-		
-		if let validBody = body {
-			infoJSON["body"] = validBody.base64EncodedString()
-		}
-		
-		infoJSON["statusCode"] = statusCode
-		infoJSON["delay"] = delay
-		infoJSON["headers"] = headers
-		infoJSON["state"] = state
-		infoJSON["stateTo"] = stateTo
-		infoJSON["pattern"] = endPoint
+		let infoJSON: [String : Any] = [.body : body?.base64EncodedString() as Any,
+										.statusCode : statusCode,
+										.delay : delay,
+										.headers : headers,
+										.state : state as Any,
+										.stateTo : stateTo as Any,
+										.pattern : endPoint]
 		
 		UITestServer.responses.append(infoJSON)
 	}
