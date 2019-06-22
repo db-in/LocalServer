@@ -27,6 +27,10 @@
 
 ## Installation
 
+You can use LocalServer straight into your Unit Testing target, without any extra code to your main target. Once the Unit Test runs within the main target.
+
+Only for UI Testing targets, it's required some extra code in the main target.
+
 ### Using [CocoaPods](https://cocoapods.org)
 
 Add to your **Podfile** file
@@ -71,6 +75,16 @@ The features provided are:
 The Stub Server is the base for the Local Server. It can intercept any network call made with the URLSession.
 
 ![Stub Server](./Resources/StubServer.png)
+
+Straight forward to any HTTP methods:
+
+```swift
+StubResponse()
+    .withStatusCode(201)
+    .send(to: "https://apple.com")
+```
+
+Or a more granular and specific approach, defining for each HTTP method a different response:
 
 ```swift
 import LocalServer
