@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "LocalServer"
-  s.version = "1.4.0"
+  s.version = "1.5.0"
   s.summary = "Micro Feature"
   s.description = <<-DESC
                   LocalServer is resposible for ...
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = 'Diney Bomfim'
   s.source = { :git => "https://github.com/db-in/LocalServer.git", :tag => s.version, :submodules => true }
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
   s.requires_arc = true
   s.ios.deployment_target = '10.0'

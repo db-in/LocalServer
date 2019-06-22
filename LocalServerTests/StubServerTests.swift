@@ -11,6 +11,10 @@ import XCTest
 
 // MARK: - Definitions -
 
+enum CustomError : Error {
+	case generic
+}
+
 // MARK: - Type -
 
 class StubServerTests : XCTestCase {
@@ -116,6 +120,28 @@ class StubServerTests : XCTestCase {
 		URLSession.shared.dataTask(with: request) { data, response, error in
 			guard let httpResponse = response as? HTTPURLResponse else { return }
 			XCTAssertEqual(httpResponse.statusCode, 999)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
+	}
+	
+	func testStubServer_WithErrorResponse_ShouldReturnTheDefinedError() {
+		
+		let server = StubServer()
+		
+		server.route(HTTPMethod.allCases, url: ".*") { (request, parameters) -> StubResponse in
+			return StubResponse().withError(CustomError.generic)
+		}
+		
+		StubServer.instance = server
+		
+		let expect = expectation(description: "\(#function)")
+		var request = URLRequest(url: .httpbinPOST)
+		request.httpMethod = HTTPMethod.PUT.rawValue
+		
+		URLSession.shared.dataTask(with: request) { data, response, error in
+			XCTAssertNotNil(error)
 			expect.fulfill()
 			}.resume()
 		

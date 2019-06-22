@@ -52,6 +52,11 @@ class StubURLHTTPProtocol : URLProtocol {
 			
 			guard !self.stopped else { return }
 			
+			if let error = stubResponse.error {
+				self.client?.urlProtocol(self, didFailWithError: error)
+				return
+			}
+			
 			let response = HTTPURLResponse(url: self.request.url!,
 										   statusCode: stubResponse.statusCode,
 										   httpVersion: "HTTP/1.1",

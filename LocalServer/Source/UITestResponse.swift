@@ -102,4 +102,16 @@ public final class UITestResponse : StubResponse {
 		stateTo = finishingState
 		return self
 	}
+	
+// MARK: - Overriden Methods
+	
+	/// `UITestResponse` can't provide custom error through the bridge. Use the `StubResponse`
+	///	directly into the main target in order to provide iOS custom network error.
+	///
+	/// - Parameter error: The error to be returned on the network call.
+	/// - Returns: The same response with a new error.
+	override public func withError(_ newError: Error?) -> Self {
+		assertionFailure("UITestResponse can't provide error. Use the StubResponse directly.")
+		return self
+	}
 }

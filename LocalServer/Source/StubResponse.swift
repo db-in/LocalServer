@@ -17,10 +17,11 @@ open class StubResponse {
 
 // MARK: - Properties
 
-	var statusCode: Int = 200
-	var body: Data?
-	var headers = [String : String]()
 	var delay: Double = 0.0
+	var statusCode: Int = 200
+	var headers = [String : String]()
+	var body: Data?
+	var error: Error?
 	
 // MARK: - Constructors
 
@@ -72,15 +73,6 @@ open class StubResponse {
 		return self
 	}
 	
-	/// Returns the same response object with a new body.
-	///
-	/// - Parameter data: A Data as the new body.
-	/// - Returns: The same response with a new body.
-	open func withBody(_ data: Data?) -> Self {
-		body = data
-		return self
-	}
-
 	/// Returns the same response object with a new status code.
 	///
 	/// - Parameter code: A String as the new status code.
@@ -89,13 +81,31 @@ open class StubResponse {
 		statusCode = code
 		return self
 	}
-
+	
 	/// Returns the same response object with a new headers.
 	///
 	/// - Parameter httpHeaders: A Dictionary with the new headers.
 	/// - Returns: The same response with a header.
 	open func withHeaders(_ httpHeaders: [String: String]) -> Self {
 		for (key, value) in httpHeaders { headers[key] = value }
+		return self
+	}
+	
+	/// Returns the same response object with a new body.
+	///
+	/// - Parameter data: A Data as the new body.
+	/// - Returns: The same response with a new body.
+	open func withBody(_ data: Data?) -> Self {
+		body = data
+		return self
+	}
+	
+	/// Returns the same response object with a new error.
+	///
+	/// - Parameter error: The error to be returned on the network call.
+	/// - Returns: The same response with a new error.
+	open func withError(_ newError: Error?) -> Self {
+		error = newError
 		return self
 	}
 }
