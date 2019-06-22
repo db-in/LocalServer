@@ -31,7 +31,7 @@ class ModuleIntegrationTestsSpec : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .httpbin200)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 999)
 			expect.fulfill()
 		}.resume()
@@ -45,14 +45,48 @@ class ModuleIntegrationTestsSpec : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .httpbin200)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertNotEqual(httpResponse.statusCode, 999)
 			expect.fulfill()
 			}.resume()
 		
 		wait(for: [expect], timeout: 15.0)
 	}
+	
+	func test_LocalServer_WithStubResponseShortcut_ShouldReturn900ToGoogleAndAnythingBut900ToOthers() {
+		
+		let statusCode = 900
+		let expect = expectation(description: "\(#function)")
+		let group = DispatchGroup()
+		
+		StubResponse()
+			.withStatusCode(statusCode)
+			.send(to: "google")
+		
+		group.enter()
+		URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://google.com")!)) { data, response, error in
+			let httpResponse = response as! HTTPURLResponse
+			XCTAssertEqual(httpResponse.statusCode, statusCode)
+			group.leave()
+			}.resume()
+		
+		group.enter()
+		URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://apple.com")!)) { data, response, error in
+			let httpResponse = response as! HTTPURLResponse
+			XCTAssertNotEqual(httpResponse.statusCode, statusCode)
+			group.leave()
+			}.resume()
+		
+		group.notify(queue: DispatchQueue.main, execute: {
+			expect.fulfill()
+		})
+		
+		wait(for: [expect], timeout: 15.0)
+	}
 
 // MARK: - Overridden Methods
-
+	
+	override func tearDown() {
+		TestLocalServer.stopLocalServer()
+	}
 }

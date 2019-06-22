@@ -11,6 +11,10 @@ import XCTest
 
 // MARK: - Definitions -
 
+enum FakeError : Error {
+	case generic
+}
+
 // MARK: - Type -
 
 class UITestResponseTests : XCTestCase {
@@ -52,7 +56,7 @@ class UITestResponseTests : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 203)
 			XCTAssertEqual(String(data: data!, encoding: .utf8), "{\"keyA\":\"valueA\"}")
 			expect.fulfill()
@@ -91,10 +95,10 @@ class UITestResponseTests : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 201)
 			URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://github.com")!)) { data, response, error in
-				guard let httpResponse = response as? HTTPURLResponse else { return }
+				let httpResponse = response as! HTTPURLResponse
 				XCTAssertEqual(httpResponse.statusCode, 203)
 				expect.fulfill()
 				}.resume()
@@ -114,7 +118,7 @@ class UITestResponseTests : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertNotEqual(httpResponse.statusCode, 203)
 			expect.fulfill()
 			}.resume()
@@ -151,15 +155,15 @@ class UITestResponseTests : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 203)
 			
 			URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-				guard let httpResponse = response as? HTTPURLResponse else { return }
+				let httpResponse = response as! HTTPURLResponse
 				XCTAssertEqual(httpResponse.statusCode, 204)
 				
 				URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-					guard let httpResponse = response as? HTTPURLResponse else { return }
+					let httpResponse = response as! HTTPURLResponse
 					XCTAssertEqual(httpResponse.statusCode, 205)
 					expect.fulfill()
 					}.resume()
@@ -194,15 +198,15 @@ class UITestResponseTests : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 203)
 			
 			URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-				guard let httpResponse = response as? HTTPURLResponse else { return }
+				let httpResponse = response as! HTTPURLResponse
 				XCTAssertEqual(httpResponse.statusCode, 204)
 				
 				URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-					guard let httpResponse = response as? HTTPURLResponse else { return }
+					let httpResponse = response as! HTTPURLResponse
 					XCTAssertEqual(httpResponse.statusCode, 404)
 					expect.fulfill()
 					}.resume()
@@ -280,6 +284,26 @@ class UITestResponseTests : XCTestCase {
 		UITestServer.start()
 		XCTAssertFalse(UITestServer.responses.isEmpty)
 		UITestServer.stop()
+	}
+	
+	func testUITestServer_WithError_ShouldDiscardErrors() {
+		
+		UITestResponse()
+			.withStatusCode(999)
+			.withError(FakeError.generic)
+			.send(to: ".*")
+		
+		UITestServer.start()
+		
+		let expect = expectation(description: "\(#function)")
+		
+		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
+			let httpResponse = response as! HTTPURLResponse
+			XCTAssertEqual(httpResponse.statusCode, 999)
+			expect.fulfill()
+			}.resume()
+		
+		wait(for: [expect], timeout: 5.0)
 	}
 	
 // MARK: - Overridden Methods

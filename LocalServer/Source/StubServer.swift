@@ -65,6 +65,7 @@ public class StubServer {
 // MARK: - Properties
 	
 	fileprivate var routes = [HTTPMethod : Router]()
+	static var shared: StubServer = { StubServer() }()
 	
 	/// Current instance of any Local Server.
 	public static var instance: LocalServerDelegate? {

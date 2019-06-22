@@ -36,7 +36,7 @@ class StubServerTests : XCTestCase {
 		let expect = expectation(description: "\(#function)")
 		
 		URLSession.shared.dataTask(with: URLRequest(url: .google)) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, server.defaultResponse.statusCode)
 			expect.fulfill()
 			}.resume()
@@ -76,7 +76,7 @@ class StubServerTests : XCTestCase {
 		let getRequest = URLRequest(url: .httpbinPOST)
 		
 		URLSession.shared.dataTask(with: getRequest) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 999)
 			expect.fulfill()
 			}.resume()
@@ -95,7 +95,7 @@ class StubServerTests : XCTestCase {
 		postRequest.httpMethod = HTTPMethod.POST.rawValue
 		
 		URLSession.shared.dataTask(with: postRequest) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, server.defaultResponse.statusCode)
 			expect.fulfill()
 			}.resume()
@@ -118,7 +118,7 @@ class StubServerTests : XCTestCase {
 		request.httpMethod = HTTPMethod.PUT.rawValue
 		
 		URLSession.shared.dataTask(with: request) { data, response, error in
-			guard let httpResponse = response as? HTTPURLResponse else { return }
+			let httpResponse = response as! HTTPURLResponse
 			XCTAssertEqual(httpResponse.statusCode, 999)
 			expect.fulfill()
 			}.resume()
@@ -147,7 +147,41 @@ class StubServerTests : XCTestCase {
 		
 		wait(for: [expect], timeout: 5.0)
 	}
-
+	
+	func testStubServer_WithStubResponseShortcut_ShouldReturn900ToGoogleAndAnythingBut900ToOthers() {
+		
+		let statusCode = 900
+		let expect = expectation(description: "\(#function)")
+		let group = DispatchGroup()
+		
+		StubResponse()
+			.withStatusCode(statusCode)
+			.send(to: "google")
+		
+		group.enter()
+		URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://google.com")!)) { data, response, error in
+			let httpResponse = response as! HTTPURLResponse
+			XCTAssertEqual(httpResponse.statusCode, statusCode)
+			group.leave()
+			}.resume()
+		
+		group.enter()
+		URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://apple.com")!)) { data, response, error in
+			let httpResponse = response as! HTTPURLResponse
+			XCTAssertNotEqual(httpResponse.statusCode, statusCode)
+			group.leave()
+			}.resume()
+		
+		group.notify(queue: DispatchQueue.main, execute: {
+			expect.fulfill()
+		})
+		
+		wait(for: [expect], timeout: 15.0)
+	}
+	
 // MARK: - Overridden Methods
 	
+	override func tearDown() {
+		StubServer.instance = nil
+	}
 }

@@ -55,29 +55,6 @@ public final class UITestResponse : StubResponse {
 	
 // MARK: - Exposed Methods
 	
-	/// This function must be called after creating and providing all the information to a
-	/// response object. It'll process the information internally in the local server and
-	/// prepare it to be used in the main application.
-	///
-	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
-	public func send(to endPoint: String) {
-		
-		var infoJSON = [String : Any]()
-		
-		if let validBody = body {
-			infoJSON["body"] = validBody.base64EncodedString()
-		}
-		
-		infoJSON["statusCode"] = statusCode
-		infoJSON["delay"] = delay
-		infoJSON["headers"] = headers
-		infoJSON["state"] = state
-		infoJSON["stateTo"] = stateTo
-		infoJSON["pattern"] = endPoint
-		
-		UITestServer.responses.append(infoJSON)
-	}
-	
 	/// Defines the initial state for this response. It means this response will not take
 	/// effect unless its initial state is reached by some other response. When no initial state
 	/// is defined it means the response will be at the root of the state chain.
@@ -113,5 +90,28 @@ public final class UITestResponse : StubResponse {
 	override public func withError(_ newError: Error?) -> Self {
 		assertionFailure("UITestResponse can't provide error. Use the StubResponse directly.")
 		return self
+	}
+	
+	/// This function must be called after creating and providing all the information to a
+	/// response object. It'll process the information internally in the local server and
+	/// prepare it to be used in the main application.
+	///
+	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
+	public override func send(to endPoint: String) {
+		
+		var infoJSON = [String : Any]()
+		
+		if let validBody = body {
+			infoJSON["body"] = validBody.base64EncodedString()
+		}
+		
+		infoJSON["statusCode"] = statusCode
+		infoJSON["delay"] = delay
+		infoJSON["headers"] = headers
+		infoJSON["state"] = state
+		infoJSON["stateTo"] = stateTo
+		infoJSON["pattern"] = endPoint
+		
+		UITestServer.responses.append(infoJSON)
 	}
 }
