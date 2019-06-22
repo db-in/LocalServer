@@ -110,15 +110,13 @@ public final class UITestResponse : StubResponse {
 	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
 	public override func send(to endPoint: String) {
 		
-		var infoJSON = [String : Any]()
-
-		infoJSON[.body] = body?.base64EncodedString()
-		infoJSON[.statusCode] = statusCode
-		infoJSON[.delay] = delay
-		infoJSON[.headers] = headers
-		infoJSON[.state] = state
-		infoJSON[.stateTo] = stateTo
-		infoJSON[.pattern] = endPoint
+		let infoJSON: [String : Any] = [.body : body?.base64EncodedString() as Any,
+										.statusCode : statusCode,
+										.delay : delay,
+										.headers : headers,
+										.state : state as Any,
+										.stateTo : stateTo as Any,
+										.pattern : endPoint]
 		
 		UITestServer.responses.append(infoJSON)
 	}
