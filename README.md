@@ -137,6 +137,9 @@ StubResponse()
     .send(to: "https://apple.com")
 ```
 
+IMPORTANT: When defining the mock URL for the same HTTP method, remember that the URL uses **regex** to evaluate, which means regexes may override each other mistakenly and cause wrong behaviors.
+Also the `send(to:)` is a convenient method and thus uses a shared server under the hood. It's reset everytime you set the `StubServer.instance` to `nil`. 
+
 Once the `StubServer.instance` is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to `nil`, which is the default value.
 
 #### UITest Server

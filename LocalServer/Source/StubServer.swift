@@ -70,6 +70,9 @@ public class StubServer {
 	/// Current instance of any Local Server.
 	public static var instance: LocalServerDelegate? {
 		didSet {
+			if let old = oldValue as? StubServer, old === shared, instance == nil {
+				old.routes = [:]
+			}
 			exchangeOnce()
 		}
 	}

@@ -35,9 +35,9 @@ class SampleAppUnitTests : XCTestCase {
 			.send(to: ".*")
 		
 		ServiceManager.shared.loadRandomUser { (user, error) in
-			XCTAssertEqual(user?.fullName, "Mr Brent Robertson")
-			XCTAssertEqual(user?.email, "brent.robertson36@example.com")
-			XCTAssertEqual(user?.picture?.medium, "https://randomuser.me/api/portraits/med/men/14.jpg")
+			XCTAssertEqual(user!.fullName, "Mr Brent Robertson")
+			XCTAssertEqual(user!.email, "brent.robertson36@example.com")
+			XCTAssertEqual(user!.picture!.medium, "https://randomuser.me/api/portraits/med/men/14.jpg")
 			expect.fulfill()
 		}
 		
@@ -61,5 +61,8 @@ class SampleAppUnitTests : XCTestCase {
 	}
 
 // MARK: - Overridden Methods
-
+	
+	override func tearDown() {
+		StubServer.instance = nil
+	}
 }
