@@ -9,7 +9,9 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Description
-**LocalServer** is a framework that provides various options to create a Swift Local Server, that can independently run on simulators and devices, supporting Xcode Parallel Testing. It's made in Swift to create Stub Servers, UITest Servers and providing an easy to use Mock capabilities to create Testing doubles (fakes, stubs, spies and mocks). It supports all Apple platform iOS, MacOS, WatchOS and TVOS.
+**LocalServer** is a framework that provides various options to create a Swift Stub Local Server right into the code, that can independently run on simulators and devices, supporting Xcode Parallel Testing. It's made in Swift to create Stub Servers, UITest Servers and providing an easy way to Mock capabilities to create Testing doubles (fakes, stubs, spies and mocks). It supports all Apple platform iOS, MacOS, WatchOS and TVOS.
+
+It's also fully compatible with most the Networking libraries like Alamofire, Moya, AFNetworking or the native URLSession and NSURLConnection. Check the **Programming Guide** section for examples.
 
 **Features**
 
@@ -68,26 +70,49 @@ let package = Package(
 ## Programming Guide
 The features provided are:
 
+- Third party Networking Libraries
 - Stub Server
 - UITest Server
+
+#### Third party Networking Libraries (Alamofire, Moya, and others)
+
+Mocking your **Unit Test Target** without modifying a single line of code in yourmain target! You don't need to polute your production code with testing libraries or create any architecture specifically for allowing testability.
+
+Keep your production networking code the way you prefer and just to your **Unit Test Target** you add:
+
+```swift
+import LocalServer
+
+...
+
+StubResponse(json: ["param" : "value"])
+    .withStatusCode(200)
+    .send(to: "apple")
+```
+
+This code above is enough to mock any calls matching anything containing `"apple"` in the URL and returning 200 HTTP status code with the JSON mock defined above.
 
 #### Stub Server
 The Stub Server is the base for the Local Server. It can intercept any network call made with the URLSession.
 
 ![Stub Server](./Resources/StubServer.png)
 
-Straight forward to any HTTP methods:
+These are some of the handful functions for creating `StubResponse`:
 
 ```swift
-StubResponse()
-    .withStatusCode(201)
-    .send(to: "https://apple.com")
+StubResponse(string: "UTF8 string to become body")
+StubResponse(json: ["param" : "value", "number": 1])
+StubResponse(filename: "file", ofType: "html")
+StubResponse(filename: "file", ofType: "json", bundle: myBundle)
+StubResponse(data: myBodyData)
 ```
 
-Or a more granular and specific approach, defining for each HTTP method a different response:
+For a more granular and specific approach, defining a different response for each HTTP:
 
 ```swift
 import LocalServer
+
+...
 
 func startMyLocalServer() {
     let server = StubServer()
@@ -104,17 +129,15 @@ func startMyLocalServer() {
 }
 ```
 
-Once the `StubServer.instance` is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to `nil`, which is the default value.
-
-These are some of the handful functions for creating `StubResponse`:
+You can also test Network errors:
 
 ```swift
-StubResponse(string: "UTF8 string to become body")
-StubResponse(json: ["param" : "value", "number": 1])
-StubResponse(filename: "file", ofType: "html")
-StubResponse(filename: "file", ofType: "json", bundle: myBundle)
-StubResponse(data: myBodyData)
+StubResponse()
+    .withError(MyMockNetworkError.noInternet)
+    .send(to: "https://apple.com")
 ```
+
+Once the `StubServer.instance` is defined as non-nil, it will spin the Local Server. To stop the Local Server just set it back to `nil`, which is the default value.
 
 #### UITest Server
 As per Apple design, the UITest target runs on a separated application, which means it can't have access to the code in the main application or perform any programaticaly action. The UITest Server used the `ProcessInfo` bridge to send data from the UITest target to the main application on every launch.
