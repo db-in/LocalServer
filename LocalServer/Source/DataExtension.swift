@@ -39,8 +39,11 @@ extension Data {
 	}
 	
 	private func perform(operation: compression_stream_operation,
-						 source: UnsafePointer<UInt8>) -> Data? {
-		
+						 source: UnsafeRawBufferPointer) -> Data? {
+        guard let sourcePrt = source.bindMemory(to: UInt8.self).baseAddress else {
+            return nil
+        }
+        
 		let sourceSize = count
 		guard operation == COMPRESSION_STREAM_ENCODE || sourceSize > 0 else { return nil }
 		
@@ -56,7 +59,7 @@ extension Data {
 		let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
 		defer { buffer.deallocate() }
 		
-		stream.src_ptr  = source
+		stream.src_ptr  = sourcePrt
 		stream.src_size = sourceSize
 		stream.dst_ptr  = buffer
 		stream.dst_size = bufferSize
@@ -65,7 +68,9 @@ extension Data {
 	}
 	
 	func deflate() -> Data? {
-		return withUnsafeBytes { perform(operation: COMPRESSION_STREAM_ENCODE, source: $0) }
+		return withUnsafeBytes {
+            perform(operation: COMPRESSION_STREAM_ENCODE, source: $0)
+        }
 	}
 	
 	func inflate() -> Data? {
