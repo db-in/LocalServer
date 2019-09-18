@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode10.1
+osx_image: xcode10.3
 branches:
   only:
     - master
@@ -7,9 +7,9 @@ env:
   global:
   - WORKSPACE=LocalServer.xcworkspace
   - SCHEME=LocalServer
-  - DESTINATION='platform=iOS Simulator,name=iPhone X,OS=12.1'
+  - DESTINATION='platform=iOS Simulator,name=iPhone X,OS=12.4'
 before_install:
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --no-document --quiet
 script:
   - set -o pipefail
   - xcodebuild -version
