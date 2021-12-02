@@ -80,7 +80,8 @@ public class StubServer {
 	/// The default response for this server in case there is no given match for the response.
 	public var defaultResponse: StubResponse = StubResponse().withStatusCode(404)
 	
-	/// When `true` this server will allow non-set routes to go through real requests. By default it's `false`.
+	/// When `true` this server will allow non-set routes to go through real requests.
+	/// By default it's `false`.
 	public var allowRealRequests: Bool
 
 // MARK: - Constructors
