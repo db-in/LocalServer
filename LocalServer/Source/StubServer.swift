@@ -65,7 +65,7 @@ public class StubServer {
 // MARK: - Properties
 	
 	fileprivate var routes = [HTTPMethod : Router]()
-	static var shared: StubServer = { StubServer() }()
+	static var shared: StubServer = { StubServer(allowRealRequests: true) }()
 	
 	/// Current instance of any Local Server.
 	public static var instance: LocalServerDelegate? {
@@ -78,12 +78,17 @@ public class StubServer {
 	}
 	
 	/// The default response for this server in case there is no given match for the response.
-	public var defaultResponse = StubResponse().withStatusCode(404)
+	public var defaultResponse: StubResponse = StubResponse().withStatusCode(404)
+	
+	/// When `true` this server will allow non-set routes to go through real requests. By default it's `false`.
+	public var allowRealRequests: Bool
 
 // MARK: - Constructors
 	
-	/// The default initializer for an empty StubServer
-	public init() { }
+	/// The default initializer for an empty StubServer.
+	public init(allowRealRequests: Bool = false) {
+		self.allowRealRequests = allowRealRequests
+	}
 	
 // MARK: - Protected Methods
 	
@@ -126,6 +131,6 @@ extension StubServer : LocalServerDelegate {
 			return response
 		}
 		
-		return defaultResponse
+		return allowRealRequests ? StubResponse(withReal: urlRequest) : defaultResponse
 	}
 }

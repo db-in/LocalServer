@@ -61,6 +61,27 @@ open class StubResponse {
 		}
 	}
 	
+	/// Initializes the response with a real request being performed.
+	///
+	/// - Parameter request: URLRequest
+	init(withReal request: URLRequest) {
+		let semaphore = DispatchSemaphore(value: 0)
+		
+		URLSession.realShared.dataTask(with: request) {(data, response, error) in
+			
+			if let httpResponse = response as? HTTPURLResponse {
+				self.statusCode = httpResponse.statusCode
+				self.headers = (httpResponse.allHeaderFields as? [String : String]) ?? self.headers
+			}
+			
+			self.body = data
+			self.error = error
+			
+			semaphore.signal()
+		}.resume()
+		semaphore.wait()
+	}
+	
 // MARK: - Exposed Methods
 
 	/// Returns the same response object with a new delay. The delay can be used to simulate

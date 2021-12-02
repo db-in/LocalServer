@@ -29,7 +29,7 @@ class WebPageScreen : Screen {
 	
 	@discardableResult
 	func waitForWebView() -> Bool {
-		return exists(webView)
+		return webView.waitForExistence(timeout: 10)
 	}
 	
 	func isGreetingsShown() -> Bool {

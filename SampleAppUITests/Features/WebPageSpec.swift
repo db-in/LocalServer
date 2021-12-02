@@ -31,7 +31,6 @@ final class WebPageSpec : XCTestCase {
 		
 		then("I should see the user detail") {
 			XCTAssert(main.on(screen: WebPageScreen.self).isGreetingsShown())
-			XCTAssert(main.on(screen: WebPageScreen.self).isTextShown(UserType.female.shortName))
 		}
 	}
 }

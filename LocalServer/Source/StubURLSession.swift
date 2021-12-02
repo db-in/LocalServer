@@ -38,6 +38,8 @@ extension URLSession : Exchangeable {
 		return URLSession.stubShared
 	}
 	
+	class var realShared: URLSession { .stubShared }
+	
 	static func exchange() {
 		exchangeClass(#selector(getter: shared), #selector(getter: stubShared))
 	}
