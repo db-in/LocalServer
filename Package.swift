@@ -1,3 +1,5 @@
+// swift-tools-version:5.7
+
 import PackageDescription
 
 let package = Package(
@@ -6,16 +8,18 @@ let package = Package(
         .library(
             name: "LocalServer",
             targets: ["LocalServer"]
-        ),
+        )
     ],
     targets: [
         .target(
             name: "LocalServer",
-            dependencies: []
+            dependencies: [],
+            path: "LocalServer/Source"
         ),
         .testTarget(
             name: "LocalServerTests",
-            dependencies: ["LocalServer"]
-        ),
+            dependencies: ["LocalServer"],
+            path: "LocalServerTests"
+        )
     ]
 )
