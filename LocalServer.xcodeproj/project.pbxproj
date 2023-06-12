@@ -29,6 +29,17 @@
 			name = Jazzy;
 			productName = Jazzy;
 		};
+		60CFD2922A37437D00C96629 /* Publishing */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 60CFD2932A37437D00C96629 /* Build configuration list for PBXAggregateTarget "Publishing" */;
+			buildPhases = (
+				60CFD2962A37438700C96629 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Publishing;
+			productName = Publishing;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -186,6 +197,7 @@
 		60C76EA8222D9A7D002C8111 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = SOURCE_ROOT; };
 		60C76EA9222D9A7D002C8111 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		60C76EAA222D9A7D002C8111 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = SOURCE_ROOT; };
+		60CFD2912A37437200C96629 /* publishing.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = publishing.sh; sourceTree = "<group>"; };
 		60D398BA222A7094001BA01B /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		60D49CAA2229ABD20038B657 /* StubResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponseTests.swift; sourceTree = "<group>"; };
 		60D49CAC2229B0FA0038B657 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
@@ -298,15 +310,16 @@
 		60424F1A21AD74C100F025ED = {
 			isa = PBXGroup;
 			children = (
+				DA3FB948D6BC75B58945C187 /* Frameworks */,
 				60424F2A21AD74C100F025ED /* LocalServer */,
 				60424F4021AD74C100F025ED /* LocalServerTests */,
 				60424F4C21AD74C100F025ED /* ModuleIntegrationTests */,
+				15071D50F9E8340E360C249E /* Pods */,
+				60424F2521AD74C100F025ED /* Products */,
 				60E7DBC4223393DE00B744CB /* SampleApp */,
 				60E7DBDB223393E100B744CB /* SampleAppUITests */,
 				6018A96D22BF55AF007FD5FC /* SampleAppUnitTests */,
-				60424F2521AD74C100F025ED /* Products */,
-				15071D50F9E8340E360C249E /* Pods */,
-				DA3FB948D6BC75B58945C187 /* Frameworks */,
+				60CFD2902A37437200C96629 /* Scripts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -416,6 +429,14 @@
 				605E4A63223431D7003A0864 /* UserService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		60CFD2902A37437200C96629 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				60CFD2912A37437200C96629 /* publishing.sh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		60E7DBC4223393DE00B744CB /* SampleApp */ = {
@@ -673,6 +694,9 @@
 					60424F4721AD74C100F025ED = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					60CFD2922A37437D00C96629 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					60E7DBC2223393DE00B744CB = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -698,6 +722,7 @@
 				60424F2321AD74C100F025ED /* LocalServer */,
 				60424F2721AD74C100F025ED /* SwiftLint */,
 				60424F3721AD74C100F025ED /* Jazzy */,
+				60CFD2922A37437D00C96629 /* Publishing */,
 				60424F3B21AD74C100F025ED /* LocalServerTests */,
 				60424F4721AD74C100F025ED /* ModuleIntegrationTests */,
 				60E7DBC2223393DE00B744CB /* SampleApp */,
@@ -848,6 +873,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "jazzy -o \"./docs\" --podspec \"${PROJECT_NAME}.podspec\" --github_url \"https://github.com/db-in/LocalServer\" --clean\n";
+		};
+		60CFD2962A37438700C96629 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Scripts/publishing.sh\"\n";
 		};
 		7D04AB99BD4E5D2473FE3903 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1593,6 +1635,24 @@
 			};
 			name = Release;
 		};
+		60CFD2942A37437D00C96629 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5QKC5ZBYV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		60CFD2952A37437D00C96629 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5QKC5ZBYV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		60E7DBDF223393E100B744CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D74263D7A105B0C458691B7A /* Pods-SampleApp.debug.xcconfig */;
@@ -1827,6 +1887,15 @@
 			buildConfigurations = (
 				60424F5F21AD74C100F025ED /* Debug */,
 				60424F6021AD74C100F025ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60CFD2932A37437D00C96629 /* Build configuration list for PBXAggregateTarget "Publishing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60CFD2942A37437D00C96629 /* Debug */,
+				60CFD2952A37437D00C96629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
