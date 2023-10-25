@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "LocalServer"
-  s.version = "2.1.1"
+  s.version = "2.1.0"
   s.summary = "Micro Feature"
   s.description = <<-DESC
                   LocalServer is resposible for ...
@@ -17,6 +17,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '11.0'
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '7.0'
+  s.user_target_xcconfig = { 'GENERATE_INFOPLIST_FILE' => 'YES' }
+  s.pod_target_xcconfig = { 'GENERATE_INFOPLIST_FILE' => 'YES' }
+  s.info_plist = { 'CFBundleShortVersionString' => '#{s.version}' }
 
   s.public_header_files = 'LocalServer/**/*.h'
   s.source_files = 'LocalServer/**/*.{h,m,swift}'
