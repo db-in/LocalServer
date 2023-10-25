@@ -17,8 +17,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '11.0'
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '7.0'
-  s.user_target_xcconfig = { 'GENERATE_INFOPLIST_FILE' => 'YES' }
-  s.pod_target_xcconfig = { 'GENERATE_INFOPLIST_FILE' => 'YES' }
 
   s.public_header_files = 'LocalServer/**/*.h'
   s.source_files = 'LocalServer/**/*.{h,m,swift}'
