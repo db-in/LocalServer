@@ -1,6 +1,6 @@
 {
   "name": "LocalServer",
-  "version": "1.5.0",
+  "version": "2.1.2",
   "summary": "Micro Feature",
   "description": "LocalServer is resposible for ...",
   "homepage": "https://github.com/db-in/LocalServer.git",
@@ -12,16 +12,24 @@
   "authors": "Diney Bomfim",
   "source": {
     "git": "https://github.com/db-in/LocalServer.git",
-    "tag": "1.5.0",
+    "tag": "2.1.2",
     "submodules": true
   },
   "swift_versions": "5.0",
   "requires_arc": true,
   "platforms": {
-    "ios": "10.0",
-    "osx": "10.11",
-    "tvos": "10.0",
-    "watchos": "2.0"
+    "ios": "15.0",
+    "osx": "12.0",
+    "tvos": "15.0",
+    "watchos": "9.0"
+  },
+  "user_target_xcconfig": {
+    "GENERATE_INFOPLIST_FILE": "YES",
+    "MARKETING_VERSION": "2.1.2"
+  },
+  "pod_target_xcconfig": {
+    "GENERATE_INFOPLIST_FILE": "YES",
+    "MARKETING_VERSION": "2.1.2"
   },
   "public_header_files": "LocalServer/**/*.h",
   "source_files": "LocalServer/**/*.{h,m,swift}",

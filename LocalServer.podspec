@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "LocalServer"
-  s.version = "2.1.2"
+  s.version = "2.1.3"
   s.summary = "Micro Feature"
   s.description = <<-DESC
                   LocalServer is resposible for ...
@@ -13,10 +13,10 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
 
   s.requires_arc = true
-  s.ios.deployment_target = '13.0'
-  s.osx.deployment_target = '11.0'
-  s.tvos.deployment_target = '13.0'
-  s.watchos.deployment_target = '7.0'
+  s.ios.deployment_target = '15.0'
+  s.osx.deployment_target = '12.0'
+  s.tvos.deployment_target = '15.0'
+  s.watchos.deployment_target = '9.0'
   s.user_target_xcconfig = { 'GENERATE_INFOPLIST_FILE' => 'YES', 'MARKETING_VERSION' => "#{s.version}" }
   s.pod_target_xcconfig = { 'GENERATE_INFOPLIST_FILE' => 'YES', 'MARKETING_VERSION' => "#{s.version}"  }
 
