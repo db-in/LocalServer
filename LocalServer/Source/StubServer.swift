@@ -10,6 +10,43 @@ import Foundation
 
 // MARK: - Definitions -
 
+/// Extension providing convenient access to HTTP request body data
+public extension URLRequest {
+	
+	/// Retrieves the complete body data from the URL request
+	///
+	/// This computed property attempts to get the request body data from either the `httpBody` property
+	/// or by reading from the `httpBodyStream` if available. This provides a unified way to access
+	/// request body data regardless of how it was set.
+	///
+	/// - Returns: The complete body data as `Data?`, or `nil` if no body data is available
+	var bodyData: Data? { httpBody ?? httpBodyStream?.readAllData() }
+}
+
+/// Extension providing convenient data reading functionality for input streams
+public extension InputStream {
+	
+	/// Reads all available data from the input stream
+	///
+	/// This method opens the stream, reads all available data in chunks of 1024 bytes,
+	/// and returns the complete data. The stream is automatically closed after reading
+	/// is complete, regardless of whether the operation succeeds or fails.
+	///
+	/// - Returns: A `Data` object containing all the data read from the stream
+	func readAllData() -> Data {
+		open()
+		defer { close() }
+		var data = Data()
+		var buffer = [UInt8](repeating: 0, count: 1024)
+		while hasBytesAvailable {
+			let count = read(&buffer, maxLength: buffer.count)
+			guard count > 0 else { break }
+			data.append(buffer, count: count)
+		}
+		return data
+	}
+}
+
 /// The HTTP Methods as per W3C consortium standards.
 /// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
 public enum HTTPMethod : String, CaseIterable {
@@ -65,7 +102,7 @@ public class StubServer {
 // MARK: - Properties
 	
 	fileprivate var routes = [HTTPMethod : Router]()
-	static var shared: StubServer = { StubServer(allowRealRequests: true) }()
+	public static var shared: StubServer = { StubServer(allowRealRequests: true) }()
 	
 	/// Current instance of any Local Server.
 	public static var instance: LocalServerDelegate? {

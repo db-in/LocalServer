@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "LocalServer"
-  s.version = "2.1.5"
+  s.version = "2.1.6"
   s.summary = "Micro Feature"
   s.description = <<-DESC
                   LocalServer is resposible for ...
