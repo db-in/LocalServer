@@ -134,11 +134,10 @@ open class StubResponse {
 	/// `StubServer`. It will automatically switch any previous defined server in order to
 	/// prioritize the internal shared server.
 	///
-	///	The response will be triggerred to any HTTP method.
-	///
 	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
-	open func send(to endPoint: String) {
-		StubServer.shared.route(HTTPMethod.allCases, url: endPoint) { _,_ in self }
+	/// - Parameter methods: The HTTP methods associated with the request.
+	open func send(to endPoint: String, methods: [HTTPMethod] = HTTPMethod.allCases) {
+		StubServer.shared.route(methods, url: endPoint) { _,_ in self }
 		StubServer.instance = StubServer.shared
 	}
 }

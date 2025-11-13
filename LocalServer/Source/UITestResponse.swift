@@ -93,23 +93,12 @@ public final class UITestResponse : StubResponse {
 	
 // MARK: - Overriden Methods
 	
-	/// `UITestResponse` can't provide custom error through the bridge. Use the `StubResponse`
-	///	directly into the main target in order to provide iOS custom network error.
-	///
-	/// - Parameter error: The error to be returned on the network call.
-	/// - Returns: The same response with a new error.
-	override public func withError(_ newError: Error?) -> Self {
+	public override func withError(_ newError: Error?) -> Self {
 		assertionFailure("UITestResponse can't provide error. Use the StubResponse directly.")
 		return self
 	}
 	
-	/// This function must be called after creating and providing all the information to a
-	/// response object. It'll process the information internally in the local server and
-	/// prepare it to be used in the main application.
-	///
-	/// - Parameter endPoint: Defines the endPoint pattern matching for this response.
-	public override func send(to endPoint: String) {
-		
+	public override func send(to endPoint: String, methods: [HTTPMethod] = HTTPMethod.allCases) {
 		let infoJSON: [String : Any] = [.body : body?.base64EncodedString() as Any,
 										.statusCode : statusCode,
 										.delay : delay,
