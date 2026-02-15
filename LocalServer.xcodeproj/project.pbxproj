@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -28,6 +28,19 @@
 			);
 			name = Jazzy;
 			productName = Jazzy;
+		};
+		606D0AA32F41A06100589A89 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 606D0AA42F41A06100589A89 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				606D0AA72F41A06500589A89 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			packageProductDependencies = (
+			);
+			productName = Documentation;
 		};
 		60CFD2922A37437D00C96629 /* Publishing */ = {
 			isa = PBXAggregateTarget;
@@ -197,7 +210,6 @@
 		60C76EA8222D9A7D002C8111 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = SOURCE_ROOT; };
 		60C76EA9222D9A7D002C8111 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		60C76EAA222D9A7D002C8111 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = SOURCE_ROOT; };
-		60CFD2912A37437200C96629 /* publishing.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = publishing.sh; sourceTree = "<group>"; };
 		60D398BA222A7094001BA01B /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		60D49CAA2229ABD20038B657 /* StubResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponseTests.swift; sourceTree = "<group>"; };
 		60D49CAC2229B0FA0038B657 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
@@ -229,6 +241,10 @@
 		D74263D7A105B0C458691B7A /* Pods-SampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E633376D05E231FE29934FD7 /* Pods-SampleAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		606D0AA22F41A05A00589A89 /* Scripts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scripts; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6018A96922BF55AF007FD5FC /* Frameworks */ = {
@@ -319,7 +335,7 @@
 				60E7DBC4223393DE00B744CB /* SampleApp */,
 				60E7DBDB223393E100B744CB /* SampleAppUITests */,
 				6018A96D22BF55AF007FD5FC /* SampleAppUnitTests */,
-				60CFD2902A37437200C96629 /* Scripts */,
+				606D0AA22F41A05A00589A89 /* Scripts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -429,14 +445,6 @@
 				605E4A63223431D7003A0864 /* UserService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		60CFD2902A37437200C96629 /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				60CFD2912A37437200C96629 /* publishing.sh */,
-			);
-			path = Scripts;
 			sourceTree = "<group>";
 		};
 		60E7DBC4223393DE00B744CB /* SampleApp */ = {
@@ -694,6 +702,9 @@
 					60424F4721AD74C100F025ED = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					606D0AA32F41A06100589A89 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					60CFD2922A37437D00C96629 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -722,6 +733,7 @@
 				60424F2321AD74C100F025ED /* LocalServer */,
 				60424F2721AD74C100F025ED /* SwiftLint */,
 				60424F3721AD74C100F025ED /* Jazzy */,
+				606D0AA32F41A06100589A89 /* Documentation */,
 				60CFD2922A37437D00C96629 /* Publishing */,
 				60424F3B21AD74C100F025ED /* LocalServerTests */,
 				60424F4721AD74C100F025ED /* ModuleIntegrationTests */,
@@ -799,9 +811,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ModuleIntegrationTests/Pods-ModuleIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ModuleIntegrationTests/Pods-ModuleIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -874,6 +890,23 @@
 			shellPath = /bin/sh;
 			shellScript = "jazzy -o \"./docs\" --podspec \"${PROJECT_NAME}.podspec\" --github_url \"https://github.com/db-in/LocalServer\" --clean\n";
 		};
+		606D0AA72F41A06500589A89 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Scripts/generate-docs.sh\"\n";
+		};
 		60CFD2962A37438700C96629 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -899,9 +932,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUnitTests/Pods-SampleAppUnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUnitTests/Pods-SampleAppUnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -938,9 +975,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SampleApp/Pods-SampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SampleApp/Pods-SampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -955,9 +996,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1635,6 +1680,22 @@
 			};
 			name = Release;
 		};
+		606D0AA52F41A06100589A89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		606D0AA62F41A06100589A89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		60CFD2942A37437D00C96629 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1887,6 +1948,15 @@
 			buildConfigurations = (
 				60424F5F21AD74C100F025ED /* Debug */,
 				60424F6021AD74C100F025ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		606D0AA42F41A06100589A89 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				606D0AA52F41A06100589A89 /* Debug */,
+				606D0AA62F41A06100589A89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
