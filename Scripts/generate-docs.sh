@@ -5,6 +5,7 @@ echo "--- 📚 Swift DocC Documentation Generation Started ---"
 PROJECT_DIR="${PROJECT_DIR:-$(pwd)}"
 DOCS_DIR="${PROJECT_DIR}/docs"
 BUILD_DIR="${PROJECT_DIR}/.build"
+trap 'rm -rf "${BUILD_DIR}"' EXIT
 
 mkdir -p "${DOCS_DIR}"
 mkdir -p "${BUILD_DIR}"
@@ -12,60 +13,51 @@ mkdir -p "${BUILD_DIR}"
 echo "- Cleaning previous documentation -"
 rm -rf "${DOCS_DIR}"/*
 
-WORKSPACE=$(find "${PROJECT_DIR}" -name "*.xcworkspace" -maxdepth 1 | head -n 1)
-
-if [ -z "$WORKSPACE" ]; then
-    echo "Error: No .xcworkspace file found in ${PROJECT_DIR}"
-    exit 1
-fi
-
-WORKSPACE_NAME=$(basename "$WORKSPACE" .xcworkspace)
-echo "- Found workspace: ${WORKSPACE_NAME} -"
-
-echo "- Generating documentation for Fusion framework -"
-
-HOSTING_BASE_PATH="/fusion"
-SCHEME="Fusion"
+MODULE_NAME="LocalServer"
+HOSTING_BASE_PATH="/LocalServer"
+SCHEME="${MODULE_NAME}"
 DESTINATION="generic/platform=iOS"
 
-echo "- Building documentation archive for ${SCHEME} -"
-xcodebuild docbuild \
-    -workspace "${WORKSPACE}" \
-    -scheme "${SCHEME}" \
-    -destination "${DESTINATION}" \
-    -derivedDataPath "${BUILD_DIR}/DerivedData" \
-    -allowProvisioningUpdates \
-    DOCC_HOSTING_BASE_PATH="${HOSTING_BASE_PATH}"
+WORKSPACE=$(find "${PROJECT_DIR}" -name "*.xcworkspace" -maxdepth 1 | head -n 1)
 
-echo "- Searching for generated documentation archives -"
-ARCHIVE_PATH=$(find "${BUILD_DIR}/DerivedData" -name "*.doccarchive" -type d 2>/dev/null | head -n 1)
-
-if [ -z "$ARCHIVE_PATH" ]; then
-    ARCHIVE_PATH=$(find "${BUILD_DIR}/DerivedData" -path "*/Build/Product/*/*.doccarchive" -type d 2>/dev/null | head -n 1)
+if [ -n "$WORKSPACE" ]; then
+    WORKSPACE_NAME=$(basename "$WORKSPACE" .xcworkspace)
+    echo "- Found workspace: ${WORKSPACE_NAME} -"
+    echo "- Building documentation via xcodebuild for ${SCHEME} -"
+    xcodebuild docbuild \
+        -workspace "${WORKSPACE}" \
+        -scheme "${SCHEME}" \
+        -destination "${DESTINATION}" \
+        -derivedDataPath "${BUILD_DIR}/DerivedData" \
+        -allowProvisioningUpdates \
+        DOCC_HOSTING_BASE_PATH="${HOSTING_BASE_PATH}"
 fi
 
-if [ -z "$ARCHIVE_PATH" ]; then
+ARCHIVE_PATH=""
+if [ -d "${BUILD_DIR}/DerivedData" ]; then
+    ARCHIVE_PATH=$(find "${BUILD_DIR}/DerivedData" -name "*.doccarchive" -type d 2>/dev/null | head -n 1)
+    [ -z "$ARCHIVE_PATH" ] && ARCHIVE_PATH=$(find "${BUILD_DIR}/DerivedData" -path "*/Build/Product/*/*.doccarchive" -type d 2>/dev/null | head -n 1)
+fi
+
+if [ -z "$ARCHIVE_PATH" ] && [ -n "$WORKSPACE" ]; then
+    WORKSPACE_NAME=$(basename "$WORKSPACE" .xcworkspace)
     DERIVED_DATA_BASE="${HOME}/Library/Developer/Xcode/DerivedData"
     ARCHIVE_PATH=$(find "${DERIVED_DATA_BASE}" -name "*.doccarchive" -type d -path "*${WORKSPACE_NAME}*" 2>/dev/null | head -n 1)
-fi
-
-if [ -z "$ARCHIVE_PATH" ]; then
-    ARCHIVE_PATH=$(find "${DERIVED_DATA_BASE}" -path "*/Build/Product/*/*.doccarchive" -type d -path "*${WORKSPACE_NAME}*" 2>/dev/null | head -n 1)
+    [ -z "$ARCHIVE_PATH" ] && ARCHIVE_PATH=$(find "${DERIVED_DATA_BASE}" -path "*/Build/Product/*/*.doccarchive" -type d -path "*${WORKSPACE_NAME}*" 2>/dev/null | head -n 1)
 fi
 
 if [ -z "$ARCHIVE_PATH" ] || [ ! -d "$ARCHIVE_PATH" ]; then
-    echo "Warning: No documentation archive found in build directories"
-    echo "- Trying Swift Package Manager as fallback -"
-    
+    echo "- Using Swift Package Manager to generate documentation -"
     if command -v swift >/dev/null 2>&1; then
         cd "${PROJECT_DIR}"
         swift package clean 2>/dev/null || true
-        
         swift package generate-documentation \
-            --target Fusion \
-            --output-path "${BUILD_DIR}/Fusion.doccarchive" 2>&1 | grep -E "(error|warning|Building|Generating)" || true
-        
-        ARCHIVE_PATH="${BUILD_DIR}/Fusion.doccarchive"
+            --target "${MODULE_NAME}" \
+            --output-path "${BUILD_DIR}/${MODULE_NAME}.doccarchive"
+        ARCHIVE_PATH="${BUILD_DIR}/${MODULE_NAME}.doccarchive"
+    else
+        echo "Error: swift command not found"
+        exit 1
     fi
 fi
 
@@ -91,7 +83,7 @@ if [ -n "$ARCHIVE_PATH" ] && [ -d "$ARCHIVE_PATH" ]; then
         
         if [ -d "${DOCS_DIR}/html" ]; then
             echo "- HTML documentation available in: ${DOCS_DIR}/html"
-            DOC_MODULE="Fusion"
+            DOC_MODULE="${MODULE_NAME}"
             if [ -d "${DOCS_DIR}/html/data/documentation" ]; then
                 FIRST_JSON=$(find "${DOCS_DIR}/html/data/documentation" -maxdepth 1 -name "*.json" 2>/dev/null | head -n 1)
                 if [ -n "$FIRST_JSON" ]; then
