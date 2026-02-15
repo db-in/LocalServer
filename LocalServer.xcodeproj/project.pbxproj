@@ -681,7 +681,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Emirates Group";
+				ORGANIZATIONNAME = "db-in";
 				TargetAttributes = {
 					6018A96B22BF55AF007FD5FC = {
 						CreatedOnToolsVersion = 10.2.1;
