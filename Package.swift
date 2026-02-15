@@ -10,11 +10,22 @@ let package = Package(
             targets: ["LocalServer"]
         )
     ],
+    dependencies: [],
     targets: [
         .target(
             name: "LocalServer",
             dependencies: [],
-            path: "LocalServer/Source"
+            path: "LocalServer/Source",
+            resources: [
+                .process("PrivacyInfo.xcprivacy")
+            ],
+            swiftSettings: [
+                .define("GENERATE_INFOPLIST_FILE")
+            ],
+            linkerSettings: [
+                .linkedFramework("Foundation"),
+                .linkedFramework("WebKit", .when(platforms: [.iOS]))
+            ]
         ),
         .testTarget(
             name: "LocalServerTests",
