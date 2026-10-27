@@ -206,6 +206,13 @@ class StubServerTests : XCTestCase {
 		XCTAssertTrue(StubURLHTTPProtocol.canInit(with: URLRequest(url: .google)))
 	}
 	
+	func testURLSessionShared_WithStubServerRunning_ShouldReuseTheSameSession() {
+		
+		StubServer.instance = StubServer()
+		
+		XCTAssertTrue(URLSession.shared === URLSession.shared)
+	}
+	
 // MARK: - Overridden Methods
 	
 	override func tearDown() {

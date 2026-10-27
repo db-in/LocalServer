@@ -29,10 +29,12 @@ func exchangeOnce() {
 
 extension URLSession : Exchangeable {
 	
+	private static let stubSession = URLSession(configuration: .default)
+	
 	@objc private class var stubShared: URLSession {
 		
 		if StubServer.instance != nil {
-			return URLSession(configuration: .default)
+			return stubSession
 		}
 		
 		return URLSession.stubShared
