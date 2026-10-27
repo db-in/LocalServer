@@ -91,6 +91,18 @@ public protocol LocalServerDelegate {
 	/// - Parameter urlRequest: The incoming original URLRequest
 	/// - Returns: A StubResponse instance representing the stub response.
 	func responseForURLRequest(_ urlRequest: URLRequest) -> StubResponse
+	
+	/// Indicates if this server takes over the given request. Requests it doesn't take over
+	/// go straight to the real network, without passing through the LocalServer.
+	///
+	/// - Parameter urlRequest: The incoming original URLRequest
+	/// - Returns: `true` when the request must be answered by ``responseForURLRequest(_:)``.
+	func canRespond(to urlRequest: URLRequest) -> Bool
+}
+
+public extension LocalServerDelegate {
+	
+	func canRespond(to urlRequest: URLRequest) -> Bool { true }
 }
 
 // MARK: - Type -
@@ -170,5 +182,18 @@ extension StubServer : LocalServerDelegate {
 		}
 		
 		return allowRealRequests ? StubResponse(withReal: urlRequest) : defaultResponse
+	}
+	
+	/// When real requests are allowed, only requests matching a defined route are taken over.
+	/// Otherwise every request is taken over, so unmatched ones get the ``defaultResponse``.
+	///
+	/// - Parameter urlRequest: The incoming original URLRequest
+	/// - Returns: `true` when this server answers the request.
+	public func canRespond(to urlRequest: URLRequest) -> Bool {
+		
+		guard allowRealRequests else { return true }
+		guard let rawMethod = urlRequest.httpMethod, let method = HTTPMethod(rawValue: rawMethod) else { return false }
+		
+		return routes[method]?.matches(urlRequest) == true
 	}
 }

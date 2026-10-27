@@ -179,6 +179,33 @@ class StubServerTests : XCTestCase {
 		wait(for: [expect], timeout: 15.0)
 	}
 	
+	func testStubURLHTTPProtocol_WithRealRequestsAllowedAndUnmatchedRoute_ShouldLeaveRequestToRealNetwork() {
+		
+		let server = StubServer(allowRealRequests: true)
+		
+		server.route([.GET], url: "httpbin") { _, _ in StubResponse() }
+		StubServer.instance = server
+		
+		XCTAssertFalse(StubURLHTTPProtocol.canInit(with: URLRequest(url: .google)))
+	}
+	
+	func testStubURLHTTPProtocol_WithRealRequestsAllowedAndMatchedRoute_ShouldTakeOverRequest() {
+		
+		let server = StubServer(allowRealRequests: true)
+		
+		server.route([.GET], url: "google") { _, _ in StubResponse() }
+		StubServer.instance = server
+		
+		XCTAssertTrue(StubURLHTTPProtocol.canInit(with: URLRequest(url: .google)))
+	}
+	
+	func testStubURLHTTPProtocol_WithRealRequestsNotAllowedAndUnmatchedRoute_ShouldTakeOverRequest() {
+		
+		StubServer.instance = StubServer()
+		
+		XCTAssertTrue(StubURLHTTPProtocol.canInit(with: URLRequest(url: .google)))
+	}
+	
 // MARK: - Overridden Methods
 	
 	override func tearDown() {

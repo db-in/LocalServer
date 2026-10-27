@@ -53,6 +53,13 @@ class Router {
 		return route?.handler(urlRequest, url.queryItemsDictionary)
 	}
 	
+	func matches(_ urlRequest: URLRequest) -> Bool {
+		
+		guard let url = urlRequest.url else { return false }
+		
+		return routes.contains { $0.matchesRoute(url) }
+	}
+	
 	func addRoute(_ pattern: String, handler: @escaping RouteHandler) {
 		routes.append(Route(pattern: pattern, handler: handler))
 	}

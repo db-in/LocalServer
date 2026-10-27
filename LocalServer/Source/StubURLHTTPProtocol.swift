@@ -54,8 +54,8 @@ class StubURLHTTPProtocol : URLProtocol {
 
 	override class func canInit(with request: URLRequest) -> Bool {
 		
-		guard let scheme = request.url?.scheme else { return false }
-		return ["http", "https"].contains(scheme)
+		guard let scheme = request.url?.scheme, ["http", "https"].contains(scheme) else { return false }
+		return StubServer.instance?.canRespond(to: request) ?? true
 	}
 	
 	override class func canonicalRequest(for request: URLRequest) -> URLRequest {
