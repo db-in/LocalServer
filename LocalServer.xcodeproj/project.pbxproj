@@ -163,7 +163,7 @@
 		60424F3121AD74C100F025ED /* LocalServer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LocalServer.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		60424F3221AD74C100F025ED /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		60424F3321AD74C100F025ED /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		60424F3421AD74C100F025ED /* LocalServer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalServer.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		60424F3421AD74C100F025ED /* LocalServer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalServer.podspec; sourceTree = SOURCE_ROOT; };
 		60424F3521AD74C100F025ED /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		60424F3C21AD74C100F025ED /* LocalServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60424F4321AD74C100F025ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
