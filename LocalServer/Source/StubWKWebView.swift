@@ -23,7 +23,11 @@ extension WKWebView : Exchangeable {
 	
 	@objc func stubLoad(_ request: URLRequest) -> WKNavigation? {
 		
-		if let body = StubServer.instance?.responseForURLRequest(request).body,
+		guard let server = StubServer.instance, server.canRespond(to: request) else {
+			return stubLoad(request)
+		}
+		
+		if let body = server.responseForURLRequest(request).body,
 			let bodyString = String(data: body, encoding: .utf8) {
 			return loadHTMLString(bodyString, baseURL: request.url)
 		}
