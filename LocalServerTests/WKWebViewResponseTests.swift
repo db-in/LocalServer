@@ -19,6 +19,7 @@ class WKWebViewResponseTests : XCTestCase {
 	var expect: XCTestExpectation?
 	var currentURL: String!
 	var actionPolicy: WKNavigationActionPolicy!
+	var expectedMethod: String?
 	
 	func testUITestResponse_WithWKWebViewLoadingMatchingURL_ShouldReturnMockWebView() {
 		
@@ -66,7 +67,29 @@ class WKWebViewResponseTests : XCTestCase {
 		wait(for: [expect!], timeout: 5.0)
 	}
 	
+	func testStubServer_WithWKWebViewLoadingUnmatchedURLAndRealRequestsAllowed_ShouldLoadOriginalRequest() {
+		
+		let server = StubServer(allowRealRequests: true)
+		server.route([.POST], url: "httpbin") { _, _ in StubResponse() }
+		StubServer.instance = server
+		
+		expect = expectation(description: "\(#function)")
+		currentURL = "https://httpstat.us/200"
+		actionPolicy = .cancel
+		expectedMethod = "POST"
+		
+		var request = URLRequest(url: URL(string: currentURL)!)
+		request.httpMethod = "POST"
+		
+		let webView = WKWebView()
+		webView.navigationDelegate = self
+		webView.load(request)
+		
+		wait(for: [expect!], timeout: 5.0)
+	}
+	
 	override func tearDown() {
+		expectedMethod = nil
 		UITestServer.resetAll()
 		UITestServer.stop()
 	}
@@ -78,6 +101,9 @@ extension WKWebViewResponseTests : WKNavigationDelegate {
 				 decidePolicyFor navigationAction: WKNavigationAction,
 				 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		XCTAssertEqual(navigationAction.request.url?.absoluteString, currentURL)
+		if let expectedMethod {
+			XCTAssertEqual(navigationAction.request.httpMethod, expectedMethod)
+		}
 		if actionPolicy == .cancel {
 			expect?.fulfill()
 		}
